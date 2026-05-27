@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Page\Admin\AdminController;
 use App\Http\Controllers\Page\Admin\Post\AddNewWordController;
-use App\Http\Controllers\Page\Admin\Post\CheckWordEnForUniqController;
+use App\Http\Controllers\Page\Admin\Post\ChackWordForeignForUniqController;
 
 
 
@@ -28,7 +28,7 @@ Route::get( '/admin', [ AdminController::class, 'get' ])->middleware( [ 'admin.o
 Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] )->group(function ($router) {
 
     Route::post('/add-new-word', [ AddNewWordController::class, 'post' ]);
-    Route::post('/chack-word-en-for-uniq', [ CheckWordEnForUniqController::class, 'post' ]);
+    Route::post('/chack-word-foreign-for-uniq', [ ChackWordForeignForUniqController::class, 'post' ]);
 
 
 });

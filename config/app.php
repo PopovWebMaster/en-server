@@ -180,6 +180,26 @@ return [
     'admin_email' => env('ADMIN_EMAIL'),
     'APP_IS_PRODUCTION' => env('APP_IS_PRODUCTION'),
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Class Aliases

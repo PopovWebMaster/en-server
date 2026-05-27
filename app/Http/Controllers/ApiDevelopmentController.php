@@ -8,11 +8,14 @@ use App\Models\User;
 
 use App\Http\Controllers\Page\Admin\Traits\AddNewWordTrait;
 use App\Http\Controllers\Page\Admin\Traits\CheckWordEnForUniqTrait;
+use App\Http\Controllers\Page\Admin\Traits\CheckWordForeignForUniqTrait;
+
+
 
 class ApiDevelopmentController extends Controller
 {
     use AddNewWordTrait;
-    use CheckWordEnForUniqTrait;
+    use CheckWordForeignForUniqTrait;
 
     
     public function store(Request $request)
@@ -35,8 +38,8 @@ class ApiDevelopmentController extends Controller
                 $result = $this->AddNewWord( $request, $user );
                 break;
 
-            case 'admin/chack-word-en-for-uniq':
-                $result = $this->CheckWordEnForUniq( $request, $user );
+            case 'admin/chack-word-foreign-for-uniq':
+                $result = $this->CheckWordForeignForUniq( $request, $user );
                 break;
             
             

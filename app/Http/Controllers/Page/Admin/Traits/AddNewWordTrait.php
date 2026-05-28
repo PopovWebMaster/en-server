@@ -11,6 +11,7 @@ use App\Http\Controllers\ValidateTraits\ValidateAudioFilesArrTrait;
 use App\Http\Controllers\ValidateTraits\ValidateWordEnTrait;
 
 use App\Http\Controllers\Page\Admin\Traits\CreateFreeWordEnTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
 
 
 
@@ -22,6 +23,7 @@ trait AddNewWordTrait{
     use ValidateAudioFilesArrTrait;
     use ValidateWordEnTrait;
     use CreateFreeWordEnTrait;
+    use GetWordListTrait;
 
     public function AddNewWord( $request, $user ){
 
@@ -46,7 +48,7 @@ trait AddNewWordTrait{
                         $files =            $validateFiles[ 'value' ];
 
                         if( $kayName === 'EN' ){
-                            $validateWordEn = $this->ValidateWordEn( $request );
+                            $validateWordEn = $this->ValidateWordEn( $request, true );
                             if( $validateWordEn[ 'ok' ] ){
                                 
                                 $word_en = $validateWordEn[ 'value' ];
@@ -59,6 +61,10 @@ trait AddNewWordTrait{
                                     'files' =>          $files,
 
                                 ]);
+
+                                $result[ 'wordList' ] = $this->GetWordList( $kayName );
+
+
 
                                 $result[ 'ok' ] = true;
 

@@ -65,16 +65,22 @@ return [
             'visibility' => 'public',
         ],
 
-        'audio_buffer' => [
+        // 'audio_free' => [
+        //     'driver' => 'local',
+        //     // 'root'   => storage_path('app/private/audio_buffer/'),
+        //     'root'   => storage_path('app/public/audio_free/'),
+
+        //     'visibility' => 'public',
+        //     // 'visibility' => 'private',
+        // ],
+
+        'audio' => [
             'driver' => 'local',
             // 'root'   => storage_path('app/private/audio_buffer/'),
-            'root'   => storage_path('app/public/audio_buffer/'),
+            'root'   => storage_path('app/public/audio/'),
 
             'visibility' => 'public',
             // 'visibility' => 'private',
-
-
-            
         ],
 
     ],

@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Http\Controllers\Page\Admin\Traits\AddNewWordTrait;
 use App\Http\Controllers\Page\Admin\Traits\CheckWordEnForUniqTrait;
 use App\Http\Controllers\Page\Admin\Traits\CheckWordForeignForUniqTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetStartingDataTrait;
 
 
 
@@ -16,6 +17,7 @@ class ApiDevelopmentController extends Controller
 {
     use AddNewWordTrait;
     use CheckWordForeignForUniqTrait;
+    use GetStartingDataTrait;
 
     
     public function store(Request $request)
@@ -40,6 +42,10 @@ class ApiDevelopmentController extends Controller
 
             case 'admin/chack-word-foreign-for-uniq':
                 $result = $this->CheckWordForeignForUniq( $request, $user );
+                break;
+
+            case 'admin/get-starting-data':
+                $result = $this->GetStartingData( $request, $user );
                 break;
             
             

@@ -5,16 +5,18 @@ namespace App\Http\Controllers\Page\Admin\Traits;
 use Storage;
 
 use App\Http\Controllers\Page\Admin\Traits\GetUniqFileNameTrait;
+use App\Http\Controllers\Traits\GetAudioFilePuthTrait;
 
 use App\Models\AudioEn;
 
 trait CreateAudioFileTrait{
 
     use GetUniqFileNameTrait;
+    use GetAudioFilePuthTrait;
 
     public function CreateAudioFile( $params ){
 
-        $kayName =          $params[ 'kayName' ];
+        $keyName =          $params[ 'kayName' ];
         $word_en_id =       $params[ 'word_en_id' ];
         $base64 =           $params[ 'base64' ];
         $name =             $params[ 'name' ];
@@ -22,11 +24,16 @@ trait CreateAudioFileTrait{
 
         $fileName =         $name;
 
-        $puth = '/'.$kayName.'/';
+        // $puth = '/'.$kayName.'/';
 
-        if( $lesson_en_id !== null ){
-            $puth = '/'.$kayName.'/'.$lesson_en_id.'/';
-        };
+        // if( $lesson_en_id !== null ){
+        //     $puth = '/'.$kayName.'/'.$lesson_en_id.'/';
+        // };
+
+        // $fileNameUnic = $this->GetUniqFileName( $name, $puth );
+
+        // Storage::disk( 'audio' )->put( $puth.'/'.$fileNameUnic, base64_decode( $base64 ) );
+        $puth = $this->GetAudioFilePuth( $keyName, $lesson_en_id );
 
         $fileNameUnic = $this->GetUniqFileName( $name, $puth );
 

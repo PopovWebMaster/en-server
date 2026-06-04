@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Page\Admin\Traits;
 use App\Models\WordEn;
 use App\Models\AudioEn;
 
+use App\Http\Controllers\Traits\GetAudioBase64Trait;
+
 trait GetWordListTrait{
+
+    use GetAudioBase64Trait;
 
     public function GetWordList( $keyName, $lessonId = null ){
 
@@ -26,7 +30,13 @@ trait GetWordListTrait{
                 $audioEn = AudioEn::where( 'word_en_id', '=', $word_en_id )->get();
                 foreach( $audioEn as $audioModel ){
                     $name = $audioModel->file_name;
-                    $base64 = '';
+
+                    $base64 = $this->GetAudioBase64([
+                        'keyName' =>    $keyName,
+                        'name' =>       $name,
+                        'lessonId' =>   $lessonId,
+                    ]);
+
                     array_push( $audio, [
                         'name' => $name,
                         'base64' => $base64,

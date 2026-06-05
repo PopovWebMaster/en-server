@@ -21,7 +21,7 @@ trait GetWordListTrait{
             foreach( $wordEn as $model ){
 
                 $word_en_id =       $model->id;
-                $foreign =          $model->en;
+                $foreign =          $model->en === null? '': $model->en;
                 $ru =               $model->ru === null? '': $model->ru;
                 $transcription =    $model->transcription === null? '': $model->transcription;
 
@@ -37,10 +37,19 @@ trait GetWordListTrait{
                         'lessonId' =>   $lessonId,
                     ]);
 
-                    array_push( $audio, [
-                        'name' => $name,
-                        'base64' => $base64,
-                    ] );
+                    if( $base64 === '' ){
+
+                        $audioModel->delete();
+
+                    }else{
+                        array_push( $audio, [
+                            'name' => $name,
+                            'base64' => $base64,
+                        ] );
+                    };
+
+                    
+
                 };
 
                 array_push( $result, [

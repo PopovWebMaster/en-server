@@ -10,7 +10,8 @@ use App\Http\Controllers\Page\Admin\Traits\AddNewWordTrait;
 use App\Http\Controllers\Page\Admin\Traits\CheckWordEnForUniqTrait;
 use App\Http\Controllers\Page\Admin\Traits\CheckWordForeignForUniqTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetStartingDataTrait;
-
+use App\Http\Controllers\Page\Admin\Traits\RemoveAudioFileTrait;
+use App\Http\Controllers\Page\Admin\Traits\AddAudioToWordTrait;
 
 
 class ApiDevelopmentController extends Controller
@@ -18,6 +19,8 @@ class ApiDevelopmentController extends Controller
     use AddNewWordTrait;
     use CheckWordForeignForUniqTrait;
     use GetStartingDataTrait;
+    use RemoveAudioFileTrait;
+    use AddAudioToWordTrait;
 
     
     public function store(Request $request)
@@ -47,9 +50,14 @@ class ApiDevelopmentController extends Controller
             case 'admin/get-starting-data':
                 $result = $this->GetStartingData( $request, $user );
                 break;
+
+            case 'admin/remove-audio-file':
+                $result = $this->RemoveAudioFile( $request, $user );
+                break;
             
-            
-            
+            case 'admin/add-audio-files-to-word':
+                $result = $this->AddAudioToWord( $request );
+                break;
             
             
             

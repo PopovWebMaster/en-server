@@ -7,9 +7,9 @@ use Validator;
 
 // use App\Models\WordEn;
 
-trait ValidateLessonIdTrait{
+trait ValidateWordEnIdTrait{
 
-    public function ValidateLessonId( $request ){
+    public function ValidateWordEnId( $request ){
 
         $result = [
             'ok' => false,
@@ -17,15 +17,14 @@ trait ValidateLessonIdTrait{
             'value' => '',
         ];
 
-        $lessonId = isset( $request[ 'data' ][ 'lessonId' ] )? isset( $request[ 'data' ][ 'lessonId' ] )? $request[ 'data' ][ 'lessonId' ]: null: null;
-        // $keyName = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'keyName' ] )? $request[ 'data' ][ 'keyName' ]: null: null;
+        $foreignWordId = isset( $request[ 'data' ][ 'foreignWordId' ] )? isset( $request[ 'data' ][ 'foreignWordId' ] )? $request[ 'data' ][ 'foreignWordId' ]: null: null;
 
-        $result[ 'value' ] = $lessonId;
+        $result[ 'value' ] = $foreignWordId;
 
         $validate = Validator::make( [ 
-            'lessonId' => $lessonId,
+            'foreignWordId' => $foreignWordId,
         ], [
-            'lessonId' => [ 'nullable', 'numeric', /* 'exists:application,id'*/ ],
+            'foreignWordId' => [ 'required', 'numeric', 'exists:word_en,id' ],
         ]);
 
 

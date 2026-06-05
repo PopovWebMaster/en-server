@@ -38,8 +38,8 @@ trait CreateFreeWordEnTrait{
             $base64 = $files[ $i ][ 'base64' ];
 
             $res = $this->CreateAudioFile([
-                'kayName' =>    $kayName,
-                'word_en_id' => $word_en_id,
+                'keyName' =>    $kayName,
+                'word_foreign_id' => $word_en_id,
                 'name' =>       $name,
                 'base64' =>     $base64,
             ]);

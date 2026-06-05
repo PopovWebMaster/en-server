@@ -18,15 +18,15 @@ trait ValidateLanguageKeyNameTrait{
             'value' => '',
         ];
 
-        $kayName = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'kayName' ] )? $request[ 'data' ][ 'kayName' ]: null: null;
-        $result[ 'value' ] = $kayName;
+        $keyName = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'keyName' ] )? $request[ 'data' ][ 'keyName' ]: null: null;
+        $result[ 'value' ] = $keyName;
 
         $arr = array_keys( config( 'languages.languages' ) );
 
         $validate = Validator::make( [ 
-            'kayName' => $kayName,
+            'keyName' => $keyName,
         ], [
-            'kayName' => [ 'required', Rule::in( $arr ), 'string', 'min:2', 'max:2' ],
+            'keyName' => [ 'required', Rule::in( $arr ), 'string', 'min:2', 'max:2' ],
         ]);
 
         if( $validate->fails() ){

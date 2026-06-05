@@ -6,6 +6,10 @@ use App\Http\Controllers\Page\Admin\AdminController;
 use App\Http\Controllers\Page\Admin\Post\AddNewWordController;
 use App\Http\Controllers\Page\Admin\Post\ChackWordForeignForUniqController;
 use App\Http\Controllers\Page\Admin\Post\GetStartingDataController;
+use App\Http\Controllers\Page\Admin\Post\RemoveAudioFileController;
+use App\Http\Controllers\Page\Admin\Post\AddAudioToWordController;
+
+
 
 
 
@@ -32,6 +36,10 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
     Route::post('/add-new-word', [ AddNewWordController::class, 'post' ]);
     Route::post('/chack-word-foreign-for-uniq', [ ChackWordForeignForUniqController::class, 'post' ]);
     Route::post('/get-starting-data', [ GetStartingDataController::class, 'post' ]);
+    Route::post('/remove-audio-file', [ RemoveAudioFileController::class, 'post' ]);
+    Route::post('/add-audio-files-to-word', [ AddAudioToWordController::class, 'post' ]);
+
+
 
 
 

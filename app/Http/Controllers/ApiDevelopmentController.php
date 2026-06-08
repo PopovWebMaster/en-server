@@ -12,6 +12,7 @@ use App\Http\Controllers\Page\Admin\Traits\CheckWordForeignForUniqTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetStartingDataTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveAudioFileTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddAudioToWordTrait;
+use App\Http\Controllers\Page\Admin\Traits\SaveWordListChangesTrait;
 
 
 class ApiDevelopmentController extends Controller
@@ -21,6 +22,7 @@ class ApiDevelopmentController extends Controller
     use GetStartingDataTrait;
     use RemoveAudioFileTrait;
     use AddAudioToWordTrait;
+    use SaveWordListChangesTrait;
 
     
     public function store(Request $request)
@@ -57,6 +59,10 @@ class ApiDevelopmentController extends Controller
             
             case 'admin/add-audio-files-to-word':
                 $result = $this->AddAudioToWord( $request );
+                break;
+
+            case 'admin/save-word-list-changes':
+                $result = $this->SaveWordListChanges( $request );
                 break;
             
             

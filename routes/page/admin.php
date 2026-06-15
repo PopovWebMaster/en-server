@@ -9,6 +9,8 @@ use App\Http\Controllers\Page\Admin\Post\GetStartingDataController;
 use App\Http\Controllers\Page\Admin\Post\RemoveAudioFileController;
 use App\Http\Controllers\Page\Admin\Post\AddAudioToWordController;
 use App\Http\Controllers\Page\Admin\Post\SaveWordListChangesController;
+use App\Http\Controllers\Page\Admin\Post\RemoveOneWordController;
+
 
 
 
@@ -41,8 +43,7 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
     Route::post('/remove-audio-file', [ RemoveAudioFileController::class, 'post' ]);
     Route::post('/add-audio-files-to-word', [ AddAudioToWordController::class, 'post' ]);
     Route::post('/save-word-list-changes', [ SaveWordListChangesController::class, 'post' ]);
-
-
+    Route::post('/remove-word', [ RemoveOneWordController::class, 'post' ]);
 
 
 

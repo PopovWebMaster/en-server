@@ -13,6 +13,7 @@ use App\Http\Controllers\Page\Admin\Traits\GetStartingDataTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveAudioFileTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddAudioToWordTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveWordListChangesTrait;
+use App\Http\Controllers\Page\Admin\Traits\RemoveOneWordTrait;
 
 
 class ApiDevelopmentController extends Controller
@@ -23,6 +24,7 @@ class ApiDevelopmentController extends Controller
     use RemoveAudioFileTrait;
     use AddAudioToWordTrait;
     use SaveWordListChangesTrait;
+    use RemoveOneWordTrait;
 
     
     public function store(Request $request)
@@ -63,6 +65,10 @@ class ApiDevelopmentController extends Controller
 
             case 'admin/save-word-list-changes':
                 $result = $this->SaveWordListChanges( $request );
+                break;
+
+            case 'admin/remove-word':
+                $result = $this->RemoveOneWord( $request );
                 break;
             
             

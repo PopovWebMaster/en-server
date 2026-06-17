@@ -8,16 +8,19 @@ use App\Models\AudioEn;
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\ValidateTraits\ValidateLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetLessonsListTrait;
 
 trait GetStartingDataTrait{
 
     use ValidateLanguageKeyNameTrait;
     use ValidateLessonIdTrait;
     use GetWordListTrait;
+    use GetLessonsListTrait;
 
     public function GetStartingData( $request, $user ){
         /*
             wordList
+            lessonList
         */
 
         $result = [
@@ -43,6 +46,10 @@ trait GetStartingDataTrait{
                     switch( $item ){
                         case 'wordList':
                             $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
+                            break;
+
+                        case 'lessonList':
+                            $result[ 'lessonList' ] = $this->GetLessonsList( $keyName );
                             break;
 
                             

@@ -14,6 +14,8 @@ class LessonEn extends Model
         'title', 
         'description',
         'level_name',
+        'is_active',
+        'order',
 
     ];
 

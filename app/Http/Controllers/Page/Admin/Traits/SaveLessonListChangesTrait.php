@@ -58,7 +58,7 @@ trait SaveLessonListChangesTrait{
 
                 };
 
-                $result[ 'lessonList' ] = $this->GetLessonsList( $kayName );
+                $result[ 'lessonList' ] = $this->GetLessonsList( $keyName );
                 $result[ 'ok' ] = true;
 
     

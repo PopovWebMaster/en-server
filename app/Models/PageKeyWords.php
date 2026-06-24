@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-
-class WordEn extends Model
+class PageKeyWords extends Model
 {
     use HasFactory;
 
-    protected $table = 'word_en';
-    protected $fillable = [
-        'en', 
-        'ru',
-        'transcription',
-        'lesson_en_id',
+    protected $table = 'page_keywords';
 
+    protected $fillable = [
+        'keywords', 
+        'key_name',
+        'lesson_id',
     ];
 
     public $timestamps = false;
 }
+
+

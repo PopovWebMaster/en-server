@@ -9,6 +9,7 @@ use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\ValidateTraits\ValidateLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetLessonsListTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetOneLessonDataTrait;
 
 trait GetStartingDataTrait{
 
@@ -16,11 +17,13 @@ trait GetStartingDataTrait{
     use ValidateLessonIdTrait;
     use GetWordListTrait;
     use GetLessonsListTrait;
+    use GetOneLessonDataTrait;
 
     public function GetStartingData( $request, $user ){
         /*
             wordList
             lessonList
+            oneLessonData
         */
 
         $result = [
@@ -50,6 +53,10 @@ trait GetStartingDataTrait{
 
                         case 'lessonList':
                             $result[ 'lessonList' ] = $this->GetLessonsList( $keyName );
+                            break;
+
+                        case 'oneLessonData':
+                            $result[ 'oneLessonData' ] = $this->GetOneLessonData( $keyName, $lessonId );
                             break;
 
                             

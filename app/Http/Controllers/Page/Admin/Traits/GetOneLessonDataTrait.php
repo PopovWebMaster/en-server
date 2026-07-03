@@ -76,6 +76,7 @@ trait GetOneLessonDataTrait{
                 $result[ 'lessonOrder' ] =          $lessonEn->order;
 
 
+
                 $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
 
             };

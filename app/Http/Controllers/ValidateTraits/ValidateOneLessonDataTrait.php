@@ -23,6 +23,7 @@ trait ValidateOneLessonDataTrait{
         $lessonId =             isset( $request[ 'data' ][ 'lessonId' ] )?          isset( $request[ 'data' ][ 'lessonId' ] )?          $request[ 'data' ][ 'lessonId' ]: null: null;
         $pageTitle =            isset( $request[ 'data' ][ 'pageTitle' ] )?         isset( $request[ 'data' ][ 'pageTitle' ] )?         $request[ 'data' ][ 'pageTitle' ]: null: null;
         $pageDescription =      isset( $request[ 'data' ][ 'pageDescription' ] )?   isset( $request[ 'data' ][ 'pageDescription' ] )?   $request[ 'data' ][ 'pageDescription' ]: null: null;
+        $pageText =             isset( $request[ 'data' ][ 'pageText' ] )?          isset( $request[ 'data' ][ 'pageText' ] )?          $request[ 'data' ][ 'pageText' ]: null: null;
         $pageKeyWords =         isset( $request[ 'data' ][ 'pageKeyWords' ] )?      isset( $request[ 'data' ][ 'pageKeyWords' ] )?      $request[ 'data' ][ 'pageKeyWords' ]: null: null;
         $lessonPhrasesList =    isset( $request[ 'data' ][ 'lessonPhrasesList' ] )? isset( $request[ 'data' ][ 'lessonPhrasesList' ] )? $request[ 'data' ][ 'lessonPhrasesList' ]: []: [];
         $lessonTitle =          isset( $request[ 'data' ][ 'lessonTitle' ] )?       isset( $request[ 'data' ][ 'lessonTitle' ] )?       $request[ 'data' ][ 'lessonTitle' ]: null: null;
@@ -55,6 +56,9 @@ trait ValidateOneLessonDataTrait{
 
             $maxEN = config( 'languages.languages.EN.max' );
             $regexEN = config( 'languages.languages.EN.regex' );
+
+            $maxRU = config( 'languages.languages.RU.max' );
+            $regexRU = config( 'languages.languages.RU.regex' );
 
             $validate = Validator::make( [ 
                 'lessonId' =>           $lessonId,

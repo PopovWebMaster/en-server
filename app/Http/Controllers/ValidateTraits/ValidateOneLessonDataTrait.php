@@ -85,8 +85,6 @@ trait ValidateOneLessonDataTrait{
                 'lessonPhrasesList.*.id' =>         [ 'required', 'numeric', 'exists:lesson_phrases,id' ],
                 'lessonPhrasesList.*.foreign' =>    [ 'nullable', 'string', 'max:255' ],
                 'lessonPhrasesList.*.ru' =>         [ 'nullable', 'string', 'max:255' ],
-                'lessonPhrasesList.*.key_name' =>   [ 'required', 'string', 'min:2', 'max:2' ],
-                'lessonPhrasesList.*.lesson_id' =>  [ 'required', 'numeric', 'exists:lesson_en,id' ],
 
                 'lessonTitle' =>        [ 'nullable', 'string', 'max:255' ],
                 'lessonDescription' =>  [ 'nullable', 'string', 'max:255' ],

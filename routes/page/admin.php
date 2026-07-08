@@ -12,6 +12,9 @@ use App\Http\Controllers\Page\Admin\Post\SaveWordListChangesController;
 use App\Http\Controllers\Page\Admin\Post\RemoveOneWordController;
 use App\Http\Controllers\Page\Admin\Post\AddNewLessonController;
 use App\Http\Controllers\Page\Admin\Post\SaveLessonListChangesController;
+use App\Http\Controllers\Page\Admin\Post\SaveOneLessonDataChangesController;
+use App\Http\Controllers\Page\Admin\Post\AddNewLessonPhraseController;
+
 
 
 
@@ -46,10 +49,16 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
     Route::post('/remove-word', [ RemoveOneWordController::class, 'post' ]);
     Route::post('/add-new-lesson', [ AddNewLessonController::class, 'post' ]);
     Route::post('/save-lesson-list-changes', [ SaveLessonListChangesController::class, 'post' ]);
+    Route::post('/save-one-lesson-changes', [ SaveOneLessonDataChangesController::class, 'post' ]);
+    Route::post('/add-new-lesson-phrase', [ AddNewLessonPhraseController::class, 'post' ]);
 
 
 
 
+
+    
+
+    
 
 
 

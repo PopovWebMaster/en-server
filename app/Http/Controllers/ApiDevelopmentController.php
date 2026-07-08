@@ -17,7 +17,7 @@ use App\Http\Controllers\Page\Admin\Traits\RemoveOneWordTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewLessonTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveLessonListChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveOneLessonDataChangesTrait;
-
+use App\Http\Controllers\Page\Admin\Traits\AddNewLessonPhraseTrait;
 
 
 class ApiDevelopmentController extends Controller
@@ -32,6 +32,7 @@ class ApiDevelopmentController extends Controller
     use AddNewLessonTrait;
     use SaveLessonListChangesTrait;
     use SaveOneLessonDataChangesTrait;
+    use AddNewLessonPhraseTrait;
 
     
     public function store(Request $request)
@@ -85,6 +86,11 @@ class ApiDevelopmentController extends Controller
             case 'admin/save-one-lesson-changes':
                 $result = $this->SaveOneLessonDataChanges( $request );
                 break;
+
+            case 'admin/add-new-lesson-phrase':
+                $result = $this->AddNewLessonPhrase( $request );
+                break;
+
 
 
 

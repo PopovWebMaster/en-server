@@ -12,6 +12,7 @@ use App\Http\Controllers\ValidateTraits\ValidateWordEnTrait;
 
 use App\Http\Controllers\Page\Admin\Traits\CreateFreeWordEnTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
+use App\Http\Controllers\Page\Admin\Traits\MoveWordToLessonTrait;
 
 
 
@@ -24,6 +25,7 @@ trait AddNewWordTrait{
     use ValidateWordEnTrait;
     use CreateFreeWordEnTrait;
     use GetWordListTrait;
+    use MoveWordToLessonTrait;
 
     public function AddNewWord( $request, $user ){
 
@@ -46,6 +48,7 @@ trait AddNewWordTrait{
                         $word_ru =          $validateWordRu[ 'value' ];
                         $transcription =    $validateTranscription[ 'value' ];
                         $files =            $validateFiles[ 'value' ];
+                        $lessonId =         isset( $request[ 'data' ][ 'lessonId' ] )? isset( $request[ 'data' ][ 'lessonId' ] )? $request[ 'data' ][ 'lessonId' ]: null: null;;
 
                         if( $kayName === 'EN' ){
                             $validateWordEn = $this->ValidateWordEn( $request, true );
@@ -53,16 +56,23 @@ trait AddNewWordTrait{
                                 
                                 $word_en = $validateWordEn[ 'value' ];
 
-                                $this->CreateFreeWordEn([
+                                $wordId = $this->CreateFreeWordEn([
                                     'kayName' =>        $kayName,
                                     'word_en' =>        $word_en,
                                     'word_ru' =>        $word_ru,
                                     'transcription' =>  $transcription,
                                     'files' =>          $files,
+                                ]);
+
+                                $this->MoveWordToLesson([
+                                    'keyName' =>    $kayName,
+                                    'lessonId' =>   $lessonId,
+                                    'wordId' =>     $wordId,
 
                                 ]);
 
-                                $result[ 'wordList' ] = $this->GetWordList( $kayName );
+
+                                $result[ 'wordList' ] = $this->GetWordList( $kayName, $lessonId );
 
 
 

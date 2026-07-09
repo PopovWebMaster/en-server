@@ -18,6 +18,9 @@ use App\Http\Controllers\Page\Admin\Traits\AddNewLessonTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveLessonListChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveOneLessonDataChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewLessonPhraseTrait;
+use App\Http\Controllers\Page\Admin\Traits\RemoveOneLessonPhraseTrait;
+
+
 
 
 class ApiDevelopmentController extends Controller
@@ -33,6 +36,7 @@ class ApiDevelopmentController extends Controller
     use SaveLessonListChangesTrait;
     use SaveOneLessonDataChangesTrait;
     use AddNewLessonPhraseTrait;
+    use RemoveOneLessonPhraseTrait;
 
     
     public function store(Request $request)
@@ -91,7 +95,9 @@ class ApiDevelopmentController extends Controller
                 $result = $this->AddNewLessonPhrase( $request );
                 break;
 
-
+            case 'admin/remove-one-lesson-phrase':
+                $result = $this->RemoveOneLessonPhrase( $request );
+                break;
 
 
 

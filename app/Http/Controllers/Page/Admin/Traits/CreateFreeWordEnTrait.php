@@ -44,7 +44,6 @@ trait CreateFreeWordEnTrait{
                 'base64' =>     $base64,
             ]);
 
-
             $result[ 'audio' ] = $res;
 
         };
@@ -53,7 +52,9 @@ trait CreateFreeWordEnTrait{
 
         
         
-        return $result;
+        // return $result;
+        return $word_en_id;
+
         
         
     }

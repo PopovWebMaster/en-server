@@ -69,6 +69,7 @@ trait AddAudioToWordTrait{
                                 'word_foreign_id' => $foreignWordId, 
                                 'name' =>       $name,
                                 'base64' =>     $base64,
+                                'lessonId' =>   $lessonId
                             ]);
 
 

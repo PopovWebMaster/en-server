@@ -16,6 +16,14 @@ use App\Http\Controllers\Page\Admin\Post\SaveOneLessonDataChangesController;
 use App\Http\Controllers\Page\Admin\Post\AddNewLessonPhraseController;
 
 use App\Http\Controllers\Page\Admin\Post\RemoveOneLessonPhraseController;
+use App\Http\Controllers\Page\Admin\Post\MoveFreeWordsToLessonController;
+use App\Http\Controllers\Page\Admin\Post\GetFreeWordsListController;
+use App\Http\Controllers\Page\Admin\Post\GetLessonsListForPostController;
+use App\Http\Controllers\Page\Admin\Post\MoveOneWordToLessonController;
+
+
+
+
 
 
 
@@ -54,12 +62,15 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
     Route::post('/add-new-lesson-phrase', [ AddNewLessonPhraseController::class, 'post' ]);
     Route::post('/remove-one-lesson-phrase', [ RemoveOneLessonPhraseController::class, 'post' ]);
 
+    Route::post('/get-free-words-list', [ GetFreeWordsListController::class, 'post' ]);
+    Route::post('/move-free-words-to-lesson', [ MoveFreeWordsToLessonController::class, 'post' ]);
+    Route::post('/get-lessons-list', [ GetLessonsListForPostController::class, 'post' ]);
+    Route::post('/move-one-word-to-lesson', [ MoveOneWordToLessonController::class, 'post' ]);
 
 
 
 
 
-    
 
 
 

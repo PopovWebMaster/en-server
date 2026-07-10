@@ -19,6 +19,17 @@ use App\Http\Controllers\Page\Admin\Traits\SaveLessonListChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveOneLessonDataChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewLessonPhraseTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveOneLessonPhraseTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetFreeWordsListTrait;
+use App\Http\Controllers\Page\Admin\Traits\MoveFreeWordsToLessonTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetLessonsListForPostTrait;
+use App\Http\Controllers\Page\Admin\Traits\MoveOneWordToLessonTrait;
+
+
+
+
+
+
+
 
 
 
@@ -37,6 +48,10 @@ class ApiDevelopmentController extends Controller
     use SaveOneLessonDataChangesTrait;
     use AddNewLessonPhraseTrait;
     use RemoveOneLessonPhraseTrait;
+    use GetFreeWordsListTrait;
+    use MoveFreeWordsToLessonTrait;
+    use GetLessonsListForPostTrait;
+    use MoveOneWordToLessonTrait;
 
     
     public function store(Request $request)
@@ -97,6 +112,22 @@ class ApiDevelopmentController extends Controller
 
             case 'admin/remove-one-lesson-phrase':
                 $result = $this->RemoveOneLessonPhrase( $request );
+                break;
+
+            case 'admin/get-free-words-list':
+                $result = $this->GetFreeWordsList( $request );
+                break;
+
+            case 'admin/move-free-words-to-lesson':
+                $result = $this->MoveFreeWordsToLesson( $request );
+                break;
+
+            case 'admin/get-lessons-list':
+                $result = $this->GetLessonsListForPost( $request );
+                break;
+
+            case 'admin/move-one-word-to-lesson':
+                $result = $this->MoveOneWordToLesson( $request );
                 break;
 
 

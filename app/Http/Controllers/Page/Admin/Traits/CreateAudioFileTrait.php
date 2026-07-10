@@ -22,12 +22,13 @@ trait CreateAudioFileTrait{
 
         $base64 =           $params[ 'base64' ];
         $name =             $params[ 'name' ];
-        $lesson_en_id =     isset( $params[ 'lesson_en_id' ] )? $params[ 'lesson_en_id' ]: null; // null  or id
+        $lessonId =     isset( $params[ 'lessonId' ] )? $params[ 'lessonId' ]: null; // null  or id
+
 
         $result = '';
 
         $fileName =         $name;
-        $puth = $this->GetAudioFilePuth( $keyName, $lesson_en_id );
+        $puth = $this->GetAudioFilePuth( $keyName, $lessonId );
         $fileNameUnic = $this->GetUniqFileName( $name, $puth );
        
 
@@ -39,7 +40,7 @@ trait CreateAudioFileTrait{
             if( $audioEn === null ){
                 $audioEnModel = new AudioEn;
                 $audioEnModel->word_en_id = $word_foreign_id;
-                $audioEnModel->lesson_en_id = $lesson_en_id;
+                $audioEnModel->lesson_en_id = $lessonId;
                 $audioEnModel->file_name = $fileNameUnic;
                 $audioEnModel->save();
             };

@@ -9,6 +9,8 @@ use App\Models\PageKeyWords;
 use App\Models\PageText;
 use App\Models\PageTitle;
 
+use App\Models\WordEn;
+
 
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\ValidateTraits\ValidateOneLessonDataTrait;
@@ -122,6 +124,52 @@ trait SaveOneLessonDataChangesTrait{
                     };
 
                 };
+
+                if( $keyName === 'EN' ){
+                    for( $i = 0; $i < count( $wordList ); $i++ ){
+
+                        $id =               $wordList[ $i ][ 'id' ];
+                        $foreign =          $wordList[ $i ][ 'foreign' ];
+                        $ru =               $wordList[ $i ][ 'ru' ];
+                        $transcription =    $wordList[ $i ][ 'transcription' ];
+                        $audio =            $wordList[ $i ][ 'audio' ];
+
+                        $wordEn = WordEn::where( 'lesson_en_id', '=', $lessonId )->where( 'id', '=', $id )->first();
+                        if( $wordEn !== null ){
+                            $wordEn->en = $foreign;
+                            $wordEn->ru = $ru;
+                            $wordEn->transcription = $transcription;
+                            $wordEn->save();
+                        };
+                    };
+                };
+
+
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

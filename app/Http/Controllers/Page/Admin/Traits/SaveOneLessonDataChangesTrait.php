@@ -49,6 +49,10 @@ trait SaveOneLessonDataChangesTrait{
                 $lessonLevelName =      $validateOneLessonData[ 'value' ][ 'lessonLevelName' ];
                 $lessonIsActive =       $validateOneLessonData[ 'value' ][ 'lessonIsActive' ];
                 $lessonOrder =          $validateOneLessonData[ 'value' ][ 'lessonOrder' ];
+                $lessonIsPaid =         $validateOneLessonData[ 'value' ][ 'lessonIsPaid' ];
+
+
+                
                 $wordList =             $validateOneLessonData[ 'value' ][ 'wordList' ];
 
                 if( $keyName === 'EN' ){
@@ -59,6 +63,8 @@ trait SaveOneLessonDataChangesTrait{
                         $lessonEn->level_name =     $lessonLevelName;
                         $lessonEn->is_active =      $lessonIsActive;
                         $lessonEn->order =          $lessonOrder;
+                        $lessonEn->is_paid =        $lessonIsPaid;
+
                         $lessonEn->save();
                     };
                 };

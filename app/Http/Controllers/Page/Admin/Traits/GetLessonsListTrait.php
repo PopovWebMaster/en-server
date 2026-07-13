@@ -22,6 +22,8 @@ trait GetLessonsListTrait{
                 $level_name =   $model->level_name === null? '': $model->level_name;
                 $is_active =    ( bool ) $model->is_active;
                 $order =        $model->order;
+                $isPaid =       ( bool ) $model->is_paid;
+
 
 
                 $wordEn = WordEn::where( 'lesson_en_id', '=', $lesson_en_id )->get();
@@ -35,6 +37,7 @@ trait GetLessonsListTrait{
                     'is_active' =>      $is_active,
                     'wordsCount' =>     $wordsCount,
                     'order' => $order,
+                    'isPaid' => $isPaid,
                 ] );  
 
             };

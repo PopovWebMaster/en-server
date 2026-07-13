@@ -33,6 +33,7 @@ trait GetOneLessonDataTrait{
             'lessonLevelName' => '',
             'lessonIsActive' => '',
             'lessonOrder' => '',
+            'lessonIsPaid' => false,
             'wordList' => [],
         ];
 
@@ -74,13 +75,16 @@ trait GetOneLessonDataTrait{
                 $result[ 'lessonLevelName' ] =      isset( $lessonEn->level_name )? $lessonEn->level_name: '';
                 $result[ 'lessonIsActive' ] =       ( bool ) $lessonEn->is_active;
                 $result[ 'lessonOrder' ] =          $lessonEn->order;
-
+                $result[ 'lessonIsPaid' ] =         ( bool ) $lessonEn->is_paid;
                 $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
 
             };
 
 
         };
+
+
+        
         
         
 

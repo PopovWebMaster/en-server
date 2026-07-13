@@ -32,8 +32,7 @@ trait ValidateOneLessonDataTrait{
         $lessonIsActive =       isset( $request[ 'data' ][ 'lessonIsActive' ] )?    isset( $request[ 'data' ][ 'lessonIsActive' ] )?    $request[ 'data' ][ 'lessonIsActive' ]: null: null;
         $lessonOrder =          isset( $request[ 'data' ][ 'lessonOrder' ] )?       isset( $request[ 'data' ][ 'lessonOrder' ] )?       $request[ 'data' ][ 'lessonOrder' ]: null: null;
         $wordList =             isset( $request[ 'data' ][ 'wordList' ] )?          isset( $request[ 'data' ][ 'wordList' ] )?          $request[ 'data' ][ 'wordList' ]: []: [];
-
-
+        $lessonIsPaid =         isset( $request[ 'data' ][ 'lessonIsPaid' ] )?      isset( $request[ 'data' ][ 'lessonIsPaid' ] )?      $request[ 'data' ][ 'lessonIsPaid' ]: null: null;
 
         $oneLessonData = [
             'lessonId' =>           $lessonId,
@@ -48,6 +47,8 @@ trait ValidateOneLessonDataTrait{
             'lessonIsActive' =>     $lessonIsActive,
             'lessonOrder' =>        $lessonOrder,
             'wordList' =>           $wordList,
+            'lessonIsPaid' =>       $lessonIsPaid,
+
         ];
 
         $result[ 'value' ] = $oneLessonData;
@@ -72,7 +73,10 @@ trait ValidateOneLessonDataTrait{
                 'lessonLevelName' =>    $lessonLevelName,
                 'lessonIsActive' =>     $lessonIsActive,
                 'lessonOrder' =>        $lessonOrder,
-                'wordList' =>        $wordList,
+                'wordList' =>           $wordList,
+                'lessonIsPaid' =>       $lessonIsPaid,
+
+
 
             ], [
                 'lessonId' =>           [ 'required', 'numeric', 'exists:lesson_en,id' ],
@@ -90,6 +94,7 @@ trait ValidateOneLessonDataTrait{
                 'lessonDescription' =>  [ 'nullable', 'string', 'max:255' ],
                 'lessonLevelName' =>    [ 'nullable', 'string', 'max:50' ],
                 'lessonIsActive' =>     [ 'required', 'boolean' ],
+                'lessonIsPaid' =>       [ 'required', 'boolean' ],
                 'lessonOrder' =>        [ 'required', 'numeric' ],
 
                 'wordList' =>                   [ 'nullable', 'array' ],

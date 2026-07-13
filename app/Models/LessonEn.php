@@ -16,6 +16,7 @@ class LessonEn extends Model
         'level_name',
         'is_active',
         'order',
+        'is_paid',
 
     ];
 

@@ -20,6 +20,8 @@ use App\Http\Controllers\Page\Admin\Post\MoveFreeWordsToLessonController;
 use App\Http\Controllers\Page\Admin\Post\GetFreeWordsListController;
 use App\Http\Controllers\Page\Admin\Post\GetLessonsListForPostController;
 use App\Http\Controllers\Page\Admin\Post\MoveOneWordToLessonController;
+use App\Http\Controllers\Page\Admin\Post\SaveMainPageChangesController;
+
 
 
 
@@ -66,10 +68,13 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
     Route::post('/move-free-words-to-lesson', [ MoveFreeWordsToLessonController::class, 'post' ]);
     Route::post('/get-lessons-list', [ GetLessonsListForPostController::class, 'post' ]);
     Route::post('/move-one-word-to-lesson', [ MoveOneWordToLessonController::class, 'post' ]);
+    Route::post('/save-main-page-changes', [ SaveMainPageChangesController::class, 'post' ]);
 
 
 
+    
 
+    
 
 
 

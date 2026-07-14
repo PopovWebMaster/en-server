@@ -23,6 +23,8 @@ use App\Http\Controllers\Page\Admin\Traits\GetFreeWordsListTrait;
 use App\Http\Controllers\Page\Admin\Traits\MoveFreeWordsToLessonTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetLessonsListForPostTrait;
 use App\Http\Controllers\Page\Admin\Traits\MoveOneWordToLessonTrait;
+use App\Http\Controllers\Page\Admin\Traits\SaveMainPageChangesTrait;
+
 
 
 
@@ -52,6 +54,7 @@ class ApiDevelopmentController extends Controller
     use MoveFreeWordsToLessonTrait;
     use GetLessonsListForPostTrait;
     use MoveOneWordToLessonTrait;
+    use SaveMainPageChangesTrait;
 
     
     public function store(Request $request)
@@ -130,6 +133,9 @@ class ApiDevelopmentController extends Controller
                 $result = $this->MoveOneWordToLesson( $request );
                 break;
 
+            case 'admin/save-main-page-changes':
+                $result = $this->SaveMainPageChanges( $request );
+                break;
 
 
             

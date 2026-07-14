@@ -82,6 +82,12 @@ return [
             'visibility' => 'public',
             // 'visibility' => 'private',
         ],
+        
+        'mainData' => [
+            'driver' => 'local',
+            'root'   => storage_path('app/private/mainData/'),
+            'visibility' => 'private',
+        ],
 
     ],
 

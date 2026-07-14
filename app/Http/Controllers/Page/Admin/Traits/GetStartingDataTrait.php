@@ -10,6 +10,10 @@ use App\Http\Controllers\ValidateTraits\ValidateLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetLessonsListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetOneLessonDataTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetMainPageDataTrait;
+
+
+
 
 trait GetStartingDataTrait{
 
@@ -18,12 +22,14 @@ trait GetStartingDataTrait{
     use GetWordListTrait;
     use GetLessonsListTrait;
     use GetOneLessonDataTrait;
+    use GetMainPageDataTrait;
 
     public function GetStartingData( $request, $user ){
         /*
             wordList
             lessonList
             oneLessonData
+            mainPage
         */
 
         $result = [
@@ -57,6 +63,9 @@ trait GetStartingDataTrait{
 
                         case 'oneLessonData':
                             $result[ 'oneLessonData' ] = $this->GetOneLessonData( $keyName, $lessonId );
+                            break;
+                        case 'mainPage':
+                            $result[ 'mainPage' ] = $this->GetMainPageData( $keyName );
                             break;
 
                             

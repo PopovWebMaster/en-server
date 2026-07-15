@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Traits\MainData;
 
 use Storage;
 
-trait PageDescriptionTrait{ //PageDescription
+trait LanguagePageKeywordsTrait{ //LanguagePageKeywords
 
-    private function GetPageDescription( $keyName ){
+    private function GetLanguagePageKeywords( $keyName ){
 
         $result = '';
 
-        $file = $keyName.'/PageDescription.txt';
+        $file = $keyName.'/LanguagePageKeywords.txt';
 
         if( Storage::disk('mainData')->exists( $file ) ){
             $result = Storage::disk( 'mainData' )->get( $file );
@@ -21,10 +21,10 @@ trait PageDescriptionTrait{ //PageDescription
 
     }
 
-    private function SetPageDescription(  $keyName, $value ){
+    private function SetLanguagePageKeywords(  $keyName, $value ){
 
         $result = '';
-        $file = $keyName.'/PageDescription.txt';
+        $file = $keyName.'/LanguagePageKeywords.txt';
 
         Storage::disk( 'mainData' )->put( $file, $value );
         

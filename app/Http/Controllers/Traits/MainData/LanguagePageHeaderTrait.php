@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Traits\MainData;
 
 use Storage;
 
-trait PageHeaderTrait{ //PageHeader
+trait LanguagePageHeaderTrait{ //LanguagePageHeader
 
-    private function GetPageHeader( $keyName ){
+    private function GetLanguagePageHeader( $keyName ){
 
         $result = '';
 
-        $file = $keyName.'/PageHeader.txt';
+        $file = $keyName.'/LanguagePageHeader.txt';
 
         if( Storage::disk('mainData')->exists( $file ) ){
             $result = Storage::disk( 'mainData' )->get( $file );
@@ -21,10 +21,10 @@ trait PageHeaderTrait{ //PageHeader
 
     }
 
-    private function SetPageHeader(  $keyName, $value ){
+    private function SetLanguagePageHeader(  $keyName, $value ){
 
         $result = '';
-        $file = $keyName.'/PageHeader.txt';
+        $file = $keyName.'/LanguagePageHeader.txt';
 
         Storage::disk( 'mainData' )->put( $file, $value );
         

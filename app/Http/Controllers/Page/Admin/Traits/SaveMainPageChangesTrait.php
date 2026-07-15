@@ -32,24 +32,23 @@ trait SaveMainPageChangesTrait{
             $siteParagraphList =    isset( $request[ 'data' ][ 'siteParagraphList' ] )? $request[ 'data' ][ 'siteParagraphList' ]: [];
             $siteKeywords =         isset( $request[ 'data' ][ 'siteKeywords' ] )?      $request[ 'data' ][ 'siteKeywords' ]: '';
             $siteDescription =      isset( $request[ 'data' ][ 'siteDescription' ] )?   $request[ 'data' ][ 'siteDescription' ]: '';
-            $pageTitle =            isset( $request[ 'data' ][ 'pageTitle' ] )?         $request[ 'data' ][ 'pageTitle' ]: '';
-            $pageHeader =           isset( $request[ 'data' ][ 'pageHeader' ] )?        $request[ 'data' ][ 'pageHeader' ]: '';
-            $pageParagraphList =    isset( $request[ 'data' ][ 'pageParagraphList' ] )? $request[ 'data' ][ 'pageParagraphList' ]: [];
-            $pageDescription =      isset( $request[ 'data' ][ 'pageDescription' ] )?   $request[ 'data' ][ 'pageDescription' ]: '';
-            $pageKeywords =         isset( $request[ 'data' ][ 'pageKeywords' ] )?      $request[ 'data' ][ 'pageKeywords' ]: '';
-
+            $languagePageTitle =            isset( $request[ 'data' ][ 'languagePageTitle' ] )?         $request[ 'data' ][ 'languagePageTitle' ]: '';
+            $languagePageHeader =           isset( $request[ 'data' ][ 'languagePageHeader' ] )?        $request[ 'data' ][ 'languagePageHeader' ]: '';
+            $languagePageParagraphList =    isset( $request[ 'data' ][ 'languagePageParagraphList' ] )? $request[ 'data' ][ 'languagePageParagraphList' ]: [];
+            $languagePageDescription =      isset( $request[ 'data' ][ 'languagePageDescription' ] )?   $request[ 'data' ][ 'languagePageDescription' ]: '';
+            $languagePageKeywords =         isset( $request[ 'data' ][ 'languagePageKeywords' ] )?      $request[ 'data' ][ 'languagePageKeywords' ]: '';
 
             $this->SetSiteTitle( $siteTitle );
-            $this->GetSiteHeader( $siteHeader );
+            $this->SetSiteHeader( $siteHeader );
             $this->SetSiteParagraphList( $siteParagraphList );
             $this->SetSiteKeywords( $siteKeywords );
             $this->SetSiteDescription( $siteDescription );
 
-            $this->SetPageTitle( $keyName, $pageTitle );
-            $this->SetPageHeader( $keyName, $pageHeader );
-            $this->SetPageParagraphList( $keyName, $pageParagraphList );
-            $this->SetPageDescription( $keyName, $pageDescription );
-            $this->SetPageKeywords( $keyName, $pageKeywords );
+            $this->SetLanguagePageTitle( $keyName, $languagePageTitle );
+            $this->SetLanguagePageHeader( $keyName, $languagePageHeader );
+            $this->SetLanguagePageParagraphList( $keyName, $languagePageParagraphList );
+            $this->SetLanguagePageDescription( $keyName, $languagePageDescription );
+            $this->SetLanguagePageKeywords( $keyName, $languagePageKeywords );
 
 
 

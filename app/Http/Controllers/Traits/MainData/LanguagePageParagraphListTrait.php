@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Traits\MainData;
 use Storage;
 
 
-trait PageParagraphListTrait{ // PageParagraphList
+trait LanguagePageParagraphListTrait{ // LanguagePageParagraphList
 
-    private function GetPageParagraphList( $keyName ){
+    private function GetLanguagePageParagraphList( $keyName ){
 
         $result = [];
 
-        $file = '/PageParagraphList.json';
+        $file = '/LanguagePageParagraphList.json';
 
         if( Storage::disk('mainData')->exists( $file ) ){
             $json = Storage::disk( 'mainData' )->get( $file  );
@@ -23,10 +23,10 @@ trait PageParagraphListTrait{ // PageParagraphList
 
     }
 
-    private function SetPageParagraphList( $keyName, $list ){
+    private function SetLanguagePageParagraphList( $keyName, $list ){
 
         $result = '';
-        $file = '/PageParagraphList.json';
+        $file = '/LanguagePageParagraphList.json';
 
         $json = json_encode( $list, JSON_UNESCAPED_UNICODE );
 

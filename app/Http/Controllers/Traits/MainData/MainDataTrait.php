@@ -9,11 +9,11 @@ use App\Http\Controllers\Traits\MainData\SiteHeaderTrait;
 use App\Http\Controllers\Traits\MainData\SiteParagraphListTrait;
 use App\Http\Controllers\Traits\MainData\SiteKeywordsTrait;
 use App\Http\Controllers\Traits\MainData\SiteDescriptionTrait;
-use App\Http\Controllers\Traits\MainData\PageTitleTrait;
-use App\Http\Controllers\Traits\MainData\PageHeaderTrait;
-use App\Http\Controllers\Traits\MainData\PageParagraphListTrait;
-use App\Http\Controllers\Traits\MainData\PageDescriptionTrait;
-use App\Http\Controllers\Traits\MainData\PageKeywordsTrait;
+use App\Http\Controllers\Traits\MainData\LanguagePageTitleTrait;
+use App\Http\Controllers\Traits\MainData\LanguagePageHeaderTrait;
+use App\Http\Controllers\Traits\MainData\LanguagePageParagraphListTrait;
+use App\Http\Controllers\Traits\MainData\LanguagePageDescriptionTrait;
+use App\Http\Controllers\Traits\MainData\LanguagePageKeywordsTrait;
 
 
 
@@ -29,11 +29,11 @@ trait MainDataTrait{
     use SiteDescriptionTrait;
     use SiteKeywordsTrait;
 
-    use PageTitleTrait;
-    use PageHeaderTrait;
-    use PageParagraphListTrait;
-    use PageDescriptionTrait;
-    use PageKeywordsTrait;
+    use LanguagePageTitleTrait;
+    use LanguagePageHeaderTrait;
+    use LanguagePageParagraphListTrait;
+    use LanguagePageDescriptionTrait;
+    use LanguagePageKeywordsTrait;
 
     protected function GetMainData( $keyName ){
 
@@ -44,11 +44,11 @@ trait MainDataTrait{
             'siteKeywords' =>       $this->GetSiteKeywords(),
             'siteDescription' =>    $this->GetSiteDescription(),
 
-            'pageTitle' =>          $this->GetPageTitle( $keyName ),
-            'pageHeader' =>         $this->GetPageHeader( $keyName ),
-            'pageParagraphList' =>  $this->GetPageParagraphList( $keyName ),
-            'pageDescription' =>    $this->GetPageDescription( $keyName ),
-            'pageKeywords' =>       $this->GetPageKeywords( $keyName ),
+            'languagePageTitle' =>          $this->GetLanguagePageTitle( $keyName ),
+            'languagePageHeader' =>         $this->GetLanguagePageHeader( $keyName ),
+            'languagePageParagraphList' =>  $this->GetLanguagePageParagraphList( $keyName ),
+            'languagePageDescription' =>    $this->GetLanguagePageDescription( $keyName ),
+            'languagePageKeywords' =>       $this->GetLanguagePageKeywords( $keyName ),
 
 
 

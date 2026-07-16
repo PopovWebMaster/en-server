@@ -36,7 +36,7 @@ trait AddNewLessonPhraseTrait{
                 $foreign =  isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'foreign' ] )?  $request[ 'data' ][ 'foreign' ]:    null: null;
                 $ru =       isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'ru' ] )?       $request[ 'data' ][ 'ru' ]:         null: null;
 
-                if( $keyName === 'EN' ){
+                // if( $keyName === 'EN' ){
 
                     $lessonPhrases = new LessonPhrases;
 
@@ -51,9 +51,9 @@ trait AddNewLessonPhraseTrait{
 
                     $result[ 'ok' ] = true;
 
-                }else{
-                    $result[ 'message' ] = 'Язык не прописан - '.$keyName;
-                };
+                // }else{
+                //     $result[ 'message' ] = 'Язык не прописан - '.$keyName;
+                // };
             }else{
                 $result[ 'message' ] = $validateLessonId[ 'message' ];
             };

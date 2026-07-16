@@ -18,14 +18,14 @@ trait ValidateLessonPhraseIdTrait{
         ];
 
         
-        $keyName =         isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'keyName' ] )? $request[ 'data' ][ 'keyName' ]: null: null;
+        // $keyName =         isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'keyName' ] )? $request[ 'data' ][ 'keyName' ]: null: null;
         $lessonId =        isset( $request[ 'data' ][ 'lessonId' ] )?       isset( $request[ 'data' ][ 'lessonId' ] )?          $request[ 'data' ][ 'lessonId' ]: null: null;
         $lessonPhraseId =  isset( $request[ 'data' ][ 'lessonPhraseId' ] )? isset( $request[ 'data' ][ 'lessonPhraseId' ] )?    $request[ 'data' ][ 'lessonPhraseId' ]: null: null;
 
 
         $result[ 'value' ] = $lessonPhraseId;
 
-        if( $keyName === 'EN' ){
+        // if( $keyName === 'EN' ){
 
             $validate = Validator::make( [ 
                 'lessonPhraseId' => $lessonPhraseId,
@@ -43,11 +43,11 @@ trait ValidateLessonPhraseIdTrait{
             };
 
 
-        }else{
+        // }else{
 
-            $result[ 'message' ] = 'Язык не прописан '.$keyName;
+        //     $result[ 'message' ] = 'Язык не прописан '.$keyName;
 
-        };
+        // };
 
         return $result;
         

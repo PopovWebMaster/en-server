@@ -11,6 +11,10 @@ trait ValidateWordEnTrait{
 
     public function ValidateWordEn( $request, $uniq = false ){
 
+        /*
+            Не использовать!!!
+        */
+
         $result = [
             'ok' => false,
             'message' => '',
@@ -22,12 +26,14 @@ trait ValidateWordEnTrait{
         $result[ 'value' ] = $wordEn;
 
         $max = config( 'languages.languages.EN.max' );
-        $regex = config( 'languages.languages.EN.regex' );
+        // $regex = config( 'languages.languages.EN.regex' );
  
         $validate = Validator::make( [ 
             'wordEn' => $wordEn,
         ], [
-            'wordEn' => [ 'required', 'regex:'.$regex, 'string', 'min:1', 'max:'.$max ],
+            // 'wordEn' => [ 'required', 'regex:'.$regex, 'string', 'min:1', 'max:'.$max ],
+            'wordEn' => [ 'required', 'string', 'min:1', 'max:'.$max ],
+
         ]);
 
 

@@ -11,14 +11,16 @@ use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\ValidateTraits\ValidateLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
 
-use App\Http\Controllers\ValidateTraits\ValidateWordEnIdTrait;
+// use App\Http\Controllers\ValidateTraits\ValidateWordEnIdTrait;
+use App\Http\Controllers\ValidateTraits\ValidateWordIdTrait;
 use App\Http\Controllers\Traits\GetAudioFilePuthTrait;
 use App\Http\Controllers\Page\Admin\Traits\MoveWordToLessonTrait;
 
 trait RemoveOneWordTrait{
 
     use ValidateLanguageKeyNameTrait;
-    use ValidateWordEnIdTrait;
+    // use ValidateWordEnIdTrait;
+    use ValidateWordIdTrait;
     use ValidateLessonIdTrait;
 
     use GetWordListTrait;
@@ -38,10 +40,13 @@ trait RemoveOneWordTrait{
 
             $validateLessonId = $this->ValidateLessonId( $request );
             if( $validateLessonId[ 'ok' ]){
-                if( $keyName === 'EN' ){
-                    $validateWordEnId = $this->ValidateWordEnId( $request );
-                    if( $validateWordEnId[ 'ok' ] ){
-                        $foreignWordId = $validateWordEnId[ 'value' ];
+                // if( $keyName === 'EN' ){
+                    // $validateWordEnId = $this->ValidateWordEnId( $request );
+
+                    $validateWordId = $this->ValidateWordId( $request );
+
+                    if( $validateWordId[ 'ok' ] ){
+                        $foreignWordId = $validateWordId[ 'value' ];
                         $lessonId = $validateLessonId[ 'value' ];
 
                         if( $lessonId === null ){
@@ -83,7 +88,7 @@ trait RemoveOneWordTrait{
                     }else{
                         $result[ 'message' ] = $validateWordEnId[ 'message' ];
                     };
-                };
+                // };
             }else{
                 $result[ 'message' ] = $validateLessonId[ 'message' ];
             };  

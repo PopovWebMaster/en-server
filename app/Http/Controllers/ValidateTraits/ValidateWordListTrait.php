@@ -20,25 +20,34 @@ trait ValidateWordListTrait{
 
         $result[ 'value' ] = $wordList;
 
-        $maxRU =      config( 'languages.languages.RU.max' );
-        $regexRU =    config( 'languages.languages.RU.regex' );
+        
+        // $regexRU =    config( 'languages.languages.RU.regex' );
 
         if( $keyName === null ){
             $result[ 'message' ] = 'проблемы с keyName -'.$keyName;
         }else{
 
-            if( $keyName === 'EN' ){
+            // if( $keyName === 'EN' ){
+                $maxRU =      config( 'languages.languages.RU.max' );
+                // $maxEN = config( 'languages.languages.EN.max' );
+                // $regexEN = config( 'languages.languages.EN.regex' );
+                $maxForeign = config( 'languages.languages.'.$keyName.'.max' );
 
-                $maxEN = config( 'languages.languages.EN.max' );
-                $regexEN = config( 'languages.languages.EN.regex' );
+                $keyName_low = strtolower( $keyName );
+                // $exists_lesson = 'exists:lesson_'.$keyName_low.',id';
+                $exists_words = 'exists:word_'.$keyName_low.',id';
                 
                 $validate = Validator::make( [ 
                     'wordList' => $wordList,
                 ], [
                     'wordList' =>                   [ 'required', 'array' ],
-                    'wordList.*.id' =>              [ 'required', 'numeric', 'exists:word_en,id' ],
-                    'wordList.*.foreign' =>         [ 'nullable', 'regex:'.$regexEN, 'string', 'min:1', 'max:'.$maxEN ],
-                    'wordList.*.ru' =>              [ 'nullable', 'regex:'.$regexRU, 'string', 'min:1', 'max:'.$maxRU ],
+                    // 'wordList.*.id' =>              [ 'required', 'numeric', 'exists:word_en,id' ],
+                    'wordList.*.id' =>              [ 'required', 'numeric', $exists_words ],
+
+                    // 'wordList.*.foreign' =>         [ 'nullable', 'regex:'.$regexEN, 'string', 'min:1', 'max:'.$maxEN ],
+                    // 'wordList.*.ru' =>              [ 'nullable', 'regex:'.$regexRU, 'string', 'min:1', 'max:'.$maxRU ],
+                    'wordList.*.foreign' =>         [ 'nullable', 'string', 'min:1', 'max:'.$maxForeign ],
+                    'wordList.*.ru' =>              [ 'nullable', 'string', 'min:1', 'max:'.$maxRU ],
                     'wordList.*.transcription' =>   [ 'nullable', 'string', 'max:80' ],
 
                     'wordList.*.audio' =>           [ 'nullable', 'array' ],
@@ -59,9 +68,9 @@ trait ValidateWordListTrait{
                     };
                 };
 
-            }else{
-                $result[ 'message' ] = 'язык не прописан';
-            };
+            // }else{
+            //     $result[ 'message' ] = 'язык не прописан';
+            // };
             
         };
 

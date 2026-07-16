@@ -24,13 +24,29 @@ trait ValidateLessonListTrait{
             $result[ 'message' ] = 'проблемы с keyName -'.$keyName;
         }else{
 
-            if( $keyName === 'EN' ){
+            // if( $keyName === 'EN' ){
+
+                // $rule = [];
+                // if( $lessonId === null ){
+                //     $rule = [ 'nullable', 'numeric', ];
+                // }else{
+                //     $keyName_low = strtolower( $keyName );
+                //     $rule = [ 'numeric', 'exists:lesson_'.$keyName_low.',id' ];
+                // };
+
+
+                $keyName_low = strtolower( $keyName );
+                $exists = 'exists:lesson_'.$keyName_low.',id';
+                
+
 
                 $validate = Validator::make( [ 
                     'lessonList' => $lessonList,
                 ], [
                     'lessonList' =>                   [ 'required', 'array' ],
-                    'lessonList.*.id' =>              [ 'required', 'numeric', 'exists:lesson_en,id' ],
+                    // 'lessonList.*.id' =>              [ 'required', 'numeric', 'exists:lesson_en,id' ],
+                    'lessonList.*.id' =>              [ 'required', 'numeric', $exists ],
+
                     'lessonList.*.title' =>           [ 'nullable', 'string', 'max:255' ],
                     'lessonList.*.description' =>     [ 'nullable', 'string', 'max:255'],
                     'lessonList.*.level_name' =>      [ 'nullable', 'string', 'max:50' ],
@@ -48,9 +64,9 @@ trait ValidateLessonListTrait{
                     
                 };
 
-            }else{
-                $result[ 'message' ] = 'язык не прописан';
-            };
+            // }else{
+            //     $result[ 'message' ] = 'язык не прописан';
+            // };
             
         };
 

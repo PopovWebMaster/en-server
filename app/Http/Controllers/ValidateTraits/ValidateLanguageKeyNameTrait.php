@@ -23,8 +23,10 @@ trait ValidateLanguageKeyNameTrait{
 
         
 
-        if( $keyName === 'EN' ){
-            $arr = array_keys( config( 'languages.languages' ) );
+        // if( $keyName === 'EN' ){
+            // $arr = array_keys( config( 'languages.languages' ) );
+            $arr = [ 'EN' ];
+
 
             $validate = Validator::make( [ 
                 'keyName' => $keyName,
@@ -38,9 +40,9 @@ trait ValidateLanguageKeyNameTrait{
                 $result[ 'ok' ] = true;
             };
 
-        }else{
-            $result[ 'message' ] = 'язык не прописан '.$keyName;
-        };
+        // }else{
+        //     $result[ 'message' ] = 'язык не прописан '.$keyName;
+        // };
 
         return $result;
         

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\ValidateTraits;
 
 use Validator;
-// use Illuminate\Validation\Rule;
 
-// use App\Models\WordEn;
 
 trait ValidateWordEnIdTrait{
 
     public function ValidateWordEnId( $request ){
+
+        /*
+            УСТАРЕЛА, НЕ ИСПОЛЬЗОВАТЬ!!!!!!!!!!!
+        */
 
         $result = [
             'ok' => false,

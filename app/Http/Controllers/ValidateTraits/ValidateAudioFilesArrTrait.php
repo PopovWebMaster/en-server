@@ -24,7 +24,7 @@ trait ValidateAudioFilesArrTrait{
             'files' => $files,
         ], [
             'files' => [ 'nullable', 'array' ],
-            'files.*.name' =>       [ 'required', 'string', 'min:3', 'max:80' ],
+            'files.*.name' =>       [ 'required', 'string', 'min:3', 'max:90' ],
             'files.*.base64' =>     [ 'required', 'string' ],
         ]);
 

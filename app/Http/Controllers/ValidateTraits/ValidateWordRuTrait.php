@@ -23,7 +23,7 @@ trait ValidateWordRuTrait{
         // $regex = '/^[А-Яа-яёЁ0-9.,:;?\-!\s]+$/u';
 
         $max = config( 'languages.languages.RU.max' );
-        $regex = config( 'languages.languages.RU.regex' );
+        // $regex = config( 'languages.languages.RU.regex' );
 
 
 
@@ -31,7 +31,9 @@ trait ValidateWordRuTrait{
         $validate = Validator::make( [ 
             'wordRu' => $wordRu,
         ], [
-            'wordRu' => [ 'nullable', 'regex:'.$regex, 'string', 'min:1', 'max:'.$max ],
+            // 'wordRu' => [ 'nullable', 'regex:'.$regex, 'string', 'min:1', 'max:'.$max ],
+            'wordRu' => [ 'nullable', 'string', 'min:1', 'max:'.$max ],
+
 
         ]);
 

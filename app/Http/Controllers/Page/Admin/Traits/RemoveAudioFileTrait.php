@@ -10,7 +10,8 @@ use Storage;
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\ValidateTraits\ValidateLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
-use App\Http\Controllers\ValidateTraits\ValidateWordEnIdTrait;
+// use App\Http\Controllers\ValidateTraits\ValidateWordEnIdTrait;
+use App\Http\Controllers\ValidateTraits\ValidateWordIdTrait;
 use App\Http\Controllers\ValidateTraits\ValidateAudioFileNameTrait;
 use App\Http\Controllers\Traits\GetAudioFilePuthTrait;
 
@@ -19,7 +20,8 @@ trait RemoveAudioFileTrait{
     use ValidateLanguageKeyNameTrait;
     use ValidateLessonIdTrait;
     use GetWordListTrait;
-    use ValidateWordEnIdTrait;
+    // use ValidateWordEnIdTrait;
+    use ValidateWordIdTrait;
     use ValidateAudioFileNameTrait;
     use GetAudioFilePuthTrait;
 
@@ -41,21 +43,17 @@ trait RemoveAudioFileTrait{
             if( $validateLessonId[ 'ok' ]){
                 $validateAudioFileName = $this->ValidateAudioFileName( $request );
                 if( $validateAudioFileName[ 'ok' ] ){
-                    $foreignWordId = null;
-                    $validateWordEnId = null;
-                    $keyName =          $validateKeyName[ 'value' ];
+                    // $foreignWordId = null;
+                    // $validateWordEnId = null;
+                    
 
-                    if( $keyName === 'EN' ){
-                        $validateWordEnId = $this->ValidateWordEnId( $request );
-                    };
+                    $validateWordId = $this->ValidateWordId( $request );
+                    if( $validateWordId[ 'ok' ] ){
 
-                    if( $validateWordEnId === null ){
-                        $result[ 'message' ] = 'Не прописан метод для языка '.$keyName;
-                    }else{
-                        // $keyName =          $validateKeyName[ 'value' ];
+                        $keyName =          $validateKeyName[ 'value' ];
                         $lessonId =         $validateLessonId[ 'value' ];
                         $audioFileName =    $validateAudioFileName[ 'value' ];
-                        $foreignWordId =    $validateWordEnId[ 'value' ];
+                        $foreignWordId =    $validateWordId[ 'value' ];
 
 
                         
@@ -74,7 +72,41 @@ trait RemoveAudioFileTrait{
 
                         $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
                         $result[ 'ok' ] = true;
+                    }else{
+                        $result[ 'message' ] = $validateWordId[ 'message' ];
                     };
+
+
+                    // if( $keyName === 'EN' ){
+                    //     $validateWordEnId = $this->ValidateWordEnId( $request );
+                    // };
+
+                    // if( $validateWordEnId === null ){
+                    //     $result[ 'message' ] = 'Не прописан метод для языка '.$keyName;
+                    // }else{
+                    //     // $keyName =          $validateKeyName[ 'value' ];
+                    //     $lessonId =         $validateLessonId[ 'value' ];
+                    //     $audioFileName =    $validateAudioFileName[ 'value' ];
+                    //     $foreignWordId =    $validateWordEnId[ 'value' ];
+
+
+                        
+                    //     $puth = $this->GetAudioFilePuth( $keyName, $lessonId );
+
+                    //     if( Storage::disk( 'audio' )->exists( $puth.'/'.$audioFileName ) ){
+                    //         Storage::disk( 'audio' )->delete( $puth.'/'.$audioFileName );
+                    //     };
+
+                    //     if( $keyName === 'EN' ){
+                    //         $audioEn = AudioEn::where( 'word_en_id', '=', $foreignWordId )->where( 'file_name', '=', $audioFileName )->first();
+                    //         if( $audioEn !== null ){
+                    //             $audioEn->delete();
+                    //         };
+                    //     };
+
+                    //     $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
+                    //     $result[ 'ok' ] = true;
+                    // };
 
 
                 }else{

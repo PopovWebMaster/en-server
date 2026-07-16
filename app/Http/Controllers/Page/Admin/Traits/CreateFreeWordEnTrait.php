@@ -17,6 +17,10 @@ trait CreateFreeWordEnTrait{
 
     public function CreateFreeWordEn( $params ){
 
+        /*
+            Не использовать !!!!!!!!!!!!!!
+        */
+
         $result = [];
         
         $kayName =          $params[ 'kayName' ];
@@ -43,6 +47,8 @@ trait CreateFreeWordEnTrait{
                 'name' =>       $name,
                 'base64' =>     $base64,
             ]);
+
+
 
             $result[ 'audio' ] = $res;
 

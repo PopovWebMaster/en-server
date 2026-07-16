@@ -21,12 +21,14 @@ trait ValidateAudioFileNameTrait{
         $result[ 'value' ] = $audioFileName;
 
         $max = config( 'languages.languages.EN.max' );
-        $regex = config( 'languages.languages.EN.regex' );
+        // $regex = config( 'languages.languages.EN.regex' );
  
         $validate = Validator::make( [ 
             'audioFileName' => $audioFileName,
         ], [
-            'audioFileName' => [ 'required', 'regex:'.$regex, 'string', 'min:5', 'max:'.$max ],
+            // 'audioFileName' => [ 'required', 'regex:'.$regex, 'string', 'min:5', 'max:'.$max ],
+            'audioFileName' => [ 'required', 'string', 'min:5', 'max:'.$max ],
+
         ]);
 
 

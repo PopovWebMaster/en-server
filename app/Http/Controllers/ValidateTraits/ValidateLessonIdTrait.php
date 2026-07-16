@@ -3,9 +3,6 @@
 namespace App\Http\Controllers\ValidateTraits;
 
 use Validator;
-// use Illuminate\Validation\Rule;
-
-// use App\Models\WordEn;
 
 trait ValidateLessonIdTrait{
 
@@ -18,14 +15,24 @@ trait ValidateLessonIdTrait{
         ];
 
         $lessonId = isset( $request[ 'data' ][ 'lessonId' ] )? isset( $request[ 'data' ][ 'lessonId' ] )? $request[ 'data' ][ 'lessonId' ]: null: null;
-        // $keyName = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'keyName' ] )? $request[ 'data' ][ 'keyName' ]: null: null;
+        $keyName = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'keyName' ] )? $request[ 'data' ][ 'keyName' ]: null: null;
 
         $result[ 'value' ] = $lessonId;
+
+        $rule = [];
+        if( $lessonId === null ){
+            $rule = [ 'nullable', 'numeric', ];
+        }else{
+            $keyName_low = strtolower( $keyName );
+            $rule = [ 'numeric', 'exists:lesson_'.$keyName_low.',id' ];
+        };
 
         $validate = Validator::make( [ 
             'lessonId' => $lessonId,
         ], [
-            'lessonId' => [ 'nullable', 'numeric', /* 'exists:application,id'*/ ],
+            // 'lessonId' => [ 'nullable', 'numeric', /* 'exists:application,id'*/ ],
+            'lessonId' => $rule,
+
         ]);
 
 

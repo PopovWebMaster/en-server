@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\ValidateTraits;
 
 use Validator;
-// use Illuminate\Validation\Rule;
 
 trait ValidateLessonEnTitleTrait{
+
+    /*
+        не исползовать !!!! 
+    */
 
     public function ValidateLessonEnTitle( $request ){
 

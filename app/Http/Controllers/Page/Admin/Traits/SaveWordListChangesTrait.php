@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Page\Admin\Traits;
 
-use App\Models\WordEn;
-use App\Models\AudioEn;
-
 use Storage;
 
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\ValidateTraits\ValidateLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
 use App\Http\Controllers\ValidateTraits\ValidateWordListTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetWordCollectionByLessonIdTrait;
 
 trait SaveWordListChangesTrait{
 
@@ -18,6 +16,7 @@ trait SaveWordListChangesTrait{
     use ValidateLessonIdTrait;
     use GetWordListTrait;
     use ValidateWordListTrait;
+    use GetWordCollectionByLessonIdTrait;
 
     public function SaveWordListChanges( $request ){
 
@@ -30,34 +29,34 @@ trait SaveWordListChangesTrait{
         if( $validateKeyName[ 'ok' ] ){
             $validateLessonId = $this->ValidateLessonId( $request );
             if( $validateLessonId[ 'ok' ]){
-
-                $keyName =          $validateKeyName[ 'value' ];
-                $lessonId =         $validateLessonId[ 'value' ];
-
                 $validateWordList = $this->ValidateWordList( $request );
                 if( $validateWordList[ 'ok' ] ){
-                    $wordList = $validateWordList[ 'value' ];
 
-                    if( $keyName === 'EN' ){
+                    $keyName =      $validateKeyName[ 'value' ];
+                    $lessonId =     $validateLessonId[ 'value' ];
+                    $wordList =     $validateWordList[ 'value' ];
 
-                        for( $i = 0; $i < count( $wordList ); $i++ ){
+                    for( $i = 0; $i < count( $wordList ); $i++ ){
 
-                            $id =               $wordList[ $i ][ 'id' ];
-                            $foreign =          $wordList[ $i ][ 'foreign' ];
-                            $ru =               $wordList[ $i ][ 'ru' ];
-                            $transcription =    $wordList[ $i ][ 'transcription' ];
-                            $audio =            $wordList[ $i ][ 'audio' ];
+                        $id =               $wordList[ $i ][ 'id' ];
+                        $foreign =          $wordList[ $i ][ 'foreign' ];
+                        $ru =               $wordList[ $i ][ 'ru' ];
+                        $transcription =    $wordList[ $i ][ 'transcription' ];
+                        $audio =            $wordList[ $i ][ 'audio' ];
 
-                            $wordEn = WordEn::where( 'lesson_en_id', '=', $lessonId )->where( 'id', '=', $id )->first();
-                            if( $wordEn !== null ){
-                                $wordEn->en = $foreign;
-                                $wordEn->ru = $ru;
-                                $wordEn->transcription = $transcription;
-                                $wordEn->save();
-                            };
+                        $wordCollection = $this->GetWordCollectionByLessonId( $keyName, $lessonId );
+                        $wordModel = $wordCollection->where( 'id', '=', $id )->first();
+                        if( $wordModel !== null ){
+                            $keyName_low = strtolower($keyName);
+                            $wordModel->$keyName_low = $foreign;
+                            $wordModel->ru = $ru;
+                            $wordModel->transcription = $transcription;
+                            $wordModel->save();
                         };
 
+
                     };
+
 
                     $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
                     $result[ 'ok' ] = true;

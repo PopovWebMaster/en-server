@@ -26,16 +26,9 @@ trait GetLessonsListForPostTrait{
 
             $keyName = $validateKeyName[ 'value' ];
 
-            if( $keyName === 'EN' ){
-
-                $result[ 'lessonList' ] = $this->GetLessonsList( $keyName );
-                $result[ 'ok' ] = true;
-
-
-
-            };
-
-           
+            $result[ 'lessonList' ] = $this->GetLessonsList( $keyName );
+            $result[ 'ok' ] = true;
+ 
         }else{
             $result[ 'message' ] = $validadeKeyName[ 'message' ];
         };

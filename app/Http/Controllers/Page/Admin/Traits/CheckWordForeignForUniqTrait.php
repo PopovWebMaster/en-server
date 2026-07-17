@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers\Page\Admin\Traits;
 
-// use Storage;
-
-use App\Models\WordEn;
-
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
-use App\Http\Controllers\ValidateTraits\ValidateWordEnTrait;
+use App\Http\Controllers\ValidateTraits\ValidateWordForeignTrait;
 
 use Validator;
 
@@ -15,7 +11,7 @@ use Validator;
 trait CheckWordForeignForUniqTrait{
 
     use ValidateLanguageKeyNameTrait;
-    use ValidateWordEnTrait;
+    use ValidateWordForeignTrait;
 
     public function CheckWordForeignForUniq( $request ){
 
@@ -26,40 +22,23 @@ trait CheckWordForeignForUniqTrait{
         ];
 
         $validadeKeyName = $this->ValidateLanguageKeyName( $request );
-
         if( $validadeKeyName[ 'ok' ] ){
-            $kayName = $validadeKeyName[ 'value' ];
+            $validateWordForeign = $this->ValidateWordForeign( $request, true );
+            if( $validateWordForeign[ 'ok' ] ){
+                $kayName =      $validadeKeyName[ 'value' ];
+                $wordForeign =  $validateWordForeign[ 'value' ];
 
-            if( $kayName === 'EN' ){
-
-                $validateWordEn = $this->ValidateWordEn( $request );
-                
-                if( $validateWordEn[ 'ok' ] ){
-                    $word_en = $validateWordEn[ 'value' ];
-
-                    $result[ 'ok' ] = true;
-
-                    $wordEn = WordEn::where( 'en', '=', $word_en )->first();
-                    if( $wordEn === null ){
-                        $result[ 'isUniq' ] = true;
-                    };
-
-
-                }else{
-                    $result[ 'message' ] = $validateWordEn[ 'message' ];
-                };
+                $result[ 'ok' ] = true;
+                $result[ 'isUniq' ] = true;
 
             }else{
-                $result[ 'message' ] = 'Проверка на уникальность иностранного слова для '.$kayName.' не прописана' ;
+                $result[ 'message' ] = $validateWordForeign[ 'message' ];
             };
-
         }else{
             $result[ 'message' ] = $validadeKeyName[ 'message' ];
         };
 
-
         return $result;
-        
         
     }
 

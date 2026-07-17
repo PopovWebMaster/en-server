@@ -17,18 +17,16 @@ trait ValidateAudioFileNameTrait{
         ];
 
         $audioFileName = isset( $request[ 'data' ][ 'audioFileName' ] )? isset( $request[ 'data' ][ 'audioFileName' ] )? $request[ 'data' ][ 'audioFileName' ]: null: null;
+        $keyName = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'keyName' ] )? $request[ 'data' ][ 'keyName' ]: null: null;
 
         $result[ 'value' ] = $audioFileName;
 
-        $max = config( 'languages.languages.EN.max' );
-        // $regex = config( 'languages.languages.EN.regex' );
+        $max = config( 'languages.languages.'.$keyName.'.max' );
  
         $validate = Validator::make( [ 
             'audioFileName' => $audioFileName,
         ], [
-            // 'audioFileName' => [ 'required', 'regex:'.$regex, 'string', 'min:5', 'max:'.$max ],
             'audioFileName' => [ 'required', 'string', 'min:5', 'max:'.$max ],
-
         ]);
 
 

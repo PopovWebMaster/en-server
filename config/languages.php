@@ -1,5 +1,39 @@
 <?php 
 /*
+use App\Models\WordEn;
+use App\Models\WordCn;
+use App\Models\WordDe;
+use App\Models\WordEs;
+use App\Models\WordFr;
+use App\Models\WordGr;
+use App\Models\WordIt;
+use App\Models\WordJp;
+use App\Models\WordKr;
+use App\Models\WordTr;
+
+use App\Models\AudioCn;
+use App\Models\AudioDe;
+use App\Models\AudioEn;
+use App\Models\AudioEs;
+use App\Models\AudioFr;
+use App\Models\AudioGr;
+use App\Models\AudioIt;
+use App\Models\AudioJp;
+use App\Models\AudioKr;
+use App\Models\AudioTr;
+
+use App\Models\LessonEn;
+use App\Models\LessonCn;
+use App\Models\LessonDe;
+use App\Models\LessonEs;
+use App\Models\LessonFr;
+use App\Models\LessonGr;
+use App\Models\LessonIt;
+use App\Models\LessonJp;
+use App\Models\LessonKr;
+use App\Models\LessonTr;
+
+
 if( $keyName === 'EN' ){
 
 }else if( $keyName === 'DE' ){

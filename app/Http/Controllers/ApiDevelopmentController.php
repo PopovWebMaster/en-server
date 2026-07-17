@@ -28,14 +28,6 @@ use App\Http\Controllers\Page\Admin\Traits\SaveMainPageChangesTrait;
 
 
 
-
-
-
-
-
-
-
-
 class ApiDevelopmentController extends Controller
 {
     use AddNewWordTrait;
@@ -137,8 +129,11 @@ class ApiDevelopmentController extends Controller
                 $result = $this->SaveMainPageChanges( $request );
                 break;
 
+            case 'admin/save-lesson-list-changes':
+                $result = $this->SaveLessonListChanges( $request );
+                break;
 
-            
+
             
             
             

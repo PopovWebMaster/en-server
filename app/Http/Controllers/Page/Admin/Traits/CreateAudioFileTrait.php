@@ -6,6 +6,7 @@ use Storage;
 
 use App\Http\Controllers\Page\Admin\Traits\GetUniqFileNameTrait;
 use App\Http\Controllers\Traits\GetAudioFilePuthTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetAudioCollectionByWordIdTrait;
 
 use App\Models\AudioCn;
 use App\Models\AudioDe;
@@ -23,6 +24,7 @@ trait CreateAudioFileTrait{
 
     use GetUniqFileNameTrait;
     use GetAudioFilePuthTrait;
+    use GetAudioCollectionByWordIdTrait;
 
     public function CreateAudioFile( $params ){
 
@@ -35,140 +37,55 @@ trait CreateAudioFileTrait{
         $puth = $this->GetAudioFilePuth( $keyName, $lessonId );
         $fileNameUnic = $this->GetUniqFileName( $name, $puth );
 
-        if( $keyName === 'EN' ){
+        $audioCollection = $this->GetAudioCollectionByWordId( $keyName, $word_foreign_id );
+        $audioModel = $audioCollection->where( 'file_name', '=', $fileNameUnic )->first();
+        if( $audioModel === null ){
+            $newAudioModel = $this->CreateNewAudioModel( $keyName );
+            $keyName_low = strtolower( $keyName );
+            $foreign_key = 'word_'.$keyName_low.'_id';
 
-            $audioEn = AudioEn::where( 'word_en_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioEn === null ){
-                $audioEnModel = new AudioEn;
-                $audioEnModel->word_en_id = $word_foreign_id;
-                $audioEnModel->lesson_en_id = $lessonId;
-                $audioEnModel->file_name = $fileNameUnic;
-                $audioEnModel->save();
-            };
+            $lesson_foreign_id = 'lesson_'.$keyName_low.'_id';
 
-        }else if( $keyName === 'DE' ){
-
-            $audioDe = AudioDe::where( 'word_de_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioDe === null ){
-                $audioDeModel = new AudioDe;
-                $audioDeModel->word_de_id =     $word_foreign_id;
-                $audioDeModel->lesson_de_id =   $lessonId;
-                $audioDeModel->file_name =      $fileNameUnic;
-                $audioDeModel->save();
-            };
-
-        }else if( $keyName === 'CN' ){
-
-            $audioCn = AudioCn::where( 'word_cn_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioCn === null ){
-                $audioCnModel = new AudioCn;
-                $audioCnModel->word_cn_id =     $word_foreign_id;
-                $audioCnModel->lesson_cn_id =   $lessonId;
-                $audioCnModel->file_name =      $fileNameUnic;
-                $audioCnModel->save();
-            };
-
-        }else if( $keyName === 'FR' ){
-
-            $audioFr = AudioFr::where( 'word_fr_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioFr === null ){
-                $audioFrModel = new AudioFr;
-                $audioFrModel->word_fr_id =     $word_foreign_id;
-                $audioFrModel->lesson_fr_id =   $lessonId;
-                $audioFrModel->file_name =      $fileNameUnic;
-                $audioFrModel->save();
-            };
-
-        }else if( $keyName === 'ES' ){
-
-            $audioEs = AudioEs::where( 'word_es_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioEs === null ){
-                $audioEsModel = new AudioEs;
-                $audioEsModel->word_es_id =     $word_foreign_id;
-                $audioEsModel->lesson_es_id =   $lessonId;
-                $audioEsModel->file_name =      $fileNameUnic;
-                $audioEsModel->save();
-            };
-
-        }else if( $keyName === 'IT' ){
-
-            $audioIt = AudioIt::where( 'word_it_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioIt === null ){
-                $audioItModel = new AudioIt;
-                $audioItModel->word_it_id =     $word_foreign_id;
-                $audioItModel->lesson_it_id =   $lessonId;
-                $audioItModel->file_name =      $fileNameUnic;
-                $audioItModel->save();
-            };
-
-        }else if( $keyName === 'GR' ){
-
-            $audioGr = AudioGr::where( 'word_gr_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioGr === null ){
-                $audioGrModel = new AudioGr;
-                $audioGrModel->word_gr_id =     $word_foreign_id;
-                $audioGrModel->lesson_gr_id =   $lessonId;
-                $audioGrModel->file_name =      $fileNameUnic;
-                $audioGrModel->save();
-            };
-
-        }else if( $keyName === 'JP' ){
-
-            $audioJp = AudioJp::where( 'word_jp_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioJp === null ){
-                $audioJpModel = new AudioJp;
-                $audioJpModel->word_jp_id =     $word_foreign_id;
-                $audioJpModel->lesson_jp_id =   $lessonId;
-                $audioJpModel->file_name =      $fileNameUnic;
-                $audioJpModel->save();
-            };
-
-        }else if( $keyName === 'KR' ){
-
-            $audioKr = AudioKr::where( 'word_kr_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioKr === null ){
-                $audioKrModel = new AudioKr;
-                $audioKrModel->word_kr_id =     $word_foreign_id;
-                $audioKrModel->lesson_kr_id =   $lessonId;
-                $audioKrModel->file_name =      $fileNameUnic;
-                $audioKrModel->save();
-            };
-
-        }else if( $keyName === 'TR' ){
-
-            $audioTr = AudioTr::where( 'word_tr_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-            if( $audioTr === null ){
-                $audioTrModel = new AudioTr;
-                $audioTrModel->word_tr_id =     $word_foreign_id;
-                $audioTrModel->lesson_tr_id =   $lessonId;
-                $audioTrModel->file_name =      $fileNameUnic;
-                $audioTrModel->save();
-            };
+            $newAudioModel->$foreign_key = $word_foreign_id;
+            $newAudioModel->$lesson_foreign_id = $lessonId;
+            $newAudioModel->file_name = $fileNameUnic;
+            $newAudioModel->save();
 
         };
 
         Storage::disk( 'audio' )->put( $puth.'/'.$fileNameUnic, base64_decode( $base64 ) );
 
-       
-        // if( $keyName === 'EN' ){
-
-        
-        //     $audioEn = AudioEn::where( 'word_en_id', '=', $word_foreign_id )->where( 'file_name', '=', $fileNameUnic )->first();
-        //     if( $audioEn === null ){
-        //         $audioEnModel = new AudioEn;
-        //         $audioEnModel->word_en_id = $word_foreign_id;
-        //         $audioEnModel->lesson_en_id = $lessonId;
-        //         $audioEnModel->file_name = $fileNameUnic;
-        //         $audioEnModel->save();
-        //     };
-
-        //     $result = $fileNameUnic;
-
-        // };
-
         return $fileNameUnic;
         
 
+    }
+
+    private function CreateNewAudioModel( $keyName ){
+        $result = null;
+
+        if( $keyName === 'EN' ){
+            $result = new AudioEn;
+        }else if( $keyName === 'DE' ){
+            $result = new AudioDe;
+        }else if( $keyName === 'CN' ){
+            $result = new AudioCn;
+        }else if( $keyName === 'FR' ){
+            $result = new AudioFr;
+        }else if( $keyName === 'ES' ){
+            $result = new AudioEs;
+        }else if( $keyName === 'IT' ){
+            $result = new AudioIt;
+        }else if( $keyName === 'GR' ){
+            $result = new AudioGr;
+        }else if( $keyName === 'JP' ){
+            $result = new AudioJp;
+        }else if( $keyName === 'KR' ){
+            $result = new AudioKr;
+        }else if( $keyName === 'TR' ){
+            $result = new AudioTr;
+        };
+
+        return $result;
     }
 
 }

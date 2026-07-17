@@ -21,11 +21,10 @@ trait ValidateLanguageKeyNameTrait{
         $keyName = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'keyName' ] )? $request[ 'data' ][ 'keyName' ]: null: null;
         $result[ 'value' ] = $keyName;
 
-        
-
+    
         // if( $keyName === 'EN' ){
-            // $arr = array_keys( config( 'languages.languages' ) );
-            $arr = [ 'EN' ];
+            $arr = array_keys( config( 'languages.languages' ) );
+            // $arr = [ 'EN' ];
 
 
             $validate = Validator::make( [ 

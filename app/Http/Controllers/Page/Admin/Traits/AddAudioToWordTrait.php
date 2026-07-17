@@ -42,34 +42,31 @@ trait AddAudioToWordTrait{
             if( $validateLessonId[ 'ok' ]){
                 $validateFiles = $this->ValidateAudioFilesArr( $request );
                 if( $validateFiles[ 'ok' ] ){
-                    $keyName = $validateKeyName[ 'value' ];
-
                     $validateWordId = $this->ValidateWordId( $request );
                     if( $validateWordId[ 'ok' ] ){
 
-                        $files = $validateFiles[ 'value' ];
-                        $foreignWordId =    $validateWordId[ 'value' ];
+                        $keyName =          $validateKeyName[ 'value' ];
                         $lessonId =         $validateLessonId[ 'value' ];
+                        $files =            $validateFiles[ 'value' ];
+                        $foreignWordId =    $validateWordId[ 'value' ];
+                        
 
                         for( $i = 0; $i < count( $files ); $i++ ){
                             $name = $files[ $i ][ 'name' ];
                             $base64 = $files[ $i ][ 'base64' ];
 
                             $res = $this->CreateAudioFile([
-                                'keyName' =>    $keyName,
-                                'word_foreign_id' => $foreignWordId, 
-                                'name' =>       $name,
-                                'base64' =>     $base64,
-                                'lessonId' =>   $lessonId
+                                'keyName' =>            $keyName,
+                                'word_foreign_id' =>    $foreignWordId, 
+                                'name' =>               $name,
+                                'base64' =>             $base64,
+                                'lessonId' =>           $lessonId,
                             ]);
-
 
                         };
 
                         $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
                         $result[ 'ok' ] = true;
-
-
 
                     }else{
                         $result[ 'message' ] = $validateWordId[ 'message' ];

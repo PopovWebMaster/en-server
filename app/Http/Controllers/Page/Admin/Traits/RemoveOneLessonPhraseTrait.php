@@ -34,12 +34,10 @@ trait RemoveOneLessonPhraseTrait{
             if( $validateLessonId[ 'ok' ]){
                 $validateLessonPhraseId = $this->ValidateLessonPhraseId( $request );
                 if( $validateLessonPhraseId[ 'ok' ] ){
+
                     $keyName =          $validateKeyName[ 'value' ];
                     $lessonId =         $validateLessonId[ 'value' ];
-                    
-
-
-                    $lessonPhraseId = $validateLessonPhraseId[ 'value' ];
+                    $lessonPhraseId =   $validateLessonPhraseId[ 'value' ];
 
                     $lessonPhrasesModel = LessonPhrases::where( 'key_name', '=', $keyName )
                                                        ->where( 'id', '=', $lessonPhraseId )

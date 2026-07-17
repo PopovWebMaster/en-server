@@ -33,26 +33,16 @@ trait MoveOneWordToLessonTrait{
                 $wordId = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'wordId' ] )? $request[ 'data' ][ 'wordId' ]: null: null;
                 $nextLessonId = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'nextLessonId' ] )? $request[ 'data' ][ 'nextLessonId' ]: null: null;
 
-                if( $keyName === 'EN' ){
+                $this->MoveWordToLesson([
+                    'keyName' => $keyName,
+                    'lessonId' => $nextLessonId,
+                    'wordId' => $wordId,
+                ]);
 
-                    $this->MoveWordToLesson([
-                        'keyName' => $keyName,
-                        'lessonId' => $nextLessonId,
-                        'wordId' => $wordId,
-                    ]);
-
-
-
-
-
-
-
-                    $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
-                    $result[ 'ok' ] = true;
+                $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
+                $result[ 'ok' ] = true;
                     
-                }else{
-                    $result[ 'message' ] = 'Не прописан метод для языка '.$keyName;
-                };
+
             }else{
                 $result[ 'message' ] = $validateLessonId[ 'message' ];
             };

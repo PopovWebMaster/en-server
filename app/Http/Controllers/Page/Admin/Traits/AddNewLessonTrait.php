@@ -20,8 +20,6 @@ use App\Models\LessonJp;
 use App\Models\LessonKr;
 use App\Models\LessonTr;
 
-
-
 trait AddNewLessonTrait{
 
     use ValidateLanguageKeyNameTrait;
@@ -80,7 +78,11 @@ trait AddNewLessonTrait{
                 if( $lessonModel === null ){
                     $result[ 'message' ] = 'Добавление нового урока для '.$keyName.' не прописано. AddNewLessonTrait' ;
                 }else{
+                    $allLessons = $this->GetLessonsList( $keyName );
+
                     $lessonModel->title = $lessonTitle;
+                    $lessonModel->order = count( $allLessons );
+
                     $lessonModel->save();
 
                     $result[ 'lessonList' ] = $this->GetLessonsList( $keyName );

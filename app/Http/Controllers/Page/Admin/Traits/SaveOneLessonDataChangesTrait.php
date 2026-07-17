@@ -16,6 +16,8 @@ use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\ValidateTraits\ValidateOneLessonDataTrait;
 
 use App\Http\Controllers\Page\Admin\Traits\GetOneLessonDataTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetLessonModelByIdTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetWordCollectionByLessonIdTrait;
 
 
 trait SaveOneLessonDataChangesTrait{
@@ -23,6 +25,8 @@ trait SaveOneLessonDataChangesTrait{
     use ValidateLanguageKeyNameTrait;
     use ValidateOneLessonDataTrait;
     use GetOneLessonDataTrait;
+    use GetLessonModelByIdTrait;
+    use GetWordCollectionByLessonIdTrait;
 
     public function SaveOneLessonDataChanges( $request ){
 
@@ -36,6 +40,8 @@ trait SaveOneLessonDataChangesTrait{
         if( $validateKeyName[ 'ok' ] ){
             $keyName =          $validateKeyName[ 'value' ];
             $validateOneLessonData = $this->ValidateOneLessonData( $request );
+
+
             if( $validateOneLessonData[ 'ok' ] ){
 
                 $lessonId =             $validateOneLessonData[ 'value' ][ 'lessonId' ];
@@ -55,19 +61,20 @@ trait SaveOneLessonDataChangesTrait{
                 
                 $wordList =             $validateOneLessonData[ 'value' ][ 'wordList' ];
 
-                if( $keyName === 'EN' ){
-                    $lessonEn = LessonEn::find( $lessonId );
-                    if( $lessonEn !== null ){
-                        $lessonEn->title =          $lessonTitle;
-                        $lessonEn->description =    $lessonDescription;
-                        $lessonEn->level_name =     $lessonLevelName;
-                        $lessonEn->is_active =      $lessonIsActive;
-                        $lessonEn->order =          $lessonOrder;
-                        $lessonEn->is_paid =        $lessonIsPaid;
 
-                        $lessonEn->save();
-                    };
+                $lessonModel = $this->GetLessonModelById( $keyName, $lessonId );
+                if( $lessonModel !== null ){
+                    $lessonModel->title =          $lessonTitle;
+                    $lessonModel->description =    $lessonDescription;
+                    $lessonModel->level_name =     $lessonLevelName;
+                    $lessonModel->is_active =      $lessonIsActive;
+                    $lessonModel->order =          $lessonOrder;
+                    $lessonModel->is_paid =        $lessonIsPaid;
+
+                    $lessonModel->save();
                 };
+
+
 
                 $pageTitleModel = PageTitle::where( 'key_name', '=', $keyName )->where( 'lesson_id', '=', $lessonId )->first();
                 if( $pageTitleModel !== null ){
@@ -131,51 +138,26 @@ trait SaveOneLessonDataChangesTrait{
 
                 };
 
-                if( $keyName === 'EN' ){
-                    for( $i = 0; $i < count( $wordList ); $i++ ){
+                for( $i = 0; $i < count( $wordList ); $i++ ){
 
-                        $id =               $wordList[ $i ][ 'id' ];
-                        $foreign =          $wordList[ $i ][ 'foreign' ];
-                        $ru =               $wordList[ $i ][ 'ru' ];
-                        $transcription =    $wordList[ $i ][ 'transcription' ];
-                        $audio =            $wordList[ $i ][ 'audio' ];
+                    $id =               $wordList[ $i ][ 'id' ];
+                    $foreign =          $wordList[ $i ][ 'foreign' ];
+                    $ru =               $wordList[ $i ][ 'ru' ];
+                    $transcription =    $wordList[ $i ][ 'transcription' ];
+                    $audio =            $wordList[ $i ][ 'audio' ];
 
-                        $wordEn = WordEn::where( 'lesson_en_id', '=', $lessonId )->where( 'id', '=', $id )->first();
-                        if( $wordEn !== null ){
-                            $wordEn->en = $foreign;
-                            $wordEn->ru = $ru;
-                            $wordEn->transcription = $transcription;
-                            $wordEn->save();
-                        };
+                    $wordCollection = $this->GetWordCollectionByLessonId( $keyName, $lessonId );
+                    $wordModel = $wordCollection->where( 'id', '=', $id )->first();
+                    if( $wordModel !== null ){
+
+                        $keyName_low = strtolower($keyName);
+                        $wordModel->$keyName_low = $foreign;
+                        $wordModel->ru = $ru;
+                        $wordModel->transcription = $transcription;
+                        $wordModel->save();
                     };
+
                 };
-
-
-
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -185,6 +167,8 @@ trait SaveOneLessonDataChangesTrait{
 
             }else{
                 $result[ 'message' ] = $validateOneLessonData[ 'message' ];
+                $result[ 'value' ] = $validateOneLessonData[ 'value' ];
+
             };
         }else{
             $result[ 'message' ] = $validateKeyName[ 'message' ];

@@ -51,10 +51,6 @@ trait SaveMainPageChangesTrait{
             $this->SetLanguagePageKeywords( $keyName, $languagePageKeywords );
 
 
-
-
-
-
             $result[ 'mainPage' ] = $this->GetMainPageData( $keyName );
             $result[ 'ok' ] = true;
   

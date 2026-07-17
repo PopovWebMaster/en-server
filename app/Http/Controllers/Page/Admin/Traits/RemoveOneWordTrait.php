@@ -16,6 +16,9 @@ use App\Http\Controllers\ValidateTraits\ValidateWordIdTrait;
 use App\Http\Controllers\Traits\GetAudioFilePuthTrait;
 use App\Http\Controllers\Page\Admin\Traits\MoveWordToLessonTrait;
 
+use App\Http\Controllers\Page\Admin\Traits\GetAudioCollectionByWordIdTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetWordModelByIdTrait;
+
 trait RemoveOneWordTrait{
 
     use ValidateLanguageKeyNameTrait;
@@ -27,6 +30,9 @@ trait RemoveOneWordTrait{
     use GetAudioFilePuthTrait;
     use MoveWordToLessonTrait;
 
+    use GetAudioCollectionByWordIdTrait;
+    use GetWordModelByIdTrait;
+
     public function RemoveOneWord( $request ){
 
         $result = [
@@ -36,24 +42,20 @@ trait RemoveOneWordTrait{
 
         $validateKeyName = $this->ValidateLanguageKeyName( $request );
         if( $validateKeyName[ 'ok' ] ){
-            $keyName = $validateKeyName[ 'value' ];
-
             $validateLessonId = $this->ValidateLessonId( $request );
             if( $validateLessonId[ 'ok' ]){
-                // if( $keyName === 'EN' ){
-                    // $validateWordEnId = $this->ValidateWordEnId( $request );
-
                     $validateWordId = $this->ValidateWordId( $request );
-
                     if( $validateWordId[ 'ok' ] ){
-                        $foreignWordId = $validateWordId[ 'value' ];
-                        $lessonId = $validateLessonId[ 'value' ];
+
+                        $keyName =          $validateKeyName[ 'value' ];
+                        $foreignWordId =    $validateWordId[ 'value' ];
+                        $lessonId =         $validateLessonId[ 'value' ];
 
                         if( $lessonId === null ){
-                            $audioFileNames = [];
 
-                            $audioEnModels = AudioEn::where( 'word_en_id', '=', $foreignWordId )->get();
-                            foreach( $audioEnModels as $audioModel ){
+                            $audioFileNames = [];
+                            $audioModels = $this->GetAudioCollectionByWordId( $keyName, $foreignWordId );
+                            foreach( $audioModels as $audioModel ){
                                 $file_name = $audioModel->file_name;
                                 array_push( $audioFileNames, $file_name );
                                 $audioModel->delete();
@@ -67,9 +69,9 @@ trait RemoveOneWordTrait{
                                 };
                             };
 
-                            $wordEn = WordEn::where( 'id', '=', $foreignWordId )->first();
-                            if( $wordEn !== null ){
-                                $wordEn->delete();
+                            $wordModel = $this->GetWordModelById( $keyName, $foreignWordId );
+                            if( $wordModel !== null ){
+                                $wordModel->delete();
                             };
 
                         }else{
@@ -78,9 +80,7 @@ trait RemoveOneWordTrait{
                                 'lessonId' =>   null,
                                 'wordId' =>     $foreignWordId,
                             ]);
-
                         };
-
 
                         $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
                         $result[ 'ok' ] = true;

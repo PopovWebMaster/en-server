@@ -19,26 +19,16 @@ trait GetFreeWordsListTrait{
         ];
 
         $validateKeyName = $this->ValidateLanguageKeyName( $request );
-
         if( $validateKeyName[ 'ok' ] ){
+
             $keyName = $validateKeyName[ 'value' ];
 
-            if( $keyName === 'EN' ){
-
-                $result[ 'wordList' ] = $this->GetWordList( $keyName, null);
-
-
-                $result[ 'ok' ] = true;
+            $result[ 'wordList' ] = $this->GetWordList( $keyName, null );
+            $result[ 'ok' ] = true;
                 
-            }else{
-                $result[ 'message' ] = 'Язык не прописан';
-            };
         }else{
             $result[ 'message' ] = $validadeKeyName[ 'message' ];
         };
-
-       
-        
 
         return $result;
         

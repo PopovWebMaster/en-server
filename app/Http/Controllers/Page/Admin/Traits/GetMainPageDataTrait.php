@@ -15,13 +15,7 @@ trait GetMainPageDataTrait{
 
         $result = [];
 
-
-        if( $keyName === 'EN' ){
-            $result = $this->GetMainData( $keyName );
-           
-
-        };
-
+        $result = $this->GetMainData( $keyName );
 
         
         return $result;

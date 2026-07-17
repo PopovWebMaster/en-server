@@ -12,12 +12,14 @@ use App\Models\WordEn;
 use App\Models\AudioEn;
 
 use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetLessonModelByIdTrait;
 
 
 
 trait GetOneLessonDataTrait{
 
     use GetWordListTrait;
+    use GetLessonModelByIdTrait;
 
 
     public function GetOneLessonData( $keyName, $lessonId ){
@@ -66,20 +68,33 @@ trait GetOneLessonDataTrait{
             ] );
         };
 
-        if( $keyName === 'EN' ){
-            $lessonEn = LessonEn::find( $lessonId  );
-            if( $lessonEn !== null ){
+        // if( $keyName === 'EN' ){
+        //     $lessonEn = LessonEn::find( $lessonId  );
+        //     if( $lessonEn !== null ){
 
-                $result[ 'lessonTitle' ] =          isset( $lessonEn->title )? $lessonEn->title: '';
-                $result[ 'lessonDescription' ] =    isset( $lessonEn->description )? $lessonEn->description: '';
-                $result[ 'lessonLevelName' ] =      isset( $lessonEn->level_name )? $lessonEn->level_name: '';
-                $result[ 'lessonIsActive' ] =       ( bool ) $lessonEn->is_active;
-                $result[ 'lessonOrder' ] =          $lessonEn->order;
-                $result[ 'lessonIsPaid' ] =         ( bool ) $lessonEn->is_paid;
-                $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
+        //         $result[ 'lessonTitle' ] =          isset( $lessonEn->title )? $lessonEn->title: '';
+        //         $result[ 'lessonDescription' ] =    isset( $lessonEn->description )? $lessonEn->description: '';
+        //         $result[ 'lessonLevelName' ] =      isset( $lessonEn->level_name )? $lessonEn->level_name: '';
+        //         $result[ 'lessonIsActive' ] =       ( bool ) $lessonEn->is_active;
+        //         $result[ 'lessonOrder' ] =          $lessonEn->order;
+        //         $result[ 'lessonIsPaid' ] =         ( bool ) $lessonEn->is_paid;
+        //         $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
 
-            };
+        //     };
 
+
+        // };
+
+        $lessonModel = $this->GetLessonModelById( $keyName, $lessonId );
+        if( $lessonModel !== null ){
+
+            $result[ 'lessonTitle' ] =          isset( $lessonModel->title )? $lessonModel->title: '';
+            $result[ 'lessonDescription' ] =    isset( $lessonModel->description )? $lessonModel->description: '';
+            $result[ 'lessonLevelName' ] =      isset( $lessonModel->level_name )? $lessonModel->level_name: '';
+            $result[ 'lessonIsActive' ] =       ( bool ) $lessonModel->is_active;
+            $result[ 'lessonOrder' ] =          $lessonModel->order;
+            $result[ 'lessonIsPaid' ] =         ( bool ) $lessonModel->is_paid;
+            $result[ 'wordList' ] =             $this->GetWordList( $keyName, $lessonId );
 
         };
 

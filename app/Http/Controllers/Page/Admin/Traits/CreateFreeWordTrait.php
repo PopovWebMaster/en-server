@@ -34,50 +34,32 @@ trait CreateFreeWordTrait{
 
         if( $keyName === 'EN' ){
             $wordModel = new WordEn;
-            $wordModel->en = $word_foreign;
-
         }else if( $keyName === 'DE' ){
             $wordModel = new WordDe;
-            $wordModel->de = $word_foreign;
-            
         }else if( $keyName === 'CN' ){
             $wordModel = new WordCn;
-            $wordModel->cn = $word_foreign;
-            
         }else if( $keyName === 'FR' ){
             $wordModel = new WordFr;
-            $wordModel->fr = $word_foreign;
-            
         }else if( $keyName === 'ES' ){
             $wordModel = new WordEs;
-            $wordModel->es = $word_foreign;
-            
         }else if( $keyName === 'IT' ){
             $wordModel = new WordIt;
-            $wordModel->it = $word_foreign;
-            
         }else if( $keyName === 'GR' ){
             $wordModel = new WordGr;
-            $wordModel->gr = $word_foreign;
-            
         }else if( $keyName === 'JP' ){
             $wordModel = new WordJp;
-            $wordModel->jp = $word_foreign;
-            
         }else if( $keyName === 'KR' ){
             $wordModel = new WordKr;
-            $wordModel->kr = $word_foreign;
-            
         }else if( $keyName === 'TR' ){
             $wordModel = new WordTr;
-            $wordModel->tr = $word_foreign;
-            
         };
 
         $word_foreign_id = null;
 
         if( $wordModel !== null ){
 
+            $keyName_low = strtolower( $keyName );
+            $wordModel->$keyName_low = $word_foreign;
             $wordModel->ru = $word_ru;
             $wordModel->transcription = $transcription;
             $wordModel->save();

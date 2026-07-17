@@ -40,7 +40,6 @@ trait GetStartingDataTrait{
         $what_to_take = isset( $request[ 'data' ][ 'what_to_take' ] )? $request[ 'data' ][ 'what_to_take' ]: [];
 
         $validateKeyName = $this->ValidateLanguageKeyName( $request );
-
         if( $validateKeyName[ 'ok' ] ){
             $validateLessonId = $this->ValidateLessonId( $request );
             if( $validateLessonId[ 'ok' ]){

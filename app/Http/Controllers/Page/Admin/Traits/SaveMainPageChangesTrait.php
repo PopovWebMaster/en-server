@@ -38,6 +38,8 @@ trait SaveMainPageChangesTrait{
             $languagePageDescription =      isset( $request[ 'data' ][ 'languagePageDescription' ] )?   $request[ 'data' ][ 'languagePageDescription' ]: '';
             $languagePageKeywords =         isset( $request[ 'data' ][ 'languagePageKeywords' ] )?      $request[ 'data' ][ 'languagePageKeywords' ]: '';
 
+            $languageActiveList =   isset( $request[ 'data' ][ 'languageActiveList' ] )? $request[ 'data' ][ 'languageActiveList' ]: [];
+
             $this->SetSiteTitle( $siteTitle );
             $this->SetSiteHeader( $siteHeader );
             $this->SetSiteParagraphList( $siteParagraphList );
@@ -49,6 +51,10 @@ trait SaveMainPageChangesTrait{
             $this->SetLanguagePageParagraphList( $keyName, $languagePageParagraphList );
             $this->SetLanguagePageDescription( $keyName, $languagePageDescription );
             $this->SetLanguagePageKeywords( $keyName, $languagePageKeywords );
+
+            $this->SetLanguageActiveList( $languageActiveList );
+
+
 
 
             $result[ 'mainPage' ] = $this->GetMainPageData( $keyName );

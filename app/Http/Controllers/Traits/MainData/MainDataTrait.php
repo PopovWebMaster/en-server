@@ -14,6 +14,8 @@ use App\Http\Controllers\Traits\MainData\LanguagePageHeaderTrait;
 use App\Http\Controllers\Traits\MainData\LanguagePageParagraphListTrait;
 use App\Http\Controllers\Traits\MainData\LanguagePageDescriptionTrait;
 use App\Http\Controllers\Traits\MainData\LanguagePageKeywordsTrait;
+use App\Http\Controllers\Traits\MainData\LanguageActiveListTrait;
+
 
 
 
@@ -34,6 +36,7 @@ trait MainDataTrait{
     use LanguagePageParagraphListTrait;
     use LanguagePageDescriptionTrait;
     use LanguagePageKeywordsTrait;
+    use LanguageActiveListTrait;
 
     protected function GetMainData( $keyName ){
 
@@ -49,6 +52,8 @@ trait MainDataTrait{
             'languagePageParagraphList' =>  $this->GetLanguagePageParagraphList( $keyName ),
             'languagePageDescription' =>    $this->GetLanguagePageDescription( $keyName ),
             'languagePageKeywords' =>       $this->GetLanguagePageKeywords( $keyName ),
+            'languageActiveList' =>         $this->GetLanguageActiveList( $keyName ),
+
 
 
 

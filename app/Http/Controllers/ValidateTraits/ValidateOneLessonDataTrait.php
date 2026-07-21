@@ -23,7 +23,7 @@ trait ValidateOneLessonDataTrait{
         $lessonId =             isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'lessonId' ] )?          $request[ 'data' ][ 'lessonId' ]: null: null;
         $pageTitle =            isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageTitle' ] )?         $request[ 'data' ][ 'pageTitle' ]: null: null;
         $pageDescription =      isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageDescription' ] )?   $request[ 'data' ][ 'pageDescription' ]: null: null;
-        $pageText =             isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageText' ] )?          $request[ 'data' ][ 'pageText' ]: null: null;
+        $pageText =             isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageText' ] )?          $request[ 'data' ][ 'pageText' ]: []: [];
         $pageKeyWords =         isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageKeyWords' ] )?      $request[ 'data' ][ 'pageKeyWords' ]: null: null;
         $lessonPhrasesList =    isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'lessonPhrasesList' ] )? $request[ 'data' ][ 'lessonPhrasesList' ]: []: [];
         $lessonTitle =          isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'lessonTitle' ] )?       $request[ 'data' ][ 'lessonTitle' ]: null: null;
@@ -96,6 +96,8 @@ trait ValidateOneLessonDataTrait{
                 'pageDescription' =>    [ 'nullable', 'string' ],
                 'pageKeyWords' =>       [ 'nullable', 'string' ],
                 'pageText' =>           [ 'nullable', 'string' ],
+
+
                 'lessonPhrasesList' =>  [ 'nullable', 'array' ],
 
                 'lessonPhrasesList.*.id' =>         [ 'required', 'numeric', 'exists:lesson_phrases,id' ],

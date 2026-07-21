@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers\Page\Admin\Traits;
 
-use App\Models\LessonEn;
 use App\Models\LessonPhrases;
 use App\Models\PageDescription;
 use App\Models\PageKeyWords;
 use App\Models\PageText;
 use App\Models\PageTitle;
-
-use App\Models\WordEn;
-
 
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\ValidateTraits\ValidateOneLessonDataTrait;

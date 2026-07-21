@@ -24,8 +24,7 @@ use App\Http\Controllers\Page\Admin\Traits\MoveFreeWordsToLessonTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetLessonsListForPostTrait;
 use App\Http\Controllers\Page\Admin\Traits\MoveOneWordToLessonTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveMainPageChangesTrait;
-
-
+use App\Http\Controllers\Page\Admin\Traits\RemoveLessonTrait;
 
 
 class ApiDevelopmentController extends Controller
@@ -47,6 +46,7 @@ class ApiDevelopmentController extends Controller
     use GetLessonsListForPostTrait;
     use MoveOneWordToLessonTrait;
     use SaveMainPageChangesTrait;
+    use RemoveLessonTrait;
 
     
     public function store(Request $request)
@@ -131,6 +131,10 @@ class ApiDevelopmentController extends Controller
 
             case 'admin/save-lesson-list-changes':
                 $result = $this->SaveLessonListChanges( $request );
+                break;
+
+            case 'admin/remove-lesson':
+                $result = $this->RemoveLesson( $request );
                 break;
 
 

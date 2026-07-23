@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('link_css')
-    <link href= {{ $css_home }} rel="stylesheet">
+    <link href= {{ $css_lessons }} rel="stylesheet">
 @endsection
 
 @section('topNav')
@@ -10,11 +10,11 @@
 
 
 @section('content')
-    @include('layouts.home')
+    @include('layouts.lessons')
 @endsection
 
 
 
 @section('script_js')
-    <script type="text/javascript" src={{ $js_home }}></script>
+    <script type="text/javascript" src={{ $js_lessons }}></script>
 @endsection 

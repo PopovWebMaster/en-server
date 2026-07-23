@@ -10,10 +10,6 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-
-	<meta name="page" content="{{ $page }}">
-
-
 	<!--этот файл загружается чтоб ослиный браузер понимал html5-->
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
@@ -22,6 +18,8 @@
 	<!-- <link rel="shortcut icon" href="/public/favicon.ico"/> -->
 	
 	<title>{{ $pageTitle }}</title> 
+	<meta name="keywords" content="{{ $pageKeywords }}">
+	<meta name="description" content="{{ $pageDescription }}">
 
 	<link href= {{ $css_main }} rel="stylesheet">
 	@yield('link_css')
@@ -31,8 +29,60 @@
 </head>	
 		
 <body>
+	
+<div id = "app">
+    <div class = 'backgroundContainer'>
+        <div class = 'bodyContainer'>
+            <div class = 'contentArea'>
+                <header>
+                    <nav>
+                        @yield('topNav')
+                    </nav>
+                    <h1>{{ $pageHeader  }}</h1>
+                </header>
+                <main>
+                    <div class = 'scrollContainer'
+                        style = { maxHeight: 'calc( 100vh - 9em )' }
+                    >
+                        @yield('content')
 
-	@yield('content')
+                    </div>
+                </main>
+
+                <footer>
+                    <span>2026г.</span>
+                </footer>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<script type="text/javascript" src={{ $js_vendors }}></script>
     @yield('script_js')

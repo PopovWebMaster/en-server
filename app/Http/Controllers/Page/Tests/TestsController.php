@@ -1,28 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Page\Admin;
+namespace App\Http\Controllers\Page\Tests;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\SiteController;
 
-
-use Auth;
-use App\Models\User;
+// use Auth;
+// use App\Models\User;
 
 use App\Http\Controllers\Traits\AddToData\AddToDataIsAdminTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataLinksTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataPageDataTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataLanguageDataTrait;
 
-class AdminController extends SiteController
+class TestsController extends SiteController
 {
     use AddToDataIsAdminTrait;
     use AddToDataLinksTrait;
     use AddToDataPageDataTrait;
     use AddToDataLanguageDataTrait;
-    
+
     public function __construct(){
         parent::__construct();
 
@@ -30,31 +29,22 @@ class AdminController extends SiteController
 
     function get( Request $request ){
 
-        $this->data['robots'] = 'noindex';
-        // $this->data['pageTitle'] = 'Админка';
-        
-        // $this->data['page'] = 'admin';
-
-        // $user = Auth::user();
+        $this->data['robots'] = 'index';
 
         $this->AddToDataPageData([
-            'title' =>          'админка',
-            'header' =>         'админка',
+            'title' =>          'Тесты',
+            'header' =>         'Тесты',
             'description' =>    '',
             'keywords' =>       '',
-            'paragraphList' =>  []
+            'paragraphList' =>  [],
 
         ]);
         $this->AddToDataLanguageData();
         $this->AddToDataIsAdmin();
-        $this->AddToDataLinks();
+        $this->AddToDataLinks( 'tests' );
 
-
-
-
-        return view( 'admin', $this->data );
+        return view( 'tests', $this->data );
 
         
     }
-
 }

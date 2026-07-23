@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use Storage;
 
-// use Auth;
+// use Auth; тут бесполезен
 
 class SiteController extends Controller
 {
@@ -22,13 +22,12 @@ class SiteController extends Controller
             'main',
             'admin',
             'home',
+            'lessons',
+            'lesson',
+            'tests',
+
             
-
-
-
-
         ]);
-
 
     } 
 

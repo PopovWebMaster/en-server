@@ -1,11 +1,10 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Page\Home\HomeController;
-// use App\Http\Controllers\Page\Post\TestController;
+use App\Http\Controllers\Page\Tests\TestsController;
 
-Route::get( '/', [ HomeController::class, 'get' ])->name('home');
+
+Route::get( '/test', [ TestsController::class, 'get' ])->name('test');
 
 
 // Route::post( '/test-route', [ TestController::class, 'post' ]);
@@ -26,6 +25,7 @@ Route::get( '/', [ HomeController::class, 'get' ])->name('home');
 // Route::get('/home', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
+
 
 
 

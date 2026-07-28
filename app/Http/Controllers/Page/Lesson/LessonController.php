@@ -27,7 +27,7 @@ class LessonController extends SiteController
 
     }
 
-    function get( Request $request, $id ){
+    function get( Request $request, $languageAlias, $id = null ){
 
         $this->data['robots'] = 'index';
 

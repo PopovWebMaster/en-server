@@ -23,7 +23,7 @@ trait ValidateOneLessonDataTrait{
         $lessonId =             isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'lessonId' ] )?          $request[ 'data' ][ 'lessonId' ]: null: null;
         $pageTitle =            isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageTitle' ] )?         $request[ 'data' ][ 'pageTitle' ]: null: null;
         $pageDescription =      isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageDescription' ] )?   $request[ 'data' ][ 'pageDescription' ]: null: null;
-        $pageText =             isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageText' ] )?          $request[ 'data' ][ 'pageText' ]: []: [];
+        $pageText =             isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageText' ] )?          $request[ 'data' ][ 'pageText' ]: null: null;
         $pageKeyWords =         isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'pageKeyWords' ] )?      $request[ 'data' ][ 'pageKeyWords' ]: null: null;
         $lessonPhrasesList =    isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'lessonPhrasesList' ] )? $request[ 'data' ][ 'lessonPhrasesList' ]: []: [];
         $lessonTitle =          isset( $request[ 'data' ] )?    isset( $request[ 'data' ][ 'lessonTitle' ] )?       $request[ 'data' ][ 'lessonTitle' ]: null: null;

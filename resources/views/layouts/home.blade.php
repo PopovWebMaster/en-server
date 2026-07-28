@@ -4,4 +4,6 @@
     <p class = 'text'>{{ $pageParagraphList[ $i ] }}</p>
 @endfor
 
+@include('layouts.lessonsListOfAllLanguages')
+
 </div>

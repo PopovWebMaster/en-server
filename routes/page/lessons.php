@@ -7,7 +7,9 @@ use App\Http\Controllers\Page\Lesson\LessonController;
 
 
 Route::get( '/lessons', [ LessonsController::class, 'get' ])->name('lessons');
-Route::get( '/lessons/{id?}', [ LessonController::class, 'get' ])->name('lessons');
+Route::get( '/lessons/{languageAlias?}/{id?}', [ LessonController::class, 'get' ])->name('lessons');
+
+
 
 
 

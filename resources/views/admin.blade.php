@@ -11,5 +11,5 @@
 
 
 @section('script_js')
-    <script type="text/javascript" src={{ $js_admin }}></script> -->
+    <script type="text/javascript" src={{ $js_admin }}></script>
 @endsection 

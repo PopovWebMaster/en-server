@@ -69,66 +69,88 @@ return [
             'name' =>  'Русский',
             'alias' =>  'ru',
             'max' =>  80,
+            'icon' => '/public/assets/img/rurussiaflag_111751.png',
+            'keyName' => 'RU',
         ],
 
         'EN' => [
             'name' =>  'Английский',
             'alias' =>  'en',
             'max' =>  80,
+            'icon' => '/public/assets/img/uk_flags_flag_8834.png',
+            'keyName' => 'EN',
         ],
 
         'DE' => [
             'name' =>  'Немецкий',
             'alias' =>  'de',
             'max' =>  80,
+            'icon' => '/public/assets/img/Germany_29761.png',
+            'keyName' => 'DE',
         ],
 
         'CN' => [
             'name' =>  'Китайский',
             'alias' =>  'cn',
             'max' =>  80,
+            'icon' => '/public/assets/img/cnchinaflag_111955.png',
+            'keyName' => 'CN',
         ],
 
         'FR' => [
             'name' =>  'Французский',
             'alias' =>  'fr',
             'max' =>  80,
+            'icon' => '/public/assets/img/frfranceflag_111874.png',
+            'keyName' => 'FR',
         ],
 
         'ES' => [
             'name' =>  'Испанский',
             'alias' =>  'es',
             'max' =>  80,
+            'icon' => '/public/assets/img/Spain_29723.png',
+            'keyName' => 'FR',
         ],
 
         'IT' => [
             'name' =>  'Итальянский',
             'alias' =>  'it',
             'max' =>  80,
+            'icon' => '/public/assets/img/Italy_29749.png',
+            'keyName' => 'FR',
         ],
 
         'GR' => [
             'name' =>  'Греческий',
             'alias' =>  'gr',
             'max' =>  80,
+            'icon' => '/public/assets/img/Greece_29741.png',
+            'keyName' => 'GR',
         ],
 
         'JP' => [
             'name' =>  'Японский',
             'alias' =>  'jp',
             'max' =>  80,
+            'icon' => '/public/assets/img/japanflag_flags_japo_9220.png',
+            'keyName' => 'JP',
         ],
 
         'KR' => [
             'name' =>  'Корейский',
             'alias' =>  'kr',
             'max' =>  80,
+            'icon' => '/public/assets/img/SouthKorea_flags_flag_8861.png',
+            'keyName' => 'KR',
         ],
 
         'TR' => [
             'name' =>  'Турцкий',
             'alias' =>  'tr',
             'max' =>  80,
+            'icon' => '/public/assets/img/Turkey_29733.png',
+            'keyName' => 'TR',
         ],
 
 

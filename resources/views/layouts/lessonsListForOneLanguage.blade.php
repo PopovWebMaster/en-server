@@ -3,7 +3,7 @@
     <div class = 'LLFOL_btn_place'>
         <div class = "{{ $buttonIsActive? 'LLFOL_btn isActive': 'LLFOL_btn' }}">
             <img src = "{{ $languageIcon }}"/>
-            <span>{{ $languageName }}</span>
+            <a href = "{{ $oneLanguageRoute }}">{{ $languageName }} язык</a>
         </div>
     </div>
 

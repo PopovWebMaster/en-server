@@ -16,10 +16,11 @@ use App\Http\Controllers\Traits\MainData\LanguagePageDescriptionTrait;
 use App\Http\Controllers\Traits\MainData\LanguagePageKeywordsTrait;
 use App\Http\Controllers\Traits\MainData\LanguageActiveListTrait;
 
-
-
-
-
+use App\Http\Controllers\Traits\MainData\LessonsListPageParagraphListTrait;
+use App\Http\Controllers\Traits\MainData\LessonsListPageKeywordsTrait;
+use App\Http\Controllers\Traits\MainData\LessonsListPageDescriptionTrait;
+use App\Http\Controllers\Traits\MainData\LessonsListPageHeaderTrait;
+use App\Http\Controllers\Traits\MainData\LessonsListPageTitleTrait;
 
 
 trait MainDataTrait{
@@ -38,6 +39,13 @@ trait MainDataTrait{
     use LanguagePageKeywordsTrait;
     use LanguageActiveListTrait;
 
+    use LessonsListPageParagraphListTrait;
+    use LessonsListPageKeywordsTrait;
+    use LessonsListPageDescriptionTrait;
+    use LessonsListPageHeaderTrait;
+    use LessonsListPageTitleTrait;
+
+
     protected function GetMainData( $keyName ){
 
         $result = [
@@ -52,11 +60,14 @@ trait MainDataTrait{
             'languagePageParagraphList' =>  $this->GetLanguagePageParagraphList( $keyName ),
             'languagePageDescription' =>    $this->GetLanguagePageDescription( $keyName ),
             'languagePageKeywords' =>       $this->GetLanguagePageKeywords( $keyName ),
+
+            'lessonsListPageTitle' =>          $this->GetLessonsListPageTitle( $keyName ),
+            'lessonsListPageHeader' =>         $this->GetLessonsListPageHeader( $keyName ),
+            'lessonsListPageParagraphList' =>  $this->GetLessonsListPageParagraphList( $keyName ),
+            'lessonsListPageDescription' =>    $this->GetLessonsListPageDescription( $keyName ),
+            'lessonsListPageKeywords' =>       $this->GetLessonsListPageKeywords( $keyName ),
+
             'languageActiveList' =>         $this->GetLanguageActiveList( $keyName ),
-
-
-
-
 
 
 

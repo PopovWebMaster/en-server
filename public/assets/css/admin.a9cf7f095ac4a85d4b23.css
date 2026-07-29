@@ -23,14 +23,20 @@
 
 
 
-
-
-
-
-
-
 .STIL{font-size:1em;height:1.4em;max-width:-webkit-fit-content;max-width:-moz-fit-content;max-width:fit-content;margin-right:.8em;-o-object-fit:contain;object-fit:contain;border:1px solid #e4e4e4;border-radius:.1em}
 .AMP_ActiveLanguageListEdit{font-size:1em}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-ms-flex-line-pack:center;-ms-flex-align:center;padding:.2em 0;border:1px solid rgba(217,218,216,0);border-radius:.1em;cursor:pointer}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap,.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap .AMP_ALL_item_chack{font-size:1em;display:-webkit-box;display:-ms-flexbox;display:flex;align-content:center;-webkit-box-align:center;align-items:center}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap .AMP_ALL_item_chack{width:3em;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-ms-flex-line-pack:center;-ms-flex-align:center}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap .AMP_ALL_item_chack .AMP_ALL_item_chack_box{font-size:1em;width:1.2em;height:1.2em;background-color:#fff;border:1px solid #b3b3b3;border-radius:.1em}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap .AMP_ALL_item_chack .AMP_ALL_item_chack_box>span{font-size:.88em;color:#00851e}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap .AMP_ALL_item_icon{font-size:1em;width:3em;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;-ms-flex-line-pack:center;align-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap .AMP_ALL_item_icon img{font-size:1em;height:1.6em;max-width:1.6em;margin-right:.5em;-o-object-fit:contain;object-fit:contain}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap .AMP_ALL_item_name{font-size:1em;max-width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-ms-flex-line-pack:center;align-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap .AMP_ALL_item_name>span{font-size:.76em;color:#254658;font-family:Verdana,Geneva,sans-serif}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap:hover{background-color:#fff;border:1px solid #d9dad8}.AMP_ActiveLanguageListEdit .AMP_ALL_itemWrap:active{border:1px solid #a4a5a3}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .IconsDemonstration{font-size:1em}.IconsDemonstration .IconsDemonstration_item{font-size:1em;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:center;align-content:center}.IconsDemonstration .IconsDemonstration_item>span{font-size:1em;margin:0 .4em}.IconsDemonstration .IconsDemonstration_item>input{font-size:1em;padding:.2em .8em;text-align:left;border:none;outline:none;background-color:hsla(0,0%,100%,0);color:#4d4d4d}
 
@@ -91,7 +97,7 @@
 
 
 
-.APLE_OneLessonEditor{font-size:1em}.APLE_OneLessonEditor .OLE_blockWrap{font-size:1em;background-color:#f6f2f6;border:1px solid #e5c6e5;border-radius:.1em;margin:.5em 2em;padding:.5em 1em}.APLE_OneLessonEditor .OLE_blockWrap .OLE_topBlockWrap{font-size:1em;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:center;align-content:center}
+.APLE_OneLessonEditor{font-size:1em}.APLE_OneLessonEditor .OLE_blockWrap{font-size:1em;background-color:#f6f2f6;border:1px solid #e5c6e5;border-radius:.1em;margin:.5em 2em;padding:.5em 1em}.APLE_OneLessonEditor .OLE_blockWrap .OLE_topBlockWrap{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;-ms-flex-line-pack:center}.APLE_OneLessonEditor .OLE_blockWrap .OLE_topBlockWrap,.APLE_OneLessonEditor .OLE_blockWrap .OLE_topBlockWrap .OLE_topLessonPuth{font-size:1em;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;align-content:center}.APLE_OneLessonEditor .OLE_blockWrap .OLE_topBlockWrap .OLE_topLessonPuth{-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-ms-flex-line-pack:center}.APLE_OneLessonEditor .OLE_blockWrap .OLE_topBlockWrap .OLE_topLessonPuth>span{font-size:.8em;color:#8d8d8f;margin-left:1em;font-family:Verdana,Geneva,sans-serif}
 .APLE_IsActiveStatusEdit{font-size:1em;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:center;align-content:center;-webkit-box-flex:0;-ms-flex-positive:0;flex-grow:0;margin:0 1em}.APLE_IsActiveStatusEdit .APLE_IsActiveStatusEdit_text{font-size:.74em;font-family:Verdana,Geneva,sans-serif;color:#6a6a6a}.APLE_IsActiveStatusEdit .APLE_IsActiveStatusEdit_text .APLE_IAS_yes{font-size:1em;display:inline-block;width:2.6em;color:#5bbe19;text-align:right;font-weight:700;text-shadow:1px 0 4px hsla(0,0%,100%,.5019607843137255)}.APLE_IsActiveStatusEdit .APLE_IsActiveStatusEdit_text .APLE_IAS_no{font-size:1em;display:inline-block;width:2.6em;color:#2e2e2e;text-align:right}
 .APLE_IsPaidStatust{font-size:1em;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:center;align-content:center;-webkit-box-flex:0;-ms-flex-positive:0;flex-grow:0;margin:0 1em}.APLE_IsPaidStatust .APLE_IsPaidStatus_text{font-size:.74em;font-family:Verdana,Geneva,sans-serif;color:#6a6a6a}.APLE_IsPaidStatust .APLE_IsPaidStatus_text .APLE_IPS_yes{font-size:1em;display:inline-block;width:2.6em;color:#5bbe19;text-align:right;font-weight:700;text-shadow:1px 0 4px hsla(0,0%,100%,.5019607843137255)}.APLE_IsPaidStatust .APLE_IsPaidStatus_text .APLE_IPS_no{font-size:1em;display:inline-block;width:2.6em;color:#2e2e2e;text-align:right}
 .APLE_LessonOrderEdit{font-size:1em;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:center;align-content:center;-webkit-box-flex:0;-ms-flex-positive:0;flex-grow:0;margin:0 1em;background-color:#fff;padding:.2em .8em;border-radius:.1em;border:1px solid #c4c4c4}.APLE_LessonOrderEdit .APLE_LessonOrderEdit_text{font-size:.74em;font-family:Verdana,Geneva,sans-serif;color:#6a6a6a}.APLE_LessonOrderEdit .APLE_LessonOrderEdit_value{font-size:.74em;font-family:Verdana,Geneva,sans-serif;margin:0 .2em;color:#3b3b3b;font-weight:700}

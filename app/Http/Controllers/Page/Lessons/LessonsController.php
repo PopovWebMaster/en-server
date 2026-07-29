@@ -14,6 +14,7 @@ use App\Http\Controllers\Traits\AddToData\AddToDataIsAdminTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataLinksTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataPageDataTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataLanguageDataTrait;
+use App\Http\Controllers\Traits\GetAllLessonsForViewTrait;
 
 class LessonsController extends SiteController
 {
@@ -21,6 +22,7 @@ class LessonsController extends SiteController
     use AddToDataLinksTrait;
     use AddToDataPageDataTrait;
     use AddToDataLanguageDataTrait;
+    use GetAllLessonsForViewTrait;
 
     public function __construct(){
         parent::__construct();
@@ -32,16 +34,28 @@ class LessonsController extends SiteController
         $this->data['robots'] = 'index';
 
         $this->AddToDataPageData([
-            'title' =>          'Список уроков',
-            'header' =>         'Список уроков',
-            'description' =>    '',
-            'keywords' =>       '',
-            'paragraphList' =>  [],
+            // 'title' =>          'Список уроков',
+            // 'header' =>         'Список уроков',
+            // 'description' =>    '',
+            // 'keywords' =>       '',
+            // 'paragraphList' =>  [],
+
+            'title' =>          $this->GetLessonsListPageTitle(),
+            'header' =>         $this->GetLessonsListPageHeader(),
+            'description' =>    $this->GetLessonsListPageDescription(),
+            'keywords' =>       $this->GetLessonsListPageKeywords(),
+            'paragraphList' =>  $this->GetLessonsListPageParagraphList(),
 
         ]);
         $this->AddToDataLanguageData();
         $this->AddToDataIsAdmin();
         $this->AddToDataLinks( 'lessons' );
+
+        $this->data[ 'allLessonsList' ] = $this->GetAllLessonsForView();
+
+
+        // dd( $this->data );
+
 
         return view( 'lessons', $this->data );
 

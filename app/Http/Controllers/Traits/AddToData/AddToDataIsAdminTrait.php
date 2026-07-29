@@ -10,8 +10,9 @@ trait AddToDataIsAdminTrait{
 
         $user = Auth::user();
         $this->data[ 'isAdmin' ] = false;
+        
         if( $user !== null ){
-            if( $user->email === env('ADMIN_EMAIL' ) ){
+            if( $user->email === config( 'app.admin_email' ) ){
                 $this->data[ 'isAdmin' ] = true;
             };
         };

@@ -25,6 +25,10 @@ use App\Http\Controllers\Page\Admin\Traits\GetLessonsListForPostTrait;
 use App\Http\Controllers\Page\Admin\Traits\MoveOneWordToLessonTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveMainPageChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveLessonTrait;
+use App\Http\Controllers\Page\Admin\Traits\SaveTestsChangesTrait;
+use App\Http\Controllers\Page\Admin\Traits\AddNewTestTrait;
+
+
 
 
 class ApiDevelopmentController extends Controller
@@ -47,6 +51,8 @@ class ApiDevelopmentController extends Controller
     use MoveOneWordToLessonTrait;
     use SaveMainPageChangesTrait;
     use RemoveLessonTrait;
+    use SaveTestsChangesTrait;
+    use AddNewTestTrait;
 
     
     public function store(Request $request)
@@ -135,6 +141,16 @@ class ApiDevelopmentController extends Controller
 
             case 'admin/remove-lesson':
                 $result = $this->RemoveLesson( $request );
+                break;
+
+
+
+            case 'admin/save-tests-changes':
+                $result = $this->SaveTestsChanges( $request );
+                break;
+
+            case 'admin/add-new-test':
+                $result = $this->AddNewTest( $request );
                 break;
 
 

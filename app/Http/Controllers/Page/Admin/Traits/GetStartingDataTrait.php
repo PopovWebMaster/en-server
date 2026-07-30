@@ -11,7 +11,7 @@ use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetLessonsListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetOneLessonDataTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetMainPageDataTrait;
-
+use App\Http\Controllers\Page\Admin\Traits\GetTestsListTrait;
 
 
 
@@ -23,6 +23,7 @@ trait GetStartingDataTrait{
     use GetLessonsListTrait;
     use GetOneLessonDataTrait;
     use GetMainPageDataTrait;
+    use GetTestsListTrait;
 
     public function GetStartingData( $request, $user ){
         /*
@@ -30,6 +31,7 @@ trait GetStartingDataTrait{
             lessonList
             oneLessonData
             mainPage
+            testsList,
         */
 
         $result = [
@@ -66,6 +68,12 @@ trait GetStartingDataTrait{
                         case 'mainPage':
                             $result[ 'mainPage' ] = $this->GetMainPageData( $keyName );
                             break;
+
+                        case 'testsList':
+                            $result[ 'testsList' ] = $this->GetTestsList( $keyName );
+                            break;
+
+                            
 
                             
                     };

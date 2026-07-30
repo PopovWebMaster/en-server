@@ -22,6 +22,10 @@ use App\Http\Controllers\Page\Admin\Post\GetLessonsListForPostController;
 use App\Http\Controllers\Page\Admin\Post\MoveOneWordToLessonController;
 use App\Http\Controllers\Page\Admin\Post\SaveMainPageChangesController;
 use App\Http\Controllers\Page\Admin\Post\RemoveLessonController;
+use App\Http\Controllers\Page\Admin\Post\SaveTestsChangesController;
+use App\Http\Controllers\Page\Admin\Post\AddNewTestController;
+
+
 
 
 
@@ -72,6 +76,8 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
     Route::post('/move-one-word-to-lesson', [ MoveOneWordToLessonController::class, 'post' ]);
     Route::post('/save-main-page-changes', [ SaveMainPageChangesController::class, 'post' ]);
     Route::post('/remove-lesson', [ RemoveLessonController::class, 'post' ]);
+    Route::post('/save-tests-changes', [ SaveTestsChangesController::class, 'post' ]);
+    Route::post('/add-new-test', [ AddNewTestController::class, 'post' ]);
 
 
 

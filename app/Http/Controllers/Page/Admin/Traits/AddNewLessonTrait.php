@@ -81,7 +81,7 @@ trait AddNewLessonTrait{
                     $allLessons = $this->GetLessonsList( $keyName );
 
                     $lessonModel->title = $lessonTitle;
-                    $lessonModel->order = count( $allLessons );
+                    $lessonModel->order = count( $allLessons ) + 1;
 
                     $lessonModel->save();
 

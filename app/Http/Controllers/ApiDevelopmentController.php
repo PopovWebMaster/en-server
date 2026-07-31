@@ -27,6 +27,12 @@ use App\Http\Controllers\Page\Admin\Traits\SaveMainPageChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveLessonTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveTestsChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewTestTrait;
+use App\Http\Controllers\Page\Admin\Traits\SaveOneTestDataTrait;
+use App\Http\Controllers\Page\Admin\Traits\RemoveOneTestTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetAllLessonsListForTestTrait;
+
+
+
 
 
 
@@ -53,6 +59,9 @@ class ApiDevelopmentController extends Controller
     use RemoveLessonTrait;
     use SaveTestsChangesTrait;
     use AddNewTestTrait;
+    use SaveOneTestDataTrait;
+    use RemoveOneTestTrait;
+    use GetAllLessonsListForTestTrait;
 
     
     public function store(Request $request)
@@ -153,9 +162,23 @@ class ApiDevelopmentController extends Controller
                 $result = $this->AddNewTest( $request );
                 break;
 
+            case 'admin/save-one-test-data':
+                $result = $this->SaveOneTestData( $request );
+                break;
 
-            
-            
+            case 'admin/remove-one-test':
+                $result = $this->RemoveOneTest( $request );
+                break;
+
+            case 'admin/get-all-lessons-list-for-test':
+                $result = $this->GetAllLessonsListForTest( $request );
+                break;
+
+
+
+
+
+
             
             
         };

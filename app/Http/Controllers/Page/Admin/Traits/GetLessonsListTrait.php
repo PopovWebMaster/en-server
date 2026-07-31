@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Page\Admin\Traits;
 
-use App\Models\WordEn;
+// use App\Models\WordEn;
 // use App\Models\AudioEn;
 // use App\Models\LessonEn;
 

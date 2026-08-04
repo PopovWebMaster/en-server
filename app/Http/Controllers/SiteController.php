@@ -25,6 +25,8 @@ class SiteController extends Controller
             'lessons',
             'lesson',
             'tests',
+            'test',
+
 
             
         ]);

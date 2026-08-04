@@ -1,5 +1,5 @@
 
-
+.testPage{font-size:1em;margin:1em 0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:start;align-content:flex-start;width:100%}
 
 .backgroundContainer{font-size:1em;padding:0;margin:0;width:100vw;height:100vh;background-repeat:no-repeat;background-size:cover;background-position:top;overflow:hidden}
 @media screen and (min-width:1180px) and (max-width:16000px){.backgroundContainer{background-image:url(/public/assets/img/bg/bg_wildflowers_2000.jpg)}}@media screen and (min-width:960px) and (max-width:1180px){.backgroundContainer{background-image:url(/public/assets/img/bg/bg_wildflowers_1200.jpg)}}@media screen and (min-width:740px) and (max-width:960px){.backgroundContainer{background-image:url(/public/assets/img/bg/bg_wildflowers_960.jpg)}}@media screen and (min-width:480px) and (max-width:740px){.backgroundContainer{background-image:url(/public/assets/img/bg/bg_wildflowers_740.jpg)}}@media screen and (min-width:10px) and (max-width:480px){.backgroundContainer{background-image:url(/public/assets/img/bg/bg_wildflowers_480.jpg)}}

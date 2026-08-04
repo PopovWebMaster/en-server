@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Page\Admin\Traits;
 
-use App\Models\LessonEn;
+use App\Models\Tests;
 
 
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
-// use App\Http\Controllers\ValidateTraits\ValidateLessonListTrait;
-// use App\Http\Controllers\Page\Admin\Traits\GetLessonsListTrait;
-// use App\Http\Controllers\Page\Admin\Traits\GetLessonModelByIdTrait;
+use App\Http\Controllers\ValidateTraits\ValidateTestsListTrait;
+
+use App\Http\Controllers\Page\Admin\Traits\GetTestsListTrait;
 
 trait SaveTestsChangesTrait{
 
     use ValidateLanguageKeyNameTrait;
-    // use ValidateLessonListTrait;
-    // use GetLessonsListTrait;
-    // use GetLessonModelByIdTrait;
+    use ValidateTestsListTrait;
+    use GetTestsListTrait;
 
     public function SaveTestsChanges( $request ){
 
@@ -26,50 +25,34 @@ trait SaveTestsChangesTrait{
 
         $validateKeyName = $this->ValidateLanguageKeyName( $request );
         if( $validateKeyName[ 'ok' ] ){
-             $result[ 'ok' ] = true;
-              $result[ 'message' ] = 'трейт сохранения не подключён';
-            // $validateLessonList = $this->ValidateLessonList( $request );
-            // if( $validateLessonList[ 'ok' ]){
+            $validateTestsList = $this->ValidateTestsList( $request );
+            if( $validateKeyName[ 'ok' ] ){
+                $keyName =      $validateKeyName[ 'value' ];
+                $testsList =    $validateTestsList[ 'value' ];
 
-            //     $keyName =          $validateKeyName[ 'value' ];
-            //     $lessonList =       $validateLessonList[ 'value' ];
+                for( $i = 0; $i < count( $testsList ); $i++ ){
+                    $testId =   $testsList[ $i ][ 'id' ];
+                    $order =    $testsList[ $i ][ 'order' ];
+                    $isActive = $testsList[ $i ][ 'isActive' ];
 
-            //     $arr = [];
-
-            //     for( $i = 0; $i < count( $lessonList ); $i++ ){
-
-            //         $id =           $lessonList[ $i ][ 'id' ];
-            //         $title =        $lessonList[ $i ][ 'title' ];
-            //         $description =  $lessonList[ $i ][ 'description' ];
-            //         $level_name =   $lessonList[ $i ][ 'level_name' ];
-            //         $is_active =    $lessonList[ $i ][ 'is_active' ];
-            //         $order =        $lessonList[ $i ][ 'order' ];
-
-            //         $lessonModel = $this->GetLessonModelById( $keyName, $id );
-
-            //         if( $lessonModel !== null ){
-            //             $lessonModel->title =          $title;
-            //             $lessonModel->description =    $description;
-            //             $lessonModel->level_name =     $level_name;
-            //             $lessonModel->is_active =      $is_active;
-            //             $lessonModel->order =          $order;
-                        
-            //             $lessonModel->save();
-            //         };
-
-            //         array_push( $arr, $lessonModel );
-            //     };
-
-            //     $result[ 'lessonList' ] = $this->GetLessonsList( $keyName );
-            //     $result[ 'ok' ] = true;
-            //     $result[ 'arr' ] = $arr;
+                    $testsModel = Tests::where( 'id', '=', $testId )->where( 'key_name', '=', $keyName )->first();
+                    if( $testsModel !== null ){
+                        $testsModel->order = $order;
+                        $testsModel->is_active = $isActive;
+                        $testsModel->save();
+                    };
+                };
 
 
-    
-            // }else{
-            //     $result[ 'message' ] = $validateLessonId[ 'message' ];
-            // };
-            
+
+                $result[ 'testsList' ] = $this->GetTestsList( $keyName );
+                $result[ 'ok' ] = true;
+                $result[ 'message' ] = 'ono';
+
+
+            }else{
+                $result[ 'message' ] = $validateKeyName[ 'message' ];
+            }; 
         }else{
             $result[ 'message' ] = $validateKeyName[ 'message' ];
         };

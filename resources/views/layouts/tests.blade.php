@@ -1,5 +1,9 @@
 <div class = 'testsPage'>
-testsPage
+
+    @include('layouts.pageParagraphList')
+
+    @include('layouts.testsListOfAllLanguages')
+
 
 
 </div>

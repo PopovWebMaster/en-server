@@ -63,7 +63,7 @@ trait ValidateOneTestDataTrait{
             'testIsActive' =>       [ 'required', 'boolean' ],
             'testOrder' =>          [ 'required', 'numeric' ],
             'testLessons' =>        [ 'nullable', 'array' ],
-            'testLessons.*.id' =>   [ 'required', 'numeric', 'exists:test_lessons,id' ],
+            'testLessons.*.id' =>   [ 'required', 'numeric', 'exists:test_lessons,lesson_id' ],
             'testPageTitle' =>      [ 'nullable', 'string', 'max:255' ],
             'testPageDescription' =>[ 'nullable', 'string' ],
             'testPageKeywords' =>   [ 'nullable', 'string' ],

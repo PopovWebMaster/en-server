@@ -47,7 +47,13 @@ trait SaveMainPageChangesTrait{
             $lessonsListPageKeywords =      isset( $request[ 'data' ][ 'lessonsListPageKeywords' ] )?      $request[ 'data' ][ 'lessonsListPageKeywords' ]: '';
 
 
-            // LessonsList
+            $testsListPageTitle =         isset( $request[ 'data' ][ 'testsListPageTitle' ] )?         $request[ 'data' ][ 'testsListPageTitle' ]: '';
+            $testsListPageHeader =        isset( $request[ 'data' ][ 'testsListPageHeader' ] )?        $request[ 'data' ][ 'testsListPageHeader' ]: '';
+            $testsListPageParagraphList = isset( $request[ 'data' ][ 'testsListPageParagraphList' ] )? $request[ 'data' ][ 'testsListPageParagraphList' ]: [];
+            $testsListPageDescription =   isset( $request[ 'data' ][ 'testsListPageDescription' ] )?   $request[ 'data' ][ 'testsListPageDescription' ]: '';
+            $testsListPageKeywords =      isset( $request[ 'data' ][ 'testsListPageKeywords' ] )?      $request[ 'data' ][ 'testsListPageKeywords' ]: '';
+
+
 
 
 
@@ -71,9 +77,14 @@ trait SaveMainPageChangesTrait{
             $this->SetLessonsListPageDescription( $lessonsListPageDescription );
             $this->SetLessonsListPageKeywords( $lessonsListPageKeywords );
 
+            $this->SetTestsListPageTitle( $testsListPageTitle );
+            $this->SetTestsListPageHeader( $testsListPageHeader );
+            $this->SetTestsListPageParagraphList( $testsListPageParagraphList );
+            $this->SetTestsListPageDescription( $testsListPageDescription );
+            $this->SetTestsListPageKeywords( $testsListPageKeywords );
+
+
             $this->SetLanguageActiveList( $languageActiveList );
-
-
 
 
             $result[ 'mainPage' ] = $this->GetMainPageData( $keyName );

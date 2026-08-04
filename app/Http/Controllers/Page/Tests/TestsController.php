@@ -14,6 +14,11 @@ use App\Http\Controllers\Traits\AddToData\AddToDataIsAdminTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataLinksTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataPageDataTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataLanguageDataTrait;
+use App\Http\Controllers\Traits\MainData\MainDataTrait;
+
+use App\Http\Controllers\Traits\GetAllTestsForViewTrait;
+
+
 
 class TestsController extends SiteController
 {
@@ -21,6 +26,10 @@ class TestsController extends SiteController
     use AddToDataLinksTrait;
     use AddToDataPageDataTrait;
     use AddToDataLanguageDataTrait;
+
+    use GetAllTestsForViewTrait;
+
+    use MainDataTrait;
 
     public function __construct(){
         parent::__construct();
@@ -32,16 +41,20 @@ class TestsController extends SiteController
         $this->data['robots'] = 'index';
 
         $this->AddToDataPageData([
-            'title' =>          'Тесты',
-            'header' =>         'Тесты',
-            'description' =>    '',
-            'keywords' =>       '',
-            'paragraphList' =>  [],
+            'title' =>          $this->GetTestsListPageTitle(),
+            'header' =>         $this->GetTestsListPageHeader(),
+            'description' =>    $this->GetTestsListPageDescription(),
+            'keywords' =>       $this->GetTestsListPageKeywords(),
+            'paragraphList' =>  $this->GetTestsListPageParagraphList(),
 
         ]);
         $this->AddToDataLanguageData();
         $this->AddToDataIsAdmin();
         $this->AddToDataLinks( 'tests' );
+
+        $this->data[ 'allTestsList' ] = $this->GetAllTestsForView();
+
+        // dd( $this->data );
 
         return view( 'tests', $this->data );
 

@@ -5,6 +5,9 @@ use App\Http\Controllers\Page\Tests\TestsController;
 
 
 Route::get( '/test', [ TestsController::class, 'get' ])->name('test');
+Route::get( '/test/{languageAlias}', [ TestsController::class, 'get' ])->name('language_test');
+Route::get( '/test/{languageAlias}/{id?}', [ TestsController::class, 'get' ])->name('one_test');
+
 
 
 // Route::post( '/test-route', [ TestController::class, 'post' ]);

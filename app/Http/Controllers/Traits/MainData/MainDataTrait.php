@@ -22,6 +22,13 @@ use App\Http\Controllers\Traits\MainData\LessonsListPageDescriptionTrait;
 use App\Http\Controllers\Traits\MainData\LessonsListPageHeaderTrait;
 use App\Http\Controllers\Traits\MainData\LessonsListPageTitleTrait;
 
+use App\Http\Controllers\Traits\MainData\TestsListPageTitleTrait;
+use App\Http\Controllers\Traits\MainData\TestsListPageHeaderTrait;
+use App\Http\Controllers\Traits\MainData\TestsListPageDescriptionTrait;
+use App\Http\Controllers\Traits\MainData\TestsListPageKeywordsTrait;
+use App\Http\Controllers\Traits\MainData\TestsListPageParagraphListTrait;
+
+
 
 trait MainDataTrait{
 
@@ -45,6 +52,12 @@ trait MainDataTrait{
     use LessonsListPageHeaderTrait;
     use LessonsListPageTitleTrait;
 
+    use TestsListPageTitleTrait;
+    use TestsListPageHeaderTrait;
+    use TestsListPageDescriptionTrait;
+    use TestsListPageKeywordsTrait;
+    use TestsListPageParagraphListTrait;
+
 
     protected function GetMainData( $keyName ){
 
@@ -67,12 +80,15 @@ trait MainDataTrait{
             'lessonsListPageDescription' =>    $this->GetLessonsListPageDescription( $keyName ),
             'lessonsListPageKeywords' =>       $this->GetLessonsListPageKeywords( $keyName ),
 
+            'testsListPageTitle' =>          $this->GetTestsListPageTitle(),
+            'testsListPageHeader' =>         $this->GetTestsListPageHeader(),
+            'testsListPageParagraphList' =>  $this->GetTestsListPageParagraphList(),
+            'testsListPageDescription' =>    $this->GetTestsListPageDescription(),
+            'testsListPageKeywords' =>       $this->GetTestsListPageKeywords(),
+
             'languageActiveList' =>         $this->GetLanguageActiveList( $keyName ),
 
 
-
-
-            
 
 
 

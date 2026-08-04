@@ -48,6 +48,7 @@ trait GetOneTestDataUseTestModelTrait{
                 $wordsCount = $wordsCount + $lessonWordsCount;
 
                 array_push( $lessons, [
+                    'id' =>       $lessonId,
                     'title' =>          isset( $lessonModel->title )? $lessonModel->title: '',
                     'description' =>    isset( $lessonModel->description )? $lessonModel->description: '',
                     'levelName' =>      isset( $lessonModel->level_name )? $lessonModel->level_name: '',

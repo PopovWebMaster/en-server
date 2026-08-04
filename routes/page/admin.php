@@ -27,6 +27,10 @@ use App\Http\Controllers\Page\Admin\Post\AddNewTestController;
 use App\Http\Controllers\Page\Admin\Post\SaveOneTestDataController;
 use App\Http\Controllers\Page\Admin\Post\RemoveOneTestController;
 use App\Http\Controllers\Page\Admin\Post\GetAllLessonsListForTestController;
+use App\Http\Controllers\Page\Admin\Post\AddLessonsIntoTestController;
+use App\Http\Controllers\Page\Admin\Post\RemoveLessonFromTestController;
+
+
 
 
 
@@ -87,11 +91,16 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
     Route::post('/save-one-test-data', [ SaveOneTestDataController::class, 'post' ]);
     Route::post('/remove-one-test', [ RemoveOneTestController::class, 'post' ]);
     Route::post('/get-all-lessons-list-for-test', [ GetAllLessonsListForTestController::class, 'post' ]);
+    Route::post('/get-all-lessons-list-for-test', [ GetAllLessonsListForTestController::class, 'post' ]);
+    Route::post('/add-lessons-into-test', [ AddLessonsIntoTestController::class, 'post' ]);
+    Route::post('/remove-lesson-from-test', [ RemoveLessonFromTestController::class, 'post' ]);
+
 
 
 
 
     
+
 
 
     

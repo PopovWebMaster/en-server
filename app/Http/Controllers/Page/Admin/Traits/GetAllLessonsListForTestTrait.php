@@ -41,14 +41,15 @@ trait GetAllLessonsListForTestTrait{
 
                     $item = $lessons[ $i ];
                     $item[ 'testId' ] = null;
-                    $testLessons = TestLessons::where( 'lesson_id', '=', $lessonId )->where( 'key_name', '=', $testId )->first();
+                    $testLessons = TestLessons::where( 'lesson_id', '=', $lessonId )->where( 'key_name', '=', $keyName )->first();
 
                     if( $testLessons !== null ){
                         $item[ 'testId' ] = $testLessons->test_id;
                     };
 
-                    array_push( $lessonsForTest, $item );
-
+                    if( $item[ 'testId' ] === null ){
+                        array_push( $lessonsForTest, $item );
+                    };
                 };
 
                 $result[ 'lessonsForTest' ] = $lessonsForTest;

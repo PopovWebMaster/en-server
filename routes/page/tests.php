@@ -5,8 +5,8 @@ use App\Http\Controllers\Page\Tests\TestsController;
 
 
 Route::get( '/test', [ TestsController::class, 'get' ])->name('test');
-Route::get( '/test/{languageAlias}', [ TestsController::class, 'get' ])->name('language_test');
-Route::get( '/test/{languageAlias}/{id?}', [ TestsController::class, 'get' ])->name('one_test');
+Route::get( '/test/{languageAlias}', [ TestsController::class, 'getForList' ])->middleware( [ 'get.check_language_alias' ] )->name('language_test');
+Route::get( '/test/{languageAlias}/{testId?}', [ TestsController::class, 'getForOneTest' ])->middleware( [ 'get.check_language_alias', 'get.check_test_id' ] )->name('one_test');
 
 
 

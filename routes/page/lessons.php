@@ -7,8 +7,8 @@ use App\Http\Controllers\Page\LanguageLesLanguage\LanguageLessonsController;
 
 
 Route::get( '/lessons', [ LessonsController::class, 'get' ])->name('lessons');
-Route::get( '/lessons/{languageAlias}', [ LanguageLessonsController::class, 'get' ])->name('language_lessons');
-Route::get( '/lessons/{languageAlias}/{id?}', [ LessonController::class, 'get' ])->name('lessons');
+Route::get( '/lessons/{languageAlias}', [ LanguageLessonsController::class, 'get' ])->middleware( [ 'get.check_language_alias' ] )->name('language_lessons');
+Route::get( '/lessons/{languageAlias}/{lessonId?}', [ LessonController::class, 'get' ])->middleware( [ 'get.check_language_alias', 'get.check_lesson_id' ] )->name('one_lessons');
 
 
 

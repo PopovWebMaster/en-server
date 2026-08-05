@@ -68,6 +68,15 @@ class Kernel extends HttpKernel
 
         'admin.only_admin_post' => \App\Http\Middleware\MyOnlyAdminPost::class,
         'admin.only_admin_get' => \App\Http\Middleware\MyOnlyAdminGet::class,
+        'get.check_language_alias' => \App\Http\Middleware\MyCheckLanguageAlias::class,
+        'get.check_test_id' => \App\Http\Middleware\MyCheckTestId::class,
+        'get.check_lesson_id' => \App\Http\Middleware\MyCheckLessonId::class,
+
+
+
+
+
+
 
 
     ];

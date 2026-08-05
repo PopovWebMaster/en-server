@@ -53,6 +53,12 @@ trait SaveMainPageChangesTrait{
             $testsListPageDescription =   isset( $request[ 'data' ][ 'testsListPageDescription' ] )?   $request[ 'data' ][ 'testsListPageDescription' ]: '';
             $testsListPageKeywords =      isset( $request[ 'data' ][ 'testsListPageKeywords' ] )?      $request[ 'data' ][ 'testsListPageKeywords' ]: '';
 
+            $testLanguagePageTitle =         isset( $request[ 'data' ][ 'testLanguagePageTitle' ] )?         $request[ 'data' ][ 'testLanguagePageTitle' ]: '';
+            $testLanguagePageHeader =        isset( $request[ 'data' ][ 'testLanguagePageHeader' ] )?        $request[ 'data' ][ 'testLanguagePageHeader' ]: '';
+            $testLanguagePageParagraphList = isset( $request[ 'data' ][ 'testLanguagePageParagraphList' ] )? $request[ 'data' ][ 'testLanguagePageParagraphList' ]: [];
+            $testLanguagePageDescription =   isset( $request[ 'data' ][ 'testLanguagePageDescription' ] )?   $request[ 'data' ][ 'testLanguagePageDescription' ]: '';
+            $testLanguagePageKeywords =      isset( $request[ 'data' ][ 'testLanguagePageKeywords' ] )?      $request[ 'data' ][ 'testLanguagePageKeywords' ]: '';
+
 
 
 
@@ -83,6 +89,11 @@ trait SaveMainPageChangesTrait{
             $this->SetTestsListPageDescription( $testsListPageDescription );
             $this->SetTestsListPageKeywords( $testsListPageKeywords );
 
+            $this->SetTestLanguagePageTitle( $keyName, $testLanguagePageTitle );
+            $this->SetTestLanguagePageHeader( $keyName, $testLanguagePageHeader );
+            $this->SetTestLanguagePageParagraphList( $keyName, $testLanguagePageParagraphList );
+            $this->SetTestLanguagePageDescription( $keyName, $testLanguagePageDescription );
+            $this->SetTestLanguagePageKeywords( $keyName, $testLanguagePageKeywords );
 
             $this->SetLanguageActiveList( $languageActiveList );
 

@@ -32,7 +32,7 @@ trait GetLessonsListForViewTrait{
             // $isPaid =       $item[ 'isPaid' ];
             if( $is_active ){
                 array_push( $result, [
-                    'route' =>                      route( 'lessons', [ 'languageAlias' => config( 'languages.languages.'.$keyName.'.alias' ), 'id' => $id ] ),
+                    'route' =>                      route( 'one_lessons', [ 'languageAlias' => config( 'languages.languages.'.$keyName.'.alias' ), 'lessonId' => $id ] ),
                     'wordsLength' =>                $wordsCount,
                     'levelName' =>                  $level_name,
                     'lessonName' =>                 $title,

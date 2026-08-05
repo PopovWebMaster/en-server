@@ -9,11 +9,20 @@ use App\Http\Controllers\Traits\MainData\SiteHeaderTrait;
 use App\Http\Controllers\Traits\MainData\SiteParagraphListTrait;
 use App\Http\Controllers\Traits\MainData\SiteKeywordsTrait;
 use App\Http\Controllers\Traits\MainData\SiteDescriptionTrait;
+
 use App\Http\Controllers\Traits\MainData\LanguagePageTitleTrait;
 use App\Http\Controllers\Traits\MainData\LanguagePageHeaderTrait;
 use App\Http\Controllers\Traits\MainData\LanguagePageParagraphListTrait;
 use App\Http\Controllers\Traits\MainData\LanguagePageDescriptionTrait;
 use App\Http\Controllers\Traits\MainData\LanguagePageKeywordsTrait;
+
+use App\Http\Controllers\Traits\MainData\TestLanguagePageTitleTrait;
+use App\Http\Controllers\Traits\MainData\TestLanguagePageHeaderTrait;
+use App\Http\Controllers\Traits\MainData\TestLanguagePageParagraphListTrait;
+use App\Http\Controllers\Traits\MainData\TestLanguagePageDescriptionTrait;
+use App\Http\Controllers\Traits\MainData\TestLanguagePageKeywordsTrait;
+
+
 use App\Http\Controllers\Traits\MainData\LanguageActiveListTrait;
 
 use App\Http\Controllers\Traits\MainData\LessonsListPageParagraphListTrait;
@@ -44,6 +53,7 @@ trait MainDataTrait{
     use LanguagePageParagraphListTrait;
     use LanguagePageDescriptionTrait;
     use LanguagePageKeywordsTrait;
+
     use LanguageActiveListTrait;
 
     use LessonsListPageParagraphListTrait;
@@ -57,6 +67,12 @@ trait MainDataTrait{
     use TestsListPageDescriptionTrait;
     use TestsListPageKeywordsTrait;
     use TestsListPageParagraphListTrait;
+
+    use TestLanguagePageTitleTrait;
+    use TestLanguagePageHeaderTrait;
+    use TestLanguagePageParagraphListTrait;
+    use TestLanguagePageDescriptionTrait;
+    use TestLanguagePageKeywordsTrait;
 
 
     protected function GetMainData( $keyName ){
@@ -73,6 +89,12 @@ trait MainDataTrait{
             'languagePageParagraphList' =>  $this->GetLanguagePageParagraphList( $keyName ),
             'languagePageDescription' =>    $this->GetLanguagePageDescription( $keyName ),
             'languagePageKeywords' =>       $this->GetLanguagePageKeywords( $keyName ),
+
+            'testLanguagePageTitle' =>          $this->GetTestLanguagePageTitle( $keyName ),
+            'testLanguagePageHeader' =>         $this->GetTestLanguagePageHeader( $keyName ),
+            'testLanguagePageParagraphList' =>  $this->GetTestLanguagePageParagraphList( $keyName ),
+            'testLanguagePageDescription' =>    $this->GetTestLanguagePageDescription( $keyName ),
+            'testLanguagePageKeywords' =>       $this->GetTestLanguagePageKeywords( $keyName ),
 
             'lessonsListPageTitle' =>          $this->GetLessonsListPageTitle( $keyName ),
             'lessonsListPageHeader' =>         $this->GetLessonsListPageHeader( $keyName ),

@@ -8,7 +8,7 @@
         <a href = '/admin'>admin</a>
     @endif
     @if( Auth::check() )
-        <a href = '{{ $links[ 'logout' ][ 'route' ] }}'>Выйти</a>
+        <a href = '{{ $links[ 'logout' ][ 'route' ] }}' >Выйти</a>
     @else
         <a href = '{{ $links[ 'login' ][ 'route' ] }}' >Войти</a>
     @endif

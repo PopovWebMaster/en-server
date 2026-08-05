@@ -54,12 +54,6 @@ class LanguageLessonsController extends SiteController
 
          $this->data[ 'keyName' ] =             $allLessonsList[ $keyName ][ 'keyName' ];
          $this->data[ 'languageIcon' ] =        $allLessonsList[ $keyName ][ 'languageIcon' ];
-        //  $this->data[ 'keylanguageNameName' ] = $allLessonsList[ $keyName ][ 'keylanguageNameName' ];
-        //  $this->data[ 'buttonIsActive' ] =      $allLessonsList[ $keyName ][ 'buttonIsActive' ];
-        //  $this->data[ 'isOpen' ] =              $allLessonsList[ $keyName ][ 'isOpen' ];
-        //  $this->data[ 'oneLanguageRoute' ] =    $allLessonsList[ $keyName ][ 'oneLanguageRoute' ];
-
-
 
 
 

@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Traits\MainData;
 
 use Storage;
 
-trait LanguagePageTitleTrait{ //LanguagePageTitle
+trait TestLanguagePageTitleTrait{ //TestLanguagePageTitle
 
-    private function GetLanguagePageTitle( $keyName ){
+    private function GetTestLanguagePageTitle( $keyName ){
 
         $result = '';
 
-        $file = $keyName.'/LanguagePageTitle.txt';
+        $file = $keyName.'/TestLanguagePageTitle.txt';
 
         if( Storage::disk('mainData')->exists( $file ) ){
             $result = Storage::disk( 'mainData' )->get( $file );
@@ -21,10 +21,10 @@ trait LanguagePageTitleTrait{ //LanguagePageTitle
 
     }
 
-    private function SetLanguagePageTitle( $keyName, $value ){
+    private function SetTestLanguagePageTitle( $keyName, $value ){
 
         $result = '';
-        $file = $keyName.'/LanguagePageTitle.txt';
+        $file = $keyName.'/TestLanguagePageTitle.txt';
 
         Storage::disk( 'mainData' )->put( $file, $value );
         

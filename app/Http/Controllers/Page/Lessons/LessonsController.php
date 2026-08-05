@@ -34,12 +34,6 @@ class LessonsController extends SiteController
         $this->data['robots'] = 'index';
 
         $this->AddToDataPageData([
-            // 'title' =>          'Список уроков',
-            // 'header' =>         'Список уроков',
-            // 'description' =>    '',
-            // 'keywords' =>       '',
-            // 'paragraphList' =>  [],
-
             'title' =>          $this->GetLessonsListPageTitle(),
             'header' =>         $this->GetLessonsListPageHeader(),
             'description' =>    $this->GetLessonsListPageDescription(),
@@ -53,8 +47,6 @@ class LessonsController extends SiteController
 
         $this->data[ 'allLessonsList' ] = $this->GetAllLessonsForView();
 
-
-        // dd( $this->data );
 
 
         return view( 'lessons', $this->data );

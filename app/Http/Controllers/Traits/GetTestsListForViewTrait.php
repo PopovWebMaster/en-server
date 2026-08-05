@@ -36,7 +36,7 @@ trait GetTestsListForViewTrait{
             // $isPaid =       $item[ 'isPaid' ];
             if( $is_active ){
                 array_push( $result, [
-                    'route' =>                      route( 'one_test', [ 'languageAlias' => config( 'languages.languages.'.$keyName.'.alias' ), 'id' => $id ] ),
+                    'route' =>                      route( 'one_test', [ 'languageAlias' => config( 'languages.languages.'.$keyName.'.alias' ), 'testId' => $id ] ),
                     'wordsLength' =>                $wordsCount,
                     'levelName' =>                  $level_name,
                     'testName' =>                 $title,

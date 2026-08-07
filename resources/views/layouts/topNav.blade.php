@@ -10,6 +10,6 @@
     @if( Auth::check() )
         <a href = '{{ $links[ 'logout' ][ 'route' ] }}' >Выйти</a>
     @else
-        <a href = '{{ $links[ 'login' ][ 'route' ] }}' >Войти</a>
+        <a href = '{{ $links[ 'login' ][ 'route' ] }}' class = "BC_CA_nav_login">Войти</a>
     @endif
 </div>

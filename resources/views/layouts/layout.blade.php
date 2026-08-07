@@ -24,12 +24,15 @@
 	<link href= {{ $css_main }} rel="stylesheet">
 	@yield('link_css')
 
+
+   
+
 	
 
 </head>	
 		
 <body>
-	
+	 
 <div id = "app">
     <div class = 'backgroundContainer'>
         <div class = 'bodyContainer'>
@@ -39,6 +42,8 @@
                         @yield('topNav')
                     </nav>
                     <h1>{{ $pageHeader  }}</h1>
+
+                    @yield('topHeaderInfo')
                 </header>
                 <main>
                     <div class = 'scrollContainer'
@@ -80,7 +85,7 @@
 
 
 
-
+    @yield('words_json')
 
 
 

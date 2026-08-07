@@ -6,6 +6,7 @@
 
 @section('topNav')
     @include('layouts.topNav')
+    @include('layouts.topHeaderInfo')
 @endsection
 
 

@@ -89,6 +89,12 @@ return [
             'visibility' => 'private',
         ],
 
+        'words' => [ // не пригодилось
+            'driver' => 'local',
+            'root' => public_path('app/public/words/'),
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*

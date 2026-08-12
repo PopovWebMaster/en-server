@@ -13,9 +13,9 @@ class AddAudioToWordController extends Controller
 
     public function post( Request $request ){
 
-        $user = Auth::user();
+        // $user = Auth::user();
 
-        $result = $this->AddAudioToWord( $request, $user );
+        $result = $this->AddAudioToWord( $request );
 
         return response()->json( $result, 200, ['Content-Type' => 'application/json; charset=UTF-8'] );
 

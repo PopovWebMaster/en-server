@@ -34,7 +34,7 @@ use App\Http\Controllers\Page\Admin\Traits\AddLessonsIntoTestTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveLessonFromTestTrait;
 
 
-
+use App\Http\Controllers\Page\Lessons\Traits\GetLessonAppWordsListTrait;
 
 
 
@@ -68,6 +68,9 @@ class ApiDevelopmentController extends Controller
     use GetAllLessonsListForTestTrait;
     use AddLessonsIntoTestTrait;
     use RemoveLessonFromTestTrait;
+
+    // lessons
+    use GetLessonAppWordsListTrait;
 
     
     public function store(Request $request)
@@ -186,6 +189,11 @@ class ApiDevelopmentController extends Controller
 
             case 'admin/remove-lesson-from-test':
                 $result = $this->RemoveLessonFromTest( $request );
+                break;
+
+
+            case 'lessons/get-lesson-app-words-list':
+                $result = $this->GetLessonAppWordsList( $request );
                 break;
 
 

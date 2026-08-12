@@ -59,6 +59,13 @@ class LessonController extends SiteController
         $this->data[ 'words_json' ] = json_encode( $words, JSON_UNESCAPED_UNICODE );
         $this->data[ 'words' ] = $words;
 
+        $this->data[ 'keyName' ] =  $keyName;
+        $this->data[ 'lessonId' ] = $lessonId;
+        // $this->data[ 'testId' ] =   null; // тут чтоб в тестах не забыть
+
+
+
+
         // dd( $this->data );
 
         // $this->data[ 'words_json' ] = json_encode( $words, JSON_FORCE_OBJECT );

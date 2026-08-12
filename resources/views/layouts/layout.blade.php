@@ -18,8 +18,21 @@
 	<!-- <link rel="shortcut icon" href="/public/favicon.ico"/> -->
 	
 	<title>{{ $pageTitle }}</title> 
-	<meta name="keywords" content="{{ $pageKeywords }}">
-	<meta name="description" content="{{ $pageDescription }}">
+
+	<meta name="keywords"       content="{{ $pageKeywords }}">
+	<meta name="description"    content="{{ $pageDescription }}">
+
+    @if( isset( $keyName ) )
+    <meta name="keyName"       content="{{ $keyName }}">
+    @endif
+
+    @if( isset( $lessonId ) )
+    <meta name="lessonId"       content="{{ $lessonId }}">
+    @endif
+
+    @if( isset( $testId ) )
+    <meta name="testId"       content="{{ $testId }}">
+    @endif
 
 	<link href= {{ $css_main }} rel="stylesheet">
 	@yield('link_css')

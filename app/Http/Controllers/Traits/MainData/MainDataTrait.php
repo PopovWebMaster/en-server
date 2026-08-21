@@ -37,6 +37,16 @@ use App\Http\Controllers\Traits\MainData\TestsListPageDescriptionTrait;
 use App\Http\Controllers\Traits\MainData\TestsListPageKeywordsTrait;
 use App\Http\Controllers\Traits\MainData\TestsListPageParagraphListTrait;
 
+use App\Http\Controllers\Traits\MainData\TaskForStep_1Trait;
+use App\Http\Controllers\Traits\MainData\TaskForStep_2Trait;
+use App\Http\Controllers\Traits\MainData\TaskForStep_3Trait;
+
+use App\Http\Controllers\Traits\MainData\ButtonNameStep_1Trait;
+use App\Http\Controllers\Traits\MainData\ButtonNameStep_2Trait;
+use App\Http\Controllers\Traits\MainData\ButtonNameStep_3Trait;
+use App\Http\Controllers\Traits\MainData\RepeatCircleLengthTrait;
+use App\Http\Controllers\Traits\MainData\CorrectAnswersLengthTrait;
+
 
 
 trait MainDataTrait{
@@ -74,6 +84,17 @@ trait MainDataTrait{
     use TestLanguagePageDescriptionTrait;
     use TestLanguagePageKeywordsTrait;
 
+    use TaskForStep_1Trait;
+    use TaskForStep_2Trait;
+    use TaskForStep_3Trait;
+
+    use ButtonNameStep_1Trait;
+    use ButtonNameStep_2Trait;
+    use ButtonNameStep_3Trait;
+    use RepeatCircleLengthTrait;
+    use CorrectAnswersLengthTrait;
+
+
 
     protected function GetMainData( $keyName ){
 
@@ -110,9 +131,14 @@ trait MainDataTrait{
 
             'languageActiveList' =>         $this->GetLanguageActiveList( $keyName ),
 
-
-
-
+            'taskForStep_1' => $this->GetTaskForStep_1(),
+            'taskForStep_2' => $this->GetTaskForStep_2(),
+            'taskForStep_3' => $this->GetTaskForStep_3(),
+            'buttonNameStep_1' => $this->GetButtonNameStep_1(),
+            'buttonNameStep_2' => $this->GetButtonNameStep_2(),
+            'buttonNameStep_3' => $this->GetButtonNameStep_3(),
+            'repeatCircleLength' => $this->GetRepeatCircleLength(),
+            'correctAnswersLength' => $this->GetCorrectAnswersLength(),
 
 
             // 'siteDescription' => $this->GetSiteDescription( $keyName ),

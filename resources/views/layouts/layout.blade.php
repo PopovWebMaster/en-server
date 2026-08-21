@@ -37,6 +37,8 @@
 	<link href= {{ $css_main }} rel="stylesheet">
 	@yield('link_css')
 
+    <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
+
 
    
 

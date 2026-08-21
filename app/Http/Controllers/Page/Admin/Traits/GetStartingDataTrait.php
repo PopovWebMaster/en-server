@@ -14,6 +14,10 @@ use App\Http\Controllers\Page\Admin\Traits\GetOneLessonDataTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetMainPageDataTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetTestsListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetOneTestDataByTestIdTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetAppDataTrait;
+
+
+
 
 
 
@@ -28,6 +32,7 @@ trait GetStartingDataTrait{
     use GetMainPageDataTrait;
     use GetTestsListTrait;
     use GetOneTestDataByTestIdTrait;
+    use GetAppDataTrait;
 
     public function GetStartingData( $request, $user ){
         /*
@@ -36,7 +41,8 @@ trait GetStartingDataTrait{
             oneLessonData
             mainPage
             testsList,
-            oneTestData
+            oneTestData,
+            appData,
         */
 
         $result = [
@@ -83,6 +89,10 @@ trait GetStartingDataTrait{
 
                             case 'oneTestData':
                                 $result[ 'oneTestData' ] = $this->GetOneTestDataByTestId( $testId );
+                                break;
+
+                            case 'appData':
+                                $result[ 'appData' ] = $this->GetAppData( $keyName );
                                 break;
 
                                 

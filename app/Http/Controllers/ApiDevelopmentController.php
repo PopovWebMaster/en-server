@@ -32,9 +32,14 @@ use App\Http\Controllers\Page\Admin\Traits\RemoveOneTestTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetAllLessonsListForTestTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddLessonsIntoTestTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveLessonFromTestTrait;
+use App\Http\Controllers\Page\Admin\Traits\SaveSettingsDataChangesTrait;
+
+
+
 
 
 use App\Http\Controllers\Page\Lessons\Traits\GetLessonAppWordsListTrait;
+use App\Http\Controllers\Page\Lessons\Traits\GetLessonAppDataTrait;
 
 
 
@@ -68,9 +73,11 @@ class ApiDevelopmentController extends Controller
     use GetAllLessonsListForTestTrait;
     use AddLessonsIntoTestTrait;
     use RemoveLessonFromTestTrait;
+    use SaveSettingsDataChangesTrait;
 
     // lessons
     use GetLessonAppWordsListTrait;
+    use GetLessonAppDataTrait;
 
     
     public function store(Request $request)
@@ -191,16 +198,28 @@ class ApiDevelopmentController extends Controller
                 $result = $this->RemoveLessonFromTest( $request );
                 break;
 
-
-            case 'lessons/get-lesson-app-words-list':
-                $result = $this->GetLessonAppWordsList( $request );
+            case 'admin/save-settings-data-changes':
+                $result = $this->SaveSettingsDataChanges( $request );
                 break;
-
 
 
 
                 
 
+
+            case 'lessons/get-lesson-app-words-list':
+                $result = $this->GetLessonAppWordsList( $request );
+                break;
+            case 'lessons/get-lesson-app-data':
+                $result = $this->GetLessonAppData( $request );
+                break;
+
+            
+
+
+
+
+                
 
 
 

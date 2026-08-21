@@ -21,5 +21,6 @@
 
 @section('script_js')
     @include('layouts.words_json')
+    @include('layouts.appData_json')
     <script type="text/javascript" src={{ $js_lesson }}></script>
 @endsection 

@@ -17,6 +17,7 @@ use App\Http\Controllers\Traits\AddToData\AddToDataLanguageDataTrait;
 use App\Http\Controllers\Traits\GetOneLessonPageDataTrait;
 
 use App\Http\Controllers\Traits\GetWordsByLessonIdTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetAppDataTrait;
 
 class LessonController extends SiteController
 {
@@ -27,6 +28,7 @@ class LessonController extends SiteController
 
     use GetOneLessonPageDataTrait;
     use GetWordsByLessonIdTrait;
+    use GetAppDataTrait;
 
     public function __construct(){
         parent::__construct();
@@ -53,10 +55,14 @@ class LessonController extends SiteController
         ]);
 
         $words = $this->GetWordsByLessonId( $keyName, $lessonId );
+        $appData = $this->GetAppData( $keyName );
+
 
         $this->data[ 'levelName' ] = $levelName;
         $this->data[ 'wordsCount' ] = count( $words );
         $this->data[ 'words_json' ] = json_encode( $words, JSON_UNESCAPED_UNICODE );
+        $this->data[ 'appData_json' ] = json_encode( $appData, JSON_UNESCAPED_UNICODE );
+
         $this->data[ 'words' ] = $words;
 
         $this->data[ 'keyName' ] =  $keyName;

@@ -21,6 +21,11 @@ trait GetAppDataTrait{
             'buttonNameStep_3' =>       $this->GetButtonNameStep_3(),
             'repeatCircleLength' =>     $this->GetRepeatCircleLength(),
             'correctAnswersLength' =>   $this->GetCorrectAnswersLength(),
+
+            
+            'messageAfterStep_1' => $this->GetMessageAfterStep_1(),
+            'messageAfterStep_2' => $this->GetMessageAfterStep_2(),
+            'messageAfterStep_3' => $this->GetMessageAfterStep_3(),
         ];
 
 

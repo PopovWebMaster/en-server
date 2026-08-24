@@ -41,6 +41,14 @@ use App\Http\Controllers\Traits\MainData\TaskForStep_1Trait;
 use App\Http\Controllers\Traits\MainData\TaskForStep_2Trait;
 use App\Http\Controllers\Traits\MainData\TaskForStep_3Trait;
 
+use App\Http\Controllers\Traits\MainData\MessageAfterStep_1Trait;
+use App\Http\Controllers\Traits\MainData\MessageAfterStep_2Trait;
+use App\Http\Controllers\Traits\MainData\MessageAfterStep_3Trait;
+
+
+
+
+
 use App\Http\Controllers\Traits\MainData\ButtonNameStep_1Trait;
 use App\Http\Controllers\Traits\MainData\ButtonNameStep_2Trait;
 use App\Http\Controllers\Traits\MainData\ButtonNameStep_3Trait;
@@ -87,6 +95,10 @@ trait MainDataTrait{
     use TaskForStep_1Trait;
     use TaskForStep_2Trait;
     use TaskForStep_3Trait;
+
+    use MessageAfterStep_1Trait;
+    use MessageAfterStep_2Trait;
+    use MessageAfterStep_3Trait;
 
     use ButtonNameStep_1Trait;
     use ButtonNameStep_2Trait;
@@ -139,6 +151,11 @@ trait MainDataTrait{
             'buttonNameStep_3' => $this->GetButtonNameStep_3(),
             'repeatCircleLength' => $this->GetRepeatCircleLength(),
             'correctAnswersLength' => $this->GetCorrectAnswersLength(),
+
+
+            'messageAfterStep_1' => $this->GetMessageAfterStep_1(),
+            'messageAfterStep_2' => $this->GetMessageAfterStep_2(),
+            'messageAfterStep_3' => $this->GetMessageAfterStep_3(),
 
 
             // 'siteDescription' => $this->GetSiteDescription( $keyName ),

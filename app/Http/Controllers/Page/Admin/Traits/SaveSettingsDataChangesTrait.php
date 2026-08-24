@@ -34,6 +34,12 @@ trait SaveSettingsDataChangesTrait{
             $repeatCircleLength =   isset( $request[ 'data' ][ 'repeatCircleLength' ] )?    $request[ 'data' ][ 'repeatCircleLength' ]: '';
             $correctAnswersLength = isset( $request[ 'data' ][ 'correctAnswersLength' ] )?  $request[ 'data' ][ 'correctAnswersLength' ]: '';
 
+            $messageAfterStep_1 =        isset( $request[ 'data' ][ 'messageAfterStep_1' ] )?         $request[ 'data' ][ 'messageAfterStep_1' ]: '';
+            $messageAfterStep_2 =        isset( $request[ 'data' ][ 'messageAfterStep_2' ] )?         $request[ 'data' ][ 'messageAfterStep_2' ]: '';
+            $messageAfterStep_3 =        isset( $request[ 'data' ][ 'messageAfterStep_3' ] )?         $request[ 'data' ][ 'messageAfterStep_3' ]: '';
+
+
+
             $this->SetTaskForStep_1( $taskForStep_1 );
             $this->SetTaskForStep_2( $taskForStep_2 );
             $this->SetTaskForStep_3( $taskForStep_3 );
@@ -42,6 +48,10 @@ trait SaveSettingsDataChangesTrait{
             $this->SetButtonNameStep_3( $buttonNameStep_3 );
             $this->SetRepeatCircleLength( $repeatCircleLength );
             $this->SetCorrectAnswersLength( $correctAnswersLength );
+
+            $this->SetMessageAfterStep_1( $messageAfterStep_1 );
+            $this->SetMessageAfterStep_2( $messageAfterStep_2 );
+            $this->SetMessageAfterStep_3( $messageAfterStep_3 );
 
 
 

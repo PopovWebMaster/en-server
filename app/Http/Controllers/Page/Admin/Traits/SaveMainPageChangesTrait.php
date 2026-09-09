@@ -7,6 +7,10 @@ namespace App\Http\Controllers\Page\Admin\Traits;
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\Traits\MainData\MainDataTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetMainPageDataTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetPartOfSpeechListTrait;
+
+use App\Models\PartOfSpeech;
+
 
 
 trait SaveMainPageChangesTrait{
@@ -14,6 +18,7 @@ trait SaveMainPageChangesTrait{
     use ValidateLanguageKeyNameTrait;
     use MainDataTrait;
     use GetMainPageDataTrait;
+    use GetPartOfSpeechListTrait;
 
     public function SaveMainPageChanges( $request ){
 
@@ -59,6 +64,9 @@ trait SaveMainPageChangesTrait{
             $testLanguagePageDescription =   isset( $request[ 'data' ][ 'testLanguagePageDescription' ] )?   $request[ 'data' ][ 'testLanguagePageDescription' ]: '';
             $testLanguagePageKeywords =      isset( $request[ 'data' ][ 'testLanguagePageKeywords' ] )?      $request[ 'data' ][ 'testLanguagePageKeywords' ]: '';
 
+            $partOfSpeechList =      isset( $request[ 'data' ][ 'partOfSpeechList' ] )?      $request[ 'data' ][ 'partOfSpeechList' ]: [];
+
+
 
 
 
@@ -98,7 +106,21 @@ trait SaveMainPageChangesTrait{
             $this->SetLanguageActiveList( $languageActiveList );
 
 
+            for( $i = 0; $i < count( $partOfSpeechList ); $i++){
+                $id = $partOfSpeechList[ $i ][ 'id' ];
+                $name = $partOfSpeechList[ $i ][ 'name' ];
+
+                $partOfSpeech = PartOfSpeech::where( 'id', '=', $id )->first();
+                if( $partOfSpeech !== null ){
+                    $partOfSpeech->name = $name;
+                    $partOfSpeech->save();
+                };
+
+            };
+
+
             $result[ 'mainPage' ] = $this->GetMainPageData( $keyName );
+            $result[ 'partOfSpeechList' ] = $this->GetPartOfSpeechList();
             $result[ 'ok' ] = true;
   
         }else{

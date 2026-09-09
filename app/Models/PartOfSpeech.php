@@ -5,20 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-
-class WordEn extends Model
+class PartOfSpeech extends Model
 {
     use HasFactory;
-
-    protected $table = 'word_en';
+    protected $table = 'part_of_speech';
     protected $fillable = [
-        'en', 
-        'ru',
-        'transcription',
-        'lesson_en_id',
-        'part_of_speech_id',
-
+        'name',
     ];
 
     public $timestamps = false;

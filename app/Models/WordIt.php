@@ -15,6 +15,7 @@ class WordIt extends Model
         'ru',
         'transcription',
         'lesson_it_id',
+        'part_of_speech_id',
 
     ];
     public $timestamps = false;

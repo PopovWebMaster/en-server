@@ -33,6 +33,8 @@ use App\Http\Controllers\Page\Admin\Traits\GetAllLessonsListForTestTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddLessonsIntoTestTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveLessonFromTestTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveSettingsDataChangesTrait;
+use App\Http\Controllers\Page\Admin\Traits\AddNewPartOfSpeechTrait;
+use App\Http\Controllers\Page\Admin\Traits\RemovePartOfSpeechTrait;
 
 
 
@@ -74,6 +76,8 @@ class ApiDevelopmentController extends Controller
     use AddLessonsIntoTestTrait;
     use RemoveLessonFromTestTrait;
     use SaveSettingsDataChangesTrait;
+    use AddNewPartOfSpeechTrait;
+    use RemovePartOfSpeechTrait;
 
     // lessons
     use GetLessonAppWordsListTrait;
@@ -202,6 +206,13 @@ class ApiDevelopmentController extends Controller
                 $result = $this->SaveSettingsDataChanges( $request );
                 break;
 
+            case 'admin/add-new-part-of-speech':
+                $result = $this->AddNewPartOfSpeech( $request );
+                break;
+
+            case 'admin/remove-part-of-speech':
+                $result = $this->RemovePartOfSpeech( $request );
+                break;
 
 
                 

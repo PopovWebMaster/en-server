@@ -180,3 +180,6 @@
 .APS_RepeateCircleLengtn{font-size:1em}
 .OC_InputNumber{font-size:1em;margin:.3em .5em;-webkit-box-flex:1;-ms-flex-positive:1;flex-grow:1;max-width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-ms-flex-line-pack:center;align-content:center}.OC_InputNumber input.OC_Input_inp_number{font-size:.9em;text-align:left;padding:.4em;text-indent:1.4em;background-color:#f7f7f6;border:1px solid #ccc;outline:none;width:8em;margin:0 1em;font-family:Trebuchet MS,Helvetica,sans-serif}.OC_InputNumber input.OC_Input_inp_number:focus{background-color:#fff;border:1px solid #959595}
 .APS_CorrectAnswersLength{font-size:1em}
+.APS_MessageAfterStep_1{font-size:1em}
+.APS_MessageAfterStep_2{font-size:1em}
+.APS_MessageAfterStep_3{font-size:1em}

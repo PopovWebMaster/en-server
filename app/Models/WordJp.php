@@ -15,6 +15,7 @@ class WordJp extends Model
         'ru',
         'transcription',
         'lesson_jp_id',
+        'part_of_speech_id',
 
     ];
     public $timestamps = false;

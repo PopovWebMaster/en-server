@@ -27,6 +27,9 @@ trait GetWordListTrait{
             $ru =               $model->ru === null? '': $model->ru;
             $transcription =    $model->transcription === null? '': $model->transcription;
 
+            $part_of_speech_id =    $model->part_of_speech_id;
+
+
             $audio = [];
             $audioCollection = $this->GetAudioCollectionByWordId( $keyName, $word_id );
             foreach( $audioCollection as $audioModel ){
@@ -55,6 +58,7 @@ trait GetWordListTrait{
                 'transcription' =>  $transcription,
                 'keyName' =>        $keyName,
                 'audio' =>          $audio,
+                'part_of_speech_id' => $part_of_speech_id,
             ] );  
 
 

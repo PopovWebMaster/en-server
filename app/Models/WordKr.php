@@ -15,6 +15,7 @@ class WordKr extends Model
         'ru',
         'transcription',
         'lesson_kr_id',
+        'part_of_speech_id',
 
     ];
     public $timestamps = false;

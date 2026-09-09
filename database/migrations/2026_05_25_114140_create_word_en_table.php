@@ -18,7 +18,6 @@ class CreateWordEnTable extends Migration
             $table->string( 'en', 80 );
             $table->string( 'ru', 80 )->nullable();
             $table->string( 'transcription', 80 )->nullable();
-
             $table->bigInteger('lesson_en_id')->nullable();
 
 

@@ -30,6 +30,10 @@ use App\Http\Controllers\Page\Admin\Post\GetAllLessonsListForTestController;
 use App\Http\Controllers\Page\Admin\Post\AddLessonsIntoTestController;
 use App\Http\Controllers\Page\Admin\Post\RemoveLessonFromTestController;
 use App\Http\Controllers\Page\Admin\Post\SaveSettingsDataChangesController;
+use App\Http\Controllers\Page\Admin\Post\AddNewPartOfSpeechController;
+use App\Http\Controllers\Page\Admin\Post\RemovePartOfSpeechController;
+
+
 
 
 
@@ -97,17 +101,14 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
     Route::post('/add-lessons-into-test', [ AddLessonsIntoTestController::class, 'post' ]);
     Route::post('/remove-lesson-from-test', [ RemoveLessonFromTestController::class, 'post' ]);
     Route::post('/save-settings-data-changes', [ SaveSettingsDataChangesController::class, 'post' ]);
+    Route::post('/add-new-part-of-speech', [ AddNewPartOfSpeechController::class, 'post' ]);
+
+
+    Route::post('/remove-part-of-speech', [ RemovePartOfSpeechController::class, 'post' ]);
 
 
 
 
-
-
-    
-
-
-
-    
 
     
 

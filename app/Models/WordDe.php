@@ -15,6 +15,7 @@ class WordDe extends Model
         'ru',
         'transcription',
         'lesson_de_id',
+        'part_of_speech_id',
 
     ];
     public $timestamps = false;

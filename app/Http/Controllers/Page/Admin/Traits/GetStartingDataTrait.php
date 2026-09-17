@@ -18,6 +18,10 @@ use App\Http\Controllers\Page\Admin\Traits\GetAppDataTrait;
 
 
 use App\Http\Controllers\Page\Admin\Traits\GetPartOfSpeechListTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetTopicsListTrait;
+
+
+
 
 
 
@@ -34,6 +38,7 @@ trait GetStartingDataTrait{
     use GetOneTestDataByTestIdTrait;
     use GetAppDataTrait;
     use GetPartOfSpeechListTrait;
+    use GetTopicsListTrait;
 
     public function GetStartingData( $request, $user ){
         /*
@@ -45,6 +50,7 @@ trait GetStartingDataTrait{
             oneTestData,
             appData,
             partOfSpeechList
+            topicsList
         */
 
         $result = [
@@ -99,6 +105,10 @@ trait GetStartingDataTrait{
 
                             case 'partOfSpeechList':
                                 $result[ 'partOfSpeechList' ] = $this->GetPartOfSpeechList();
+                                break;
+
+                            case 'topicsList':
+                                $result[ 'topicsList' ] = $this->GetTopicsList();
                                 break;
 
 

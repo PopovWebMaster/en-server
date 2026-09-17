@@ -18,6 +18,7 @@ class WordEn extends Model
         'transcription',
         'lesson_en_id',
         'part_of_speech_id',
+        'topic_id',
 
     ];
 

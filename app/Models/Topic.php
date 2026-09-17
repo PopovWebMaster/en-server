@@ -5,19 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WordJp extends Model
+class Topic extends Model
 {
     use HasFactory;
 
-    protected $table = 'word_jp';
+    protected $table = 'topic';
     protected $fillable = [
-        'jp', 
-        'ru',
-        'transcription',
-        'lesson_jp_id',
-        'part_of_speech_id',
-        'topic_id',
-
+        'name', 
     ];
     public $timestamps = false;
 }

@@ -16,6 +16,7 @@ class WordEs extends Model
         'transcription',
         'lesson_es_id',
         'part_of_speech_id',
+        'topic_id',
 
     ];
     public $timestamps = false;

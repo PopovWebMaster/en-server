@@ -44,6 +44,12 @@ trait ValidateWordListTrait{
                     // 'wordList.*.id' =>              [ 'required', 'numeric', 'exists:word_en,id' ],
                     'wordList.*.id' =>              [ 'required', 'numeric', $exists_words ],
 
+                    'wordList.*.part_of_speech_id' =>   [ 'nullable', 'exists:part_of_speech,id' ],
+                    'wordList.*.topic_id' =>            [ 'nullable', 'exists:topic,id' ],
+
+
+                    
+
                     // 'wordList.*.foreign' =>         [ 'nullable', 'regex:'.$regexEN, 'string', 'min:1', 'max:'.$maxEN ],
                     // 'wordList.*.ru' =>              [ 'nullable', 'regex:'.$regexRU, 'string', 'min:1', 'max:'.$maxRU ],
                     'wordList.*.foreign' =>         [ 'nullable', 'string', 'min:1', 'max:'.$maxForeign ],

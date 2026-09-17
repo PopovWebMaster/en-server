@@ -35,6 +35,12 @@ use App\Http\Controllers\Page\Admin\Traits\RemoveLessonFromTestTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveSettingsDataChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewPartOfSpeechTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemovePartOfSpeechTrait;
+use App\Http\Controllers\Page\Admin\Traits\SaveTopicsDataChangesTrait;
+use App\Http\Controllers\Page\Admin\Traits\AddNewTopicTrait;
+use App\Http\Controllers\Page\Admin\Traits\RemoveTopicTrait;
+
+
+
 
 
 
@@ -78,6 +84,9 @@ class ApiDevelopmentController extends Controller
     use SaveSettingsDataChangesTrait;
     use AddNewPartOfSpeechTrait;
     use RemovePartOfSpeechTrait;
+    use SaveTopicsDataChangesTrait;
+    use AddNewTopicTrait;
+    use RemoveTopicTrait;
 
     // lessons
     use GetLessonAppWordsListTrait;
@@ -214,8 +223,25 @@ class ApiDevelopmentController extends Controller
                 $result = $this->RemovePartOfSpeech( $request );
                 break;
 
+            case 'admin/save-topics-data-changes':
+                $result = $this->SaveTopicsDataChanges( $request );
+                break;
 
-                
+            case 'admin/add-new-topic':
+                $result = $this->AddNewTopic( $request );
+                break;
+
+            case 'admin/remove-topic':
+                $result = $this->RemoveTopic( $request );
+                break;
+
+
+
+
+
+
+
+
 
 
             case 'lessons/get-lesson-app-words-list':

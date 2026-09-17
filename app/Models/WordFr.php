@@ -16,6 +16,7 @@ class WordFr extends Model
         'transcription',
         'lesson_fr_id',
         'part_of_speech_id',
+        'topic_id',
 
     ];
     public $timestamps = false;

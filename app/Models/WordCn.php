@@ -16,6 +16,7 @@ class WordCn extends Model
         'transcription',
         'lesson_cn_id',
         'part_of_speech_id',
+        'topic_id',
 
     ];
     public $timestamps = false;

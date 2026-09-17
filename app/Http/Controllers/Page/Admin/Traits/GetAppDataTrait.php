@@ -6,9 +6,12 @@ use App\Http\Controllers\Traits\MainData\MainDataTrait;
 
 // use App\Models\PageTitle;
 
+use App\Http\Controllers\Page\Admin\Traits\GetPartOfSpeechListTrait;
+
 trait GetAppDataTrait{
 
     use MainDataTrait;
+    use GetPartOfSpeechListTrait;
 
     public function GetAppData( $keyName ){
 
@@ -27,7 +30,8 @@ trait GetAppDataTrait{
             'messageAfterStep_2' => $this->GetMessageAfterStep_2(),
             'messageAfterStep_3' => $this->GetMessageAfterStep_3(),
         ];
-
+        
+        $result[ 'partOfSpeechList' ] = $this->GetPartOfSpeechList();
 
         
         

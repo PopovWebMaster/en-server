@@ -10,10 +10,9 @@ use App\Http\Controllers\ValidateTraits\ValidateWordRuTrait;
 use App\Http\Controllers\ValidateTraits\ValidateTranscriptionTrait;
 use App\Http\Controllers\ValidateTraits\ValidateAudioFilesArrTrait;
 use App\Http\Controllers\ValidateTraits\ValidateWordForeignTrait;
+use App\Http\Controllers\ValidateTraits\ValidatePartOfSpeechIdTrait;
 
 
-
-// use App\Http\Controllers\Page\Admin\Traits\CreateFreeWordEnTrait; // <<<<<<<<<<<<<<<<<<
 use App\Http\Controllers\Page\Admin\Traits\CreateFreeWordTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
 use App\Http\Controllers\Page\Admin\Traits\MoveWordToLessonTrait;
@@ -28,10 +27,10 @@ trait AddNewWordTrait{
     use ValidateTranscriptionTrait;
     use ValidateAudioFilesArrTrait;
     use ValidateWordForeignTrait;
-    // use CreateFreeWordEnTrait;// <<<<<<<<<<<<<<<<<<
     use CreateFreeWordTrait;
     use GetWordListTrait;
     use MoveWordToLessonTrait;
+    use ValidatePartOfSpeechIdTrait;
 
     public function AddNewWord( $request, $user ){
 
@@ -50,34 +49,40 @@ trait AddNewWordTrait{
                     if( $validateTranscription[ 'ok' ] ){
                         $validateFiles = $this->ValidateAudioFilesArr( $request );
                         if( $validateFiles[ 'ok' ] ){
-                            $validateWordForeign = $this->ValidateWordForeign( $request, true );
+                            $validateWordForeign = $this->ValidateWordForeign( $request );
                             if( $validateWordForeign[ 'ok' ] ){
+                                $validatePartOfSpeechId = $this->ValidatePartOfSpeechId( $request );
+                                if( $validatePartOfSpeechId[ 'ok' ]){
+                                    $keyName =          $validadeKeyName[ 'value' ];
+                                    $word_ru =          $validateWordRu[ 'value' ];
+                                    $transcription =    $validateTranscription[ 'value' ];
+                                    $files =            $validateFiles[ 'value' ];
+                                    $lessonId =         $validateLessonId[ 'value' ];
+                                    $wordForeign =      $validateWordForeign[ 'value' ];
+                                    $partOfSpeechId =      $validatePartOfSpeechId[ 'value' ];
 
-                                $keyName =          $validadeKeyName[ 'value' ];
-                                $word_ru =          $validateWordRu[ 'value' ];
-                                $transcription =    $validateTranscription[ 'value' ];
-                                $files =            $validateFiles[ 'value' ];
-                                $lessonId =         $validateLessonId[ 'value' ];
-                                $wordForeign =      $validateWordForeign[ 'value' ];
 
-                                $wordId = $this->CreateFreeWord([
-                                    'keyName' =>        $keyName,
-                                    'word_foreign' =>   $wordForeign,
-                                    'word_ru' =>        $word_ru,
-                                    'transcription' =>  $transcription,
-                                    'files' =>          $files,
-                                ]);
+                                    $wordId = $this->CreateFreeWord([
+                                        'keyName' =>        $keyName,
+                                        'word_foreign' =>   $wordForeign,
+                                        'word_ru' =>        $word_ru,
+                                        'transcription' =>  $transcription,
+                                        'files' =>          $files,
+                                        'partOfSpeechId' => $partOfSpeechId,
+                                    ]);
 
-                                $this->MoveWordToLesson([
-                                    'keyName' =>    $keyName,
-                                    'lessonId' =>   $lessonId,
-                                    'wordId' =>     $wordId,
+                                    $this->MoveWordToLesson([
+                                        'keyName' =>    $keyName,
+                                        'lessonId' =>   $lessonId,
+                                        'wordId' =>     $wordId,
 
-                                ]);
+                                    ]);
 
-                                $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
-                                $result[ 'ok' ] = true;
-
+                                    $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
+                                    $result[ 'ok' ] = true;
+                                }else{
+                                    $result[ 'message' ] = $validatePartOfSpeechId[ 'message' ];
+                                };
                             }else{
                                 $result[ 'message' ] = $validateWordForeign[ 'message' ];
                             };

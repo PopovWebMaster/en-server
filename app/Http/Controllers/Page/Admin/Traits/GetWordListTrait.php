@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Page\Admin\Traits;
 
 use App\Http\Controllers\Page\Admin\Traits\GetAudioCollectionByWordIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetWordCollectionByLessonIdTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetPartOfSpeechListTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetTopicsListTrait;
 
 
 use App\Http\Controllers\Traits\GetAudioBase64Trait;
@@ -15,10 +17,25 @@ trait GetWordListTrait{
     use GetAudioBase64Trait;
     use GetAudioCollectionByWordIdTrait;
     use GetWordCollectionByLessonIdTrait;
+    use GetPartOfSpeechListTrait;
+    use GetTopicsListTrait;
 
     public function GetWordList( $keyName, $lessonId = null ){
 
         $result = [];
+
+        $POSList = $this->GetPartOfSpeechList();
+        $posObj = [];
+        for( $i = 0; $i < count( $POSList ); $i++ ){
+            $id = $POSList[$i][ 'id' ];
+            $posObj[ $id ] = true;
+        };
+        $topicsList = $this->GetTopicsList();
+        $topicsObj = [];
+        for( $i = 0; $i < count( $topicsList ); $i++ ){
+            $id = $topicsList[$i][ 'id' ];
+            $topicsObj[ $id ] = true;
+        };
 
         $wordCollection = $this->GetWordCollectionByLessonId( $keyName, $lessonId );
         foreach( $wordCollection as $model ){
@@ -28,6 +45,34 @@ trait GetWordListTrait{
             $transcription =    $model->transcription === null? '': $model->transcription;
 
             $part_of_speech_id =    $model->part_of_speech_id;
+            $topic_id =             $model->topic_id;
+
+            $mustSave = false;
+
+            if( $part_of_speech_id !== null ){
+                if( isset( $posObj[ $part_of_speech_id ] )){
+
+                }else{
+                    $part_of_speech_id = null;
+                    $model->part_of_speech_id = null;
+                    $mustSave = true;
+                };
+            };
+           
+            if( $topic_id !== null ){
+                if( isset( $topicsObj[ $topic_id ] ) ){
+
+                }else{
+                    $topic_id = null;
+                    $model->topic_id = null;
+                    $mustSave = true;
+                };
+            };
+
+            if( $mustSave ){
+                $model->save();
+            };
+
 
 
             $audio = [];
@@ -59,6 +104,7 @@ trait GetWordListTrait{
                 'keyName' =>        $keyName,
                 'audio' =>          $audio,
                 'part_of_speech_id' => $part_of_speech_id,
+                'topic_id' =>       $topic_id,
             ] );  
 
 

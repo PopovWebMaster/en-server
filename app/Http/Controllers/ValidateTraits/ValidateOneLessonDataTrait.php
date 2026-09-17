@@ -114,6 +114,7 @@ trait ValidateOneLessonDataTrait{
                 'wordList' =>                   [ 'nullable', 'array' ],
                 // 'wordList.*.id' =>              [ 'required', 'numeric', 'exists:word_en,id' ],
                 'wordList.*.id' =>              [ 'required', 'numeric', $exists_words ],
+                'wordList.*.part_of_speech_id' => [ 'nullable', 'numeric' ],
 
                 // 'wordList.*.foreign' =>         [ 'nullable', 'regex:'.$regexEN, 'string', 'min:1', 'max:'.$maxEN ],
                 // 'wordList.*.ru' =>              [ 'nullable', 'regex:'.$regexRU, 'string', 'min:1', 'max:'.$maxRU ],

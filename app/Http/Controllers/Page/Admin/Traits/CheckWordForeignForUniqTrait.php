@@ -23,16 +23,23 @@ trait CheckWordForeignForUniqTrait{
 
         $validadeKeyName = $this->ValidateLanguageKeyName( $request );
         if( $validadeKeyName[ 'ok' ] ){
+
+            $kayName =      $validadeKeyName[ 'value' ];
             $validateWordForeign = $this->ValidateWordForeign( $request, true );
+
             if( $validateWordForeign[ 'ok' ] ){
-                $kayName =      $validadeKeyName[ 'value' ];
+                
                 $wordForeign =  $validateWordForeign[ 'value' ];
 
                 $result[ 'ok' ] = true;
                 $result[ 'isUniq' ] = true;
 
             }else{
+
+                // $result[ 'ok' ] = true;
+                $result[ 'isUniq' ] = false;
                 $result[ 'message' ] = $validateWordForeign[ 'message' ];
+
             };
         }else{
             $result[ 'message' ] = $validadeKeyName[ 'message' ];

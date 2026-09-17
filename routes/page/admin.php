@@ -32,6 +32,12 @@ use App\Http\Controllers\Page\Admin\Post\RemoveLessonFromTestController;
 use App\Http\Controllers\Page\Admin\Post\SaveSettingsDataChangesController;
 use App\Http\Controllers\Page\Admin\Post\AddNewPartOfSpeechController;
 use App\Http\Controllers\Page\Admin\Post\RemovePartOfSpeechController;
+use App\Http\Controllers\Page\Admin\Post\SaveTopicsDataController;
+use App\Http\Controllers\Page\Admin\Post\AddNewTopicController;
+use App\Http\Controllers\Page\Admin\Post\RemoveTopicController;
+
+
+
 
 
 
@@ -105,12 +111,12 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
 
 
     Route::post('/remove-part-of-speech', [ RemovePartOfSpeechController::class, 'post' ]);
+    Route::post('/save-topics-data-changes', [ SaveTopicsDataController::class, 'post' ]);
+    Route::post('/add-new-topic', [ AddNewTopicController::class, 'post' ]);
+    Route::post('/remove-topic', [ RemoveTopicController::class, 'post' ]);
 
 
 
-
-
-    
 
 
 

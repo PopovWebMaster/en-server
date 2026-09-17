@@ -16,8 +16,18 @@ use App\Models\WordJp;
 use App\Models\WordKr;
 use App\Models\WordTr;
 
+use App\Http\Controllers\Page\Admin\Traits\GetWordModelByRequestTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetLessonModelByIdTrait;
+use App\Http\Controllers\Page\Admin\Traits\GetPartOfSpeechListTrait;
+
+
+
 
 trait ValidateWordForeignTrait{
+
+    use GetWordModelByRequestTrait;
+    use GetLessonModelByIdTrait;
+    use GetPartOfSpeechListTrait;
 
     public function ValidateWordForeign( $request, $uniq = false ){
 
@@ -47,44 +57,49 @@ trait ValidateWordForeignTrait{
         }else{
             if( $uniq === true ){
 
-                $wordModel = null;
+                $wordCollection = $this->GetWordModelByRequest( $keyName, strtolower( $keyName ), $wordForeign );
 
-                if( $keyName === 'EN' ){
-                    $wordModel = WordEn::where( 'en', '=', $wordForeign )->first();
-
-                }else if( $keyName === 'DE' ){
-                    $wordModel = WordDe::where( 'de', '=', $wordForeign )->first();
-
-                }else if( $keyName === 'CN' ){
-                    $wordModel = WordCn::where( 'cn', '=', $wordForeign )->first();
-
-                }else if( $keyName === 'FR' ){
-                    $wordModel = WordFr::where( 'fr', '=', $wordForeign )->first();
-
-                }else if( $keyName === 'ES' ){
-                    $wordModel = WordEs::where( 'es', '=', $wordForeign )->first();
-
-                }else if( $keyName === 'IT' ){
-                    $wordModel = WordIt::where( 'it', '=', $wordForeign )->first();
-
-                }else if( $keyName === 'GR' ){
-                    $wordModel = WordGr::where( 'gr', '=', $wordForeign )->first();
-
-                }else if( $keyName === 'JP' ){
-                    $wordModel = WordJp::where( 'jp', '=', $wordForeign )->first();
-
-                }else if( $keyName === 'KR' ){
-                    $wordModel = WordKr::where( 'kr', '=', $wordForeign )->first();
-
-                }else if( $keyName === 'TR' ){
-                    $wordModel = WordTr::where( 'tr', '=', $wordForeign )->first();
-
-                };
-
-                if( $wordModel === null ){
+                if( count( $wordCollection ) === 0 ){
                     $result[ 'ok' ] = true;
                 }else{
-                    $result[ 'message' ] = "Это слово уже существует - ".$wordForeign;
+                    $message = [];
+                    $leson_key = "lesson_".strtolower( $keyName )."_id";
+
+                    $POS = $this->GetPartOfSpeechList();
+
+                    foreach( $wordCollection as $model ){
+                       $lesson_id = $model->$leson_key;
+                       $part_of_speech_id = $model->part_of_speech_id;
+
+                       $POS_Name = ' (Часть речи не указана) ';
+                       for( $i = 0; $i < count( $POS ); $i++ ){
+                            if( $POS[ $i ]['id'] === $part_of_speech_id ){
+                                $POS_Name = ' '.$POS[ $i ]['name'].' ';
+                            };
+                       };
+
+                       $lessonName = 'в не присвоенных словах ';
+                       if( $lesson_id !== null ){
+                            $lessonModel = $this->GetLessonModelById( $keyName, $lesson_id );
+                            if( $lessonModel === null ){
+                                $lessonName = 'в уроке с id-'.$lesson_id;
+                            }else{
+                                $title = $lessonModel->title;
+                                $lessonName = 'в уроке "'.$title.'"';
+                            };
+                       };
+                        array_push( $message, $wordForeign.$POS_Name." уже существует ".$lessonName  );
+
+                    };
+
+                    $text = '';
+                    for( $i = 0; $i < count( $message ); $i++ ){
+                        $text = $message[ $i ].', ';
+                    };
+
+                    $result[ 'message' ] = $text;
+                    // $result[ 'ok' ] = true;
+
                 };
 
             }else{

@@ -16,6 +16,7 @@ class WordGr extends Model
         'transcription',
         'lesson_gr_id',
         'part_of_speech_id',
+        'topic_id',
 
     ];
     public $timestamps = false;

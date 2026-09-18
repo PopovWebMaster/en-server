@@ -142,6 +142,7 @@ trait SaveOneLessonDataChangesTrait{
                     $transcription =    $wordList[ $i ][ 'transcription' ];
                     $audio =            $wordList[ $i ][ 'audio' ];
                     $part_of_speech_id = $wordList[ $i ][ 'part_of_speech_id' ];
+                    $topic_id =         $wordList[ $i ][ 'topic_id' ];
 
                     $wordCollection = $this->GetWordCollectionByLessonId( $keyName, $lessonId );
                     $wordModel = $wordCollection->where( 'id', '=', $id )->first();
@@ -152,6 +153,7 @@ trait SaveOneLessonDataChangesTrait{
                         $wordModel->ru = $ru;
                         $wordModel->transcription = $transcription;
                         $wordModel->part_of_speech_id = $part_of_speech_id;
+                        $wordModel->topic_id = $topic_id;
 
                         $wordModel->save();
                     };

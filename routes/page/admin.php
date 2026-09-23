@@ -35,6 +35,8 @@ use App\Http\Controllers\Page\Admin\Post\RemovePartOfSpeechController;
 use App\Http\Controllers\Page\Admin\Post\SaveTopicsDataController;
 use App\Http\Controllers\Page\Admin\Post\AddNewTopicController;
 use App\Http\Controllers\Page\Admin\Post\RemoveTopicController;
+use App\Http\Controllers\Page\Admin\Post\CheckWordForeignListForUniqController;
+
 
 
 
@@ -114,9 +116,13 @@ Route::prefix('/admin')->middleware( [ 'auth', 'web', 'admin.only_admin_post' ] 
     Route::post('/save-topics-data-changes', [ SaveTopicsDataController::class, 'post' ]);
     Route::post('/add-new-topic', [ AddNewTopicController::class, 'post' ]);
     Route::post('/remove-topic', [ RemoveTopicController::class, 'post' ]);
+    Route::post('/chack-word-foreign-list-for-uniq', [ CheckWordForeignListForUniqController::class, 'post' ]);
 
 
+ 
+    
 
+    
 
 
 

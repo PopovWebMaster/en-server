@@ -78,7 +78,7 @@ trait AddNewWordTrait{
 
                                     ]);
 
-                                    $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
+                                    $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId, true  );
                                     $result[ 'ok' ] = true;
                                 }else{
                                     $result[ 'message' ] = $validatePartOfSpeechId[ 'message' ];
@@ -112,78 +112,6 @@ trait AddNewWordTrait{
             }else{
                 $result[ 'message' ] = $validateLessonId[ 'message' ];
             };
-
-
-
-
-
-
-            // $validateWordRu = $this->ValidateWordRu( $request );
-            // if( $validateWordRu[ 'ok' ] ){
-            //     $validateTranscription = $this->ValidateTranscription( $request );
-            //     if( $validateTranscription[ 'ok' ] ){
-            //         $validateFiles = $this->ValidateAudioFilesArr( $request );
-            //         if( $validateFiles[ 'ok' ] ){
-
-            //             $kayName =          $validadeKeyName[ 'value' ];
-            //             $word_ru =          $validateWordRu[ 'value' ];
-            //             $transcription =    $validateTranscription[ 'value' ];
-            //             $files =            $validateFiles[ 'value' ];
-            //             $lessonId =         isset( $request[ 'data' ][ 'lessonId' ] )? isset( $request[ 'data' ][ 'lessonId' ] )? $request[ 'data' ][ 'lessonId' ]: null: null;;
-
-            //             $validateWordForeign = $this->ValidateWordForeign( $request, true );
-
-            //             if( $validateWordForeign[ 'ok' ] ){
-                            
-            //                 // $word_en = $validateWordForeign[ 'value' ];
-
-            //                 // $wordId = $this->CreateFreeWordEn([
-            //                 //     'kayName' =>        $kayName,
-            //                 //     'word_en' =>        $word_en,
-            //                 //     'word_ru' =>        $word_ru,
-            //                 //     'transcription' =>  $transcription,
-            //                 //     'files' =>          $files,
-            //                 // ]);
-
-            //                 // $this->MoveWordToLesson([
-            //                 //     'keyName' =>    $kayName,
-            //                 //     'lessonId' =>   $lessonId,
-            //                 //     'wordId' =>     $wordId,
-
-            //                 // ]);
-
-
-            //                 // $result[ 'wordList' ] = $this->GetWordList( $kayName, $lessonId );
-            //                 // $result[ 'ok' ] = true;
-
-            //             }else{
-            //                 $result[ 'message' ] = $validateWordForeign[ 'message' ];
-            //             };
-            //         }else{
-            //             $result[ 'message' ] = $validateFiles[ 'message' ];
-            //         };
-            //     }else{
-            //         $result[ 'message' ] = $validateTranscription[ 'message' ];
-            //     };
-            // }else{
-            //     $result[ 'message' ] = $validateWordRu[ 'message' ];
-            // };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         }else{

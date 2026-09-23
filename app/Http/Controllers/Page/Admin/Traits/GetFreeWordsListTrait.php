@@ -23,7 +23,7 @@ trait GetFreeWordsListTrait{
 
             $keyName = $validateKeyName[ 'value' ];
 
-            $result[ 'wordList' ] = $this->GetWordList( $keyName, null );
+            $result[ 'wordList' ] = $this->GetWordList( $keyName, null, true  );
             $result[ 'ok' ] = true;
                 
         }else{

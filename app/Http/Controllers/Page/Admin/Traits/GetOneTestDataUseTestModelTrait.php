@@ -44,7 +44,7 @@ trait GetOneTestDataUseTestModelTrait{
             if( $lessonModel === null ){
                 $testLessons->delete();
             }else{
-                $lessonWordsCount = count( $this->GetWordList( $keyName, $lessonId ) );
+                $lessonWordsCount = count( $this->GetWordList( $keyName, $lessonId, true  ) );
                 $wordsCount = $wordsCount + $lessonWordsCount;
 
                 array_push( $lessons, [

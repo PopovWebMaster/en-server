@@ -37,7 +37,7 @@ trait RemoveLessonTrait{
                 $keyName =          $validateKeyName[ 'value' ];
                 $lessonId =         $validateLessonId[ 'value' ];
 
-                $words = $this->GetWordList( $keyName, $lessonId );
+                $words = $this->GetWordList( $keyName, $lessonId, true  );
 
                 for( $i = 0; $i < count( $words ); $i++ ){
                     $wordId = $words[ $i ][ 'id' ];

@@ -68,22 +68,6 @@ trait GetOneLessonDataTrait{
             ] );
         };
 
-        // if( $keyName === 'EN' ){
-        //     $lessonEn = LessonEn::find( $lessonId  );
-        //     if( $lessonEn !== null ){
-
-        //         $result[ 'lessonTitle' ] =          isset( $lessonEn->title )? $lessonEn->title: '';
-        //         $result[ 'lessonDescription' ] =    isset( $lessonEn->description )? $lessonEn->description: '';
-        //         $result[ 'lessonLevelName' ] =      isset( $lessonEn->level_name )? $lessonEn->level_name: '';
-        //         $result[ 'lessonIsActive' ] =       ( bool ) $lessonEn->is_active;
-        //         $result[ 'lessonOrder' ] =          $lessonEn->order;
-        //         $result[ 'lessonIsPaid' ] =         ( bool ) $lessonEn->is_paid;
-        //         $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
-
-        //     };
-
-
-        // };
 
         $lessonModel = $this->GetLessonModelById( $keyName, $lessonId );
         if( $lessonModel !== null ){
@@ -94,7 +78,7 @@ trait GetOneLessonDataTrait{
             $result[ 'lessonIsActive' ] =       ( bool ) $lessonModel->is_active;
             $result[ 'lessonOrder' ] =          $lessonModel->order;
             $result[ 'lessonIsPaid' ] =         ( bool ) $lessonModel->is_paid;
-            $result[ 'wordList' ] =             $this->GetWordList( $keyName, $lessonId );
+            $result[ 'wordList' ] =             $this->GetWordList( $keyName, $lessonId, true  );
 
         };
 

@@ -38,6 +38,8 @@ use App\Http\Controllers\Page\Admin\Traits\RemovePartOfSpeechTrait;
 use App\Http\Controllers\Page\Admin\Traits\SaveTopicsDataChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewTopicTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveTopicTrait;
+use App\Http\Controllers\Page\Admin\Traits\CheckWordForeignListForUniqTrait;
+
 
 
 
@@ -87,6 +89,7 @@ class ApiDevelopmentController extends Controller
     use SaveTopicsDataChangesTrait;
     use AddNewTopicTrait;
     use RemoveTopicTrait;
+    use CheckWordForeignListForUniqTrait;
 
     // lessons
     use GetLessonAppWordsListTrait;
@@ -235,10 +238,14 @@ class ApiDevelopmentController extends Controller
                 $result = $this->RemoveTopic( $request );
                 break;
 
+            case 'admin/chack-word-foreign-list-for-uniq':
+                $result = $this->CheckWordForeignListForUniq( $request );
+                break;
 
 
 
 
+// admin/chack-word-foreign-list-for-uniq
 
 
 

@@ -65,7 +65,7 @@ trait SaveWordListChangesTrait{
                     };
 
 
-                    $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
+                    $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId, true  );
                     $result[ 'ok' ] = true;
 
                 }else{

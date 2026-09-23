@@ -18,7 +18,7 @@ trait GetWordsByLessonIdTrait{
             а не в админку к трейтам, разбираясь где там чего.
         */
 
-        $result = $this->GetWordList( $keyName, $lessonId );
+        $result = $this->GetWordList( $keyName, $lessonId, true );
 
         return $result;
         

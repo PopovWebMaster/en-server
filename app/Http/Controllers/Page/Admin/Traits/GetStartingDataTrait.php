@@ -77,7 +77,7 @@ trait GetStartingDataTrait{
 
                         switch( $item ){
                             case 'wordList':
-                                $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
+                                $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId, true  );
                                 break;
 
                             case 'lessonList':

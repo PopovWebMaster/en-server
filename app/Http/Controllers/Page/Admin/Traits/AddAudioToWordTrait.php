@@ -65,7 +65,7 @@ trait AddAudioToWordTrait{
 
                         };
 
-                        $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
+                        $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId, true );
                         $result[ 'ok' ] = true;
 
                     }else{
@@ -73,37 +73,7 @@ trait AddAudioToWordTrait{
 
                     };
 
-                    // if( $keyName === 'EN' ){
-                    //     $validateWordEnId = $this->ValidateWordEnId( $request );
-                    // };
 
-                    // if( $validateWordEnId === null ){
-                    //     $result[ 'message' ] = 'Не прописан метод для языка '.$keyName;
-                    // }else{
-
-                        // $files = $validateFiles[ 'value' ];
-                        // $foreignWordId =    $validateWordEnId[ 'value' ];
-                        // $lessonId =         $validateLessonId[ 'value' ];
-
-                        // for( $i = 0; $i < count( $files ); $i++ ){
-                        //     $name = $files[ $i ][ 'name' ];
-                        //     $base64 = $files[ $i ][ 'base64' ];
-
-                        //     $res = $this->CreateAudioFile([
-                        //         'keyName' =>    $keyName,
-                        //         'word_foreign_id' => $foreignWordId, 
-                        //         'name' =>       $name,
-                        //         'base64' =>     $base64,
-                        //         'lessonId' =>   $lessonId
-                        //     ]);
-
-
-                        // };
-
-                        // $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId );
-                        // $result[ 'ok' ] = true;
-
-                    // };
                 }else{
                     $result[ 'message' ] = $validateFiles[ 'message' ];
                 };

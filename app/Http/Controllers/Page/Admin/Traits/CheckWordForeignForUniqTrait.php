@@ -32,12 +32,14 @@ trait CheckWordForeignForUniqTrait{
                 $wordForeign =  $validateWordForeign[ 'value' ];
 
                 $result[ 'ok' ] = true;
-                $result[ 'isUniq' ] = true;
+                $result[ 'isUniq' ] = $validateWordForeign[ 'isUniq' ];
+                $result[ 'message' ] = $validateWordForeign[ 'message' ];
+                // isUniq
 
             }else{
 
                 // $result[ 'ok' ] = true;
-                $result[ 'isUniq' ] = false;
+                // $result[ 'isUniq' ] = false;
                 $result[ 'message' ] = $validateWordForeign[ 'message' ];
 
             };

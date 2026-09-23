@@ -9,6 +9,8 @@ use App\Http\Controllers\Page\Admin\Traits\GetWordCollectionByLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetPartOfSpeechListTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetTopicsListTrait;
 
+use App\Http\Controllers\Page\Admin\Traits\GetDataOnUniquenessOfForeignWordTrait;
+
 
 use App\Http\Controllers\Traits\GetAudioBase64Trait;
 
@@ -19,8 +21,9 @@ trait GetWordListTrait{
     use GetWordCollectionByLessonIdTrait;
     use GetPartOfSpeechListTrait;
     use GetTopicsListTrait;
+    use GetDataOnUniquenessOfForeignWordTrait;
 
-    public function GetWordList( $keyName, $lessonId = null ){
+    public function GetWordList( $keyName, $lessonId = null, $fullInfo = false ){
 
         $result = [];
 
@@ -96,6 +99,19 @@ trait GetWordListTrait{
                 };
             };
 
+            $message = '';
+
+            if( $fullInfo ){
+                $uniqData = $this->GetDataOnUniquenessOfForeignWord([
+                    'wordForeign' =>    $foreign,
+                    'keyName' =>        $keyName,
+                    'wordId' => $word_id,
+                ]);
+                $message = $uniqData[ 'message' ];
+            };
+
+
+
             array_push( $result, [
                 'id' =>             $word_id,
                 'foreign' =>        $foreign,
@@ -105,6 +121,7 @@ trait GetWordListTrait{
                 'audio' =>          $audio,
                 'part_of_speech_id' => $part_of_speech_id,
                 'topic_id' =>       $topic_id,
+                'message' => $message,
             ] );  
 
 
@@ -115,79 +132,6 @@ trait GetWordListTrait{
         
     }
 
-    // private function GetWordCollectionByLessonId( $keyName, $lessonId ){
-    //     $result = [];
-    //     if( $keyName === 'EN' ){
-    //         $result = WordEn::where( 'lesson_en_id', '=', $lessonId )->get();
-
-    //     }else if( $keyName === 'DE' ){
-    //         $result = WordDe::where( 'lesson_de_id', '=', $lessonId )->get();
-
-    //     }else if( $keyName === 'CN' ){
-    //         $result = WordCn::where( 'lesson_cn_id', '=', $lessonId )->get();
-
-    //     }else if( $keyName === 'FR' ){
-    //         $result = WordFr::where( 'lesson_fr_id', '=', $lessonId )->get();
-
-    //     }else if( $keyName === 'ES' ){
-    //         $result = WordEs::where( 'lesson_es_id', '=', $lessonId )->get();
-
-    //     }else if( $keyName === 'IT' ){
-    //         $result = WordIt::where( 'lesson_it_id', '=', $lessonId )->get();
-
-    //     }else if( $keyName === 'GR' ){
-    //         $result = WordGr::where( 'lesson_gr_id', '=', $lessonId )->get();
-
-    //     }else if( $keyName === 'JP' ){
-    //         $result = WordJp::where( 'lesson_jp_id', '=', $lessonId )->get();
-
-    //     }else if( $keyName === 'KR' ){
-    //         $result = WordKr::where( 'lesson_kr_id', '=', $lessonId )->get();
-
-    //     }else if( $keyName === 'TR' ){
-    //         $result = WordTr::where( 'lesson_tr_id', '=', $lessonId )->get();
-
-    //     };
-
-    //     return $result;
-    // }
-
-    // private function GetAudioCollectionByWordId( $keyName, $wordId ){
-    //     $result = [];
-    //     if( $keyName === 'EN' ){
-    //         $result = AudioEn::where( 'word_en_id', '=', $wordId )->get();
-
-    //     }else if( $keyName === 'DE' ){
-    //         $result = AudioDe::where( 'word_de_id', '=', $wordId )->get();
-            
-    //     }else if( $keyName === 'CN' ){
-    //         $result = AudioCn::where( 'word_cn_id', '=', $wordId )->get();
-            
-    //     }else if( $keyName === 'FR' ){
-    //         $result = AudioFr::where( 'word_fr_id', '=', $wordId )->get();
-            
-    //     }else if( $keyName === 'ES' ){
-    //         $result = AudioEs::where( 'word_es_id', '=', $wordId )->get();
-            
-    //     }else if( $keyName === 'IT' ){
-    //         $result = AudioIt::where( 'word_it_id', '=', $wordId )->get();
-            
-    //     }else if( $keyName === 'GR' ){
-    //         $result = AudioGr::where( 'word_gr_id', '=', $wordId )->get();
-            
-    //     }else if( $keyName === 'JP' ){
-    //         $result = AudioJp::where( 'word_jp_id', '=', $wordId )->get();
-            
-    //     }else if( $keyName === 'KR' ){
-    //         $result = AudioKr::where( 'word_kr_id', '=', $wordId )->get();
-            
-    //     }else if( $keyName === 'TR' ){
-    //         $result = AudioTr::where( 'word_tr_id', '=', $wordId )->get();
-            
-    //     };
-
-    //     return $result;
-    // }
 
     private function GetForeignWordFromModel( $keyName, $model ){
         $result = '';

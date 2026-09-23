@@ -46,7 +46,9 @@ trait MoveWordToLessonTrait{
                     $puth_old = $this->GetAudioFilePuth( $keyName, $old_lessonId );
                     $puth_new = $this->GetAudioFilePuth( $keyName, $lessonId );
 
-                    Storage::disk( 'audio' )->move( $puth_old.'/'.$file_name, $puth_new.'/'.$file_name );
+                    if( Storage::disk('audio')->exists( $puth_old ) ){
+                        Storage::disk( 'audio' )->move( $puth_old.'/'.$file_name, $puth_new.'/'.$file_name );
+                    };
 
                 };
             };

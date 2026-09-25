@@ -30,6 +30,8 @@ trait CreateFreeWordTrait{
         $transcription =    $params[ 'transcription' ];
         $files =            $params[ 'files' ];
         $partOfSpeechId =   isset( $params[ 'partOfSpeechId' ] )? $params[ 'partOfSpeechId' ]: null;
+        $topicId =          isset( $params[ 'topicId' ] )? $params[ 'topicId' ]: null;
+
 
 
         $wordModel = null;
@@ -65,6 +67,7 @@ trait CreateFreeWordTrait{
             $wordModel->ru = $word_ru;
             $wordModel->transcription = $transcription;
             $wordModel->part_of_speech_id = $partOfSpeechId;
+            $wordModel->topic_id = $topicId;
 
             $wordModel->save();
 

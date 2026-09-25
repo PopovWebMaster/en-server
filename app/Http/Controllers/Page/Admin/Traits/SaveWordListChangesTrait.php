@@ -39,9 +39,9 @@ trait SaveWordListChangesTrait{
                     for( $i = 0; $i < count( $wordList ); $i++ ){
 
                         $id =               $wordList[ $i ][ 'id' ];
-                        $foreign =          $wordList[ $i ][ 'foreign' ];
-                        $ru =               $wordList[ $i ][ 'ru' ];
-                        $transcription =    $wordList[ $i ][ 'transcription' ];
+                        $foreign =          $wordList[ $i ][ 'foreign' ] === null? ' ': $wordList[ $i ][ 'foreign' ];
+                        $ru =               $wordList[ $i ][ 'ru' ] === null? ' ': $wordList[ $i ][ 'ru' ];
+                        $transcription =    $wordList[ $i ][ 'transcription' ] === null? ' ': $wordList[ $i ][ 'transcription' ];
                         $audio =            $wordList[ $i ][ 'audio' ];
                         $part_of_speech_id = $wordList[ $i ][ 'part_of_speech_id' ];
                         $topic_id =         $wordList[ $i ][ 'topic_id' ];

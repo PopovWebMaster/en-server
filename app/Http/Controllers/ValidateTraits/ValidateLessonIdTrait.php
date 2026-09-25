@@ -14,14 +14,16 @@ trait ValidateLessonIdTrait{
             'value' => '',
         ];
 
-        $lessonId = isset( $request[ 'data' ][ 'lessonId' ] )? isset( $request[ 'data' ][ 'lessonId' ] )? $request[ 'data' ][ 'lessonId' ]: null: null;
+        $lessonId = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'lessonId' ] )? $request[ 'data' ][ 'lessonId' ]: null: null;
         $keyName = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'keyName' ] )? $request[ 'data' ][ 'keyName' ]: null: null;
 
         $result[ 'value' ] = $lessonId;
 
         $rule = [];
         if( $lessonId === null ){
-            $rule = [ 'nullable', 'numeric', ];
+            // $rule = [ 'nullable', 'numeric', ];
+            $rule = [ 'nullable' ];
+
         }else{
             $keyName_low = strtolower( $keyName );
             $rule = [ 'numeric', 'exists:lesson_'.$keyName_low.',id' ];

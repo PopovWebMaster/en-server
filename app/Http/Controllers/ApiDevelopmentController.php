@@ -39,6 +39,8 @@ use App\Http\Controllers\Page\Admin\Traits\SaveTopicsDataChangesTrait;
 use App\Http\Controllers\Page\Admin\Traits\AddNewTopicTrait;
 use App\Http\Controllers\Page\Admin\Traits\RemoveTopicTrait;
 use App\Http\Controllers\Page\Admin\Traits\CheckWordForeignListForUniqTrait;
+use App\Http\Controllers\Page\Admin\Traits\AddGroupWordsIntoWordsListTrait;
+
 
 
 
@@ -90,6 +92,7 @@ class ApiDevelopmentController extends Controller
     use AddNewTopicTrait;
     use RemoveTopicTrait;
     use CheckWordForeignListForUniqTrait;
+    use AddGroupWordsIntoWordsListTrait;
 
     // lessons
     use GetLessonAppWordsListTrait;
@@ -240,6 +243,11 @@ class ApiDevelopmentController extends Controller
 
             case 'admin/chack-word-foreign-list-for-uniq':
                 $result = $this->CheckWordForeignListForUniq( $request );
+                break;
+
+                
+            case 'admin/add-group-words-into-words-list':
+                $result = $this->AddGroupWordsIntoWordsList( $request );
                 break;
 
 

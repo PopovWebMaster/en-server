@@ -59,7 +59,7 @@ trait AddNewWordTrait{
                                     $files =            $validateFiles[ 'value' ];
                                     $lessonId =         $validateLessonId[ 'value' ];
                                     $wordForeign =      $validateWordForeign[ 'value' ];
-                                    $partOfSpeechId =      $validatePartOfSpeechId[ 'value' ];
+                                    $partOfSpeechId =   $validatePartOfSpeechId[ 'value' ];
 
 
                                     $wordId = $this->CreateFreeWord([

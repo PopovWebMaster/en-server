@@ -8,6 +8,9 @@ use App\Http\Controllers\ValidateTraits\ValidateAppLessonDataTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetAppDataTrait;
 
 
+use Cookie;
+
+
 trait GetLessonAppDataTrait{
 
     use ValidateAppLessonDataTrait;
@@ -36,6 +39,15 @@ trait GetLessonAppDataTrait{
             $result[ 'routeToLessons' ] = route( 'lessons' );
             $result[ 'message' ] = $validateAppLesson[ 'message' ];
         };
+
+
+        // $request->cookie( 'coockieTest', 'Проба кук', 100 );
+
+        // Cookie::queue( Cookie::make( 'coockieTest', 'Проба кук', 100 ));
+
+        $result[ 'coockieTest' ] = $request->cookie( 'coockieTest' );
+
+
 
         return $result;
         

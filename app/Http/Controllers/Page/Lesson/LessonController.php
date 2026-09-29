@@ -70,6 +70,9 @@ class LessonController extends SiteController
         // $this->data[ 'testId' ] =   null; // тут чтоб в тестах не забыть
 
 
+        // dd( $request->cookie( 'coockieTest' ) );
+
+
 
 
         // dd( $this->data );

@@ -6,6 +6,10 @@ use App\Http\Controllers\Page\Lesson\LessonController;
 use App\Http\Controllers\Page\LanguageLesLanguage\LanguageLessonsController;
 use App\Http\Controllers\Page\Lessons\Post\GetLessonAppWordsListController;
 use App\Http\Controllers\Page\Lessons\Post\GetLessonAppDataController;
+use App\Http\Controllers\Page\Lessons\Post\SaveUserLessonResultController;
+
+
+
 
 
 
@@ -20,6 +24,12 @@ Route::prefix('/lessons')->middleware( [ ] )->group(function ($router) {
 
     Route::post('/get-lesson-app-words-list', [ GetLessonAppWordsListController::class, 'post' ]);
     Route::post('/get-lesson-app-data', [ GetLessonAppDataController::class, 'post' ]);
+    Route::post('/save-user-lesson-result', [ SaveUserLessonResultController::class, 'post' ]);
+
+
+
+
+    // 'lessons/save-user-lesson-result'
 
 
 

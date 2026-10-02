@@ -45,7 +45,7 @@ trait GetLessonAppDataTrait{
 
         // Cookie::queue( Cookie::make( 'coockieTest', 'Проба кук', 100 ));
 
-        $result[ 'coockieTest' ] = $request->cookie( 'coockieTest' );
+        // $result[ 'coockieTest' ] = $request->cookie( 'coockieTest' );
 
 
 

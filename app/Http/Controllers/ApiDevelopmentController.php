@@ -52,7 +52,7 @@ use App\Http\Controllers\Page\Admin\Traits\AddGroupWordsIntoWordsListTrait;
 
 use App\Http\Controllers\Page\Lessons\Traits\GetLessonAppWordsListTrait;
 use App\Http\Controllers\Page\Lessons\Traits\GetLessonAppDataTrait;
-
+use App\Http\Controllers\Page\Lessons\Traits\SaveUserLessonResultTrait;
 
 
 
@@ -97,6 +97,7 @@ class ApiDevelopmentController extends Controller
     // lessons
     use GetLessonAppWordsListTrait;
     use GetLessonAppDataTrait;
+    use SaveUserLessonResultTrait;
 
     
     public function store(Request $request)
@@ -253,21 +254,21 @@ class ApiDevelopmentController extends Controller
 
 
 
-// admin/chack-word-foreign-list-for-uniq
-
-
 
 
 
             case 'lessons/get-lesson-app-words-list':
                 $result = $this->GetLessonAppWordsList( $request );
                 break;
+
             case 'lessons/get-lesson-app-data':
                 $result = $this->GetLessonAppData( $request );
                 break;
 
+            case 'lessons/save-user-lesson-result':
+                $result = $this->SaveUserLessonResult( $request );
+                break;
             
-
 
 
 

@@ -89,9 +89,9 @@ return [
             'visibility' => 'private',
         ],
 
-        'words' => [ // не пригодилось
+        'userResult' => [ 
             'driver' => 'local',
-            'root' => public_path('app/public/words/'),
+            'root' => storage_path('app/public/userResult/'),
             'visibility' => 'public',
         ],
 

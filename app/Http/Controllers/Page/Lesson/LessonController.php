@@ -19,6 +19,11 @@ use App\Http\Controllers\Traits\GetOneLessonPageDataTrait;
 use App\Http\Controllers\Traits\GetWordsByLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetAppDataTrait;
 
+use App\Http\Controllers\Traits\GetGuestIdTrait;
+use App\Http\Controllers\Traits\GetOneUserLessonScoreTrait;
+
+// use Storage;
+
 class LessonController extends SiteController
 {
     use AddToDataIsAdminTrait;
@@ -29,6 +34,8 @@ class LessonController extends SiteController
     use GetOneLessonPageDataTrait;
     use GetWordsByLessonIdTrait;
     use GetAppDataTrait;
+    use GetGuestIdTrait;
+    use GetOneUserLessonScoreTrait;
 
     public function __construct(){
         parent::__construct();
@@ -67,6 +74,20 @@ class LessonController extends SiteController
 
         $this->data[ 'keyName' ] =  $keyName;
         $this->data[ 'lessonId' ] = $lessonId;
+
+        $guestId = $this->GetGuestId();
+        if( $guestId !== null ){
+            $lessonScore = $this->GetOneUserLessonScore( $guestId, $keyName, $lessonId );
+            if( $lessonScore !== null ){
+                $this->data[ 'lessonScore' ] = $lessonScore;
+            };
+        };
+
+
+
+
+
+        // dd( $this->data );
         // $this->data[ 'testId' ] =   null; // тут чтоб в тестах не забыть
 
 

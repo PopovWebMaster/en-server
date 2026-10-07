@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Page\Admin\Traits;
 
 use App\Http\Controllers\Traits\MainData\MainDataTrait;
+use App\Http\Controllers\Traits\GetGuestIdTrait;
+use App\Http\Controllers\Traits\GetUserLessonResultTrait;
 
 // use App\Models\PageTitle;
 
@@ -12,6 +14,8 @@ trait GetAppDataTrait{
 
     use MainDataTrait;
     use GetPartOfSpeechListTrait;
+    use GetGuestIdTrait;
+    use GetUserLessonResultTrait;
 
     public function GetAppData( $keyName ){
 
@@ -30,11 +34,15 @@ trait GetAppDataTrait{
             'messageAfterStep_2' => $this->GetMessageAfterStep_2(),
             'messageAfterStep_3' => $this->GetMessageAfterStep_3(),
         ];
+
+        $guestId = $this->GetGuestId();
         
         $result[ 'partOfSpeechList' ] = $this->GetPartOfSpeechList();
+        $result[ 'userResult' ] = $this->GetUserLessonResult([
+            'keyName' =>    $keyName,
+            'guestId' =>    $guestId,
+        ]);
 
-        
-        
         return $result;
         
         

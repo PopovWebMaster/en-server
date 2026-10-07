@@ -9,7 +9,15 @@
 
 @section('topNav')
     @include('layouts.topNav')
+
+@endsection
+
+@section('topHeaderInfo')
     @include('layouts.topHeaderInfo')
+@endsection
+
+@section('topHeaderLessonScore')
+    @include('layouts.topHeaderLessonScore')
 @endsection
 
 

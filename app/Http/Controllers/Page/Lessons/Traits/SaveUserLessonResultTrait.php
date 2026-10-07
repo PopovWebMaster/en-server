@@ -9,6 +9,8 @@ use App\Http\Controllers\Traits\GetGuestIdTrait;
 
 use App\Http\Controllers\Traits\SetUserLessonResultTrait;
 
+use App\Http\Controllers\Traits\GetUserLessonResultTrait;
+
 // use Cookie;
 
 trait SaveUserLessonResultTrait{
@@ -17,6 +19,7 @@ trait SaveUserLessonResultTrait{
     use ValidateLessonIdTrait;
     use GetGuestIdTrait;
     use SetUserLessonResultTrait;
+    use GetUserLessonResultTrait;
 
     public function SaveUserLessonResult( $request ){
 
@@ -32,23 +35,23 @@ trait SaveUserLessonResultTrait{
                 $keyName =  $validateKeyName[ 'value' ];
                 $lessonId = $validateLessonId[ 'value' ];
 
-                $guestId = $this->GetGuestId();
+                $guestId = $this->GetGuestId( true );
 
                 $userResult = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'userResult' ] )? $request[ 'data' ][ 'userResult' ]: []: [];
 
-                $result[ 'guestId' ] = $guestId;
+                // $result[ 'guestId' ] = $guestId;
 
-                $res = $this->SetUserLessonResult([
+                $this->SetUserLessonResult([
                     'keyName' =>    $keyName,
                     'lessonId' =>   $lessonId,
                     'guestId' =>    $guestId,
                     'userResult' => $userResult,
                 ]);
 
-                $result[ 'res' ] = $res;
-
-
-
+                $result[ 'userResult' ] = $this->GetUserLessonResult([
+                    'keyName' =>    $keyName,
+                    'guestId' =>    $guestId,
+                ]);
 
                 $result[ 'ok' ] = true;
             }else{

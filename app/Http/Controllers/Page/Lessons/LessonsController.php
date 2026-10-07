@@ -47,6 +47,8 @@ class LessonsController extends SiteController
 
         $this->data[ 'allLessonsList' ] = $this->GetAllLessonsForView();
 
+        // dd( $this->data );
+
 
 
         return view( 'lessons', $this->data );

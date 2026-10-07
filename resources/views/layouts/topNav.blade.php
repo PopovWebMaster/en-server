@@ -7,7 +7,8 @@
         <span class = 'SL_dom'>.ru</span>
     </a>
     <a href = {{ $links[ 'home' ][ 'route' ] }} class = {{ $links[ 'home' ][ 'isActive' ]? 'isActive': '' }} >Главная</a>
-    <a href = {{ $links[ 'lessons' ][ 'route' ] }} class = {{ $links[ 'lessons' ][ 'isActive' ]? 'isActive': '' }} >Уроков</a>
+    <a href = {{ $links[ 'lessons' ][ 'route' ] }} class = {{ $links[ 'lessons' ][ 'isActive' ]? 'isActive': '' }} >Уроки</a>
+
 </div>
 <div class = 'header_right_wrap'>
     @if( $isAdmin )

@@ -59,6 +59,7 @@
                     <h1>{{ $pageHeader  }}</h1>
 
                     @yield('topHeaderInfo')
+                    @yield('topHeaderLessonScore')
                 </header>
                 <main>
                     <div class = 'scrollContainer'

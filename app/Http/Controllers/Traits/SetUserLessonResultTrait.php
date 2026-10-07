@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Traits;
 
 use Storage;
 
-
 trait SetUserLessonResultTrait{
 
     public function SetUserLessonResult( $params ){
@@ -15,6 +14,8 @@ trait SetUserLessonResultTrait{
         $userResult = $params[ 'userResult' ];
 
         $file = '/'.$guestId.'/'.$keyName.'/'.$lessonId.'.json';
+
+        $userResult[ 'lessonId' ] = $lessonId;
 
         $json = json_encode( $userResult, JSON_UNESCAPED_UNICODE );
 

@@ -8,16 +8,20 @@ use App\Http\Controllers\Traits\GetLessonsListForViewTrait;
 use App\Http\Controllers\Traits\MainData\MainDataTrait;
 
 
+
+
 trait GetAllLessonsForViewTrait{
 
     use GetLessonsListForViewTrait;
     use MainDataTrait;
+    
 
     public function GetAllLessonsForView(){
 
         $result = [];
 
         $languageActiveList = $this->GetLanguageActiveList();
+
 
         for( $i = 0; $i < count( $languageActiveList ); $i++ ){
             $keyName = $languageActiveList[ $i ];
@@ -35,6 +39,8 @@ trait GetAllLessonsForViewTrait{
             if( count( $languageActiveList ) > 1 ){
                 $buttonIsActive = true;
             };
+
+
 
             $result[ $keyName ] = [
                 'keyName' =>        $keyName,

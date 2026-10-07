@@ -27,7 +27,16 @@
                     
 
                 </h4>
-                <p class = 'LLFOL_description'>{{ $allLessonsList[ $keyName ][ 'lessons' ][ $i ][ 'lessonSchortDescription' ] }}</p>
+                <div class = 'LLFOL_row_2'>
+                    <p class = 'LLFOL_description'>{{ $allLessonsList[ $keyName ][ 'lessons' ][ $i ][ 'lessonSchortDescription' ] }}</p>
+                    @if( $allLessonsList[ $keyName ][ 'lessons' ][ $i ][ 'lessonScore' ] !== null )
+                        <div class = 'LLFOL_score'>
+                            <span class = 'LLFOL_score_text'>Балл за урок:</span>
+                            <span class = 'LLFOL_score_num' id = 'scoreNum'>{{ $allLessonsList[ $keyName ][ 'lessons' ][ $i ][ 'lessonScore' ] }}</span>
+                        </div>
+                    @endif
+                    
+                </div>
             </div>
         </a>
     @endfor

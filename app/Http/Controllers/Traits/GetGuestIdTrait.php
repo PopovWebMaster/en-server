@@ -8,7 +8,7 @@ use App\Models\GuestId;
 
 trait GetGuestIdTrait{
 
-    public function GetGuestId(){
+    public function GetGuestId( $createIfNotExist = false ){
 
         $result = null;
 
@@ -20,12 +20,14 @@ trait GetGuestIdTrait{
 
         if( $cookieVal === null ){
 
-            $guestId = new GuestId;
-            $guestId->last_activity_sec = $last_activity_sec;
-            $guestId->save();
-            $result = $guestId->id;
+            if( $createIfNotExist === true ){
+                $guestId = new GuestId;
+                $guestId->last_activity_sec = $last_activity_sec;
+                $guestId->save();
+                $result = $guestId->id;
 
-            Cookie::queue( Cookie::make( 'guestId', $result, $shelfLife ) );
+                Cookie::queue( Cookie::make( 'guestId', $result, $shelfLife ) );
+            };
 
         }else{
 
@@ -33,12 +35,17 @@ trait GetGuestIdTrait{
 
             if( $guestId === null ){
 
-                $guestId = new GuestId;
-                $guestId->last_activity_sec = $last_activity_sec;
-                $guestId->save();
-                $result = $guestId->id;
+                if( $createIfNotExist === true ){
+                    $guestId = new GuestId;
+                    $guestId->last_activity_sec = $last_activity_sec;
+                    $guestId->save();
+                    $result = $guestId->id;
 
-                Cookie::queue( Cookie::make( 'guestId', $result, $shelfLife ) );
+                    Cookie::queue( Cookie::make( 'guestId', $result, $shelfLife ) );
+
+                }else{
+                    Cookie::queue( Cookie::make( 'guestId', null, $shelfLife ) );
+                };
 
             }else{
 

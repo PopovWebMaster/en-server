@@ -11,12 +11,22 @@
 
 </div>
 <div class = 'header_right_wrap'>
+    @if( isset( $mySuccessList ) )
+    <div class = 'MySuccessBtn'>
+        <span class = 'MySuccessBtn_text'>Мой успех:</span>
+
+        @foreach( $mySuccessList as $item )
+            <span class = 'MySuccessBtn_count'><img src = "{{ $item[ 'icon' ] }}"/>{{ $item[ 'countString' ] }}</span>
+        @endforeach
+
+        
+    </div>
+    @endif
     @if( $isAdmin )
         <a href = '/admin'>admin</a>
     @endif
     @if( Auth::check() )
         <a href = '{{ $links[ 'logout' ][ 'route' ] }}' >Выйти</a>
-    @else
-        <a href = '{{ $links[ 'login' ][ 'route' ] }}' class = "BC_CA_nav_login">Войти</a>
     @endif
+    
 </div>

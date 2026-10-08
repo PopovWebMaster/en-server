@@ -21,6 +21,7 @@ use App\Http\Controllers\Page\Admin\Traits\GetAppDataTrait;
 
 use App\Http\Controllers\Traits\GetGuestIdTrait;
 use App\Http\Controllers\Traits\GetOneUserLessonScoreTrait;
+// use App\Http\Controllers\Traits\GetMySuccessStringTrait;
 
 // use Storage;
 
@@ -36,6 +37,7 @@ class LessonController extends SiteController
     use GetAppDataTrait;
     use GetGuestIdTrait;
     use GetOneUserLessonScoreTrait;
+    // use GetMySuccessStringTrait;
 
     public function __construct(){
         parent::__construct();
@@ -82,6 +84,9 @@ class LessonController extends SiteController
                 $this->data[ 'lessonScore' ] = $lessonScore;
             };
         };
+
+        // $this->data[ 'mySuccessString' ] = $this->GetMySuccessString( $guestId, $keyName );
+
 
 
 

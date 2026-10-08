@@ -13,6 +13,9 @@ use App\Http\Controllers\Traits\AddToData\AddToDataPageDataTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataLanguageDataTrait;
 use App\Http\Controllers\Traits\GetAllLessonsForViewTrait;
 use App\Http\Controllers\Traits\GetKeyNameFromLanguageAliasTrait;
+use App\Http\Controllers\Traits\GetMySuccessStringTrait;
+use App\Http\Controllers\Traits\GetGuestIdTrait;
+
 
 class LanguageLessonsController extends SiteController
 {
@@ -22,6 +25,8 @@ class LanguageLessonsController extends SiteController
     use AddToDataLanguageDataTrait;
     use GetAllLessonsForViewTrait;
     use GetKeyNameFromLanguageAliasTrait;
+    use GetMySuccessStringTrait;
+    use GetGuestIdTrait;
 
      public function __construct(){
         parent::__construct();
@@ -52,12 +57,28 @@ class LanguageLessonsController extends SiteController
 
         $lessonsList = $allLessonsList[ $keyName ][ 'lessons' ];
 
-         $this->data[ 'keyName' ] =             $allLessonsList[ $keyName ][ 'keyName' ];
-         $this->data[ 'languageIcon' ] =        $allLessonsList[ $keyName ][ 'languageIcon' ];
-
-
+        $this->data[ 'keyName' ] =             $allLessonsList[ $keyName ][ 'keyName' ];
+        $this->data[ 'languageIcon' ] =        $allLessonsList[ $keyName ][ 'languageIcon' ];
 
         $this->data[ 'lessonsList' ] = $lessonsList;
+
+        $guestId = $this->GetGuestId();
+        for( $i = 0; $i < count( $this->data[ 'languageActiveList' ] ); $i++ ){
+            if( $i === 0 ){
+                $this->data[ 'mySuccessList' ] = [];
+            };
+            $key_name = $this->data[ 'languageActiveList' ][ $i ];
+            array_push( $this->data[ 'mySuccessList' ], [
+                'icon' => config( 'languages.languages.'.$key_name.'.icon' ),
+                'countString' => $this->GetMySuccessString( $guestId, $key_name ),
+            ] );
+
+        };
+
+
+        // $this->data[ 'mySuccessList' ] = $this->GetMySuccessString( $guestId, $keyName );
+
+        // dd( $this->data );
 
 
 

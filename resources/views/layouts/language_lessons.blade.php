@@ -21,7 +21,16 @@
                                 <span>{{ $lessonsList[ $i ][ 'wordsLength' ] }}</span>
                             </div>
                         </h4>
-                        <p class = 'LLFOL_description'>{{ $lessonsList[ $i ][ 'lessonSchortDescription' ] }}</p>
+                        <div class = 'LLFOL_row_2'>
+                            <p class = 'LLFOL_description'>{{ $lessonsList[ $i ][ 'lessonSchortDescription' ] }}</p>
+                            @if( $lessonsList[ $i ][ 'lessonScore' ] !== null )
+                                <div class = 'LLFOL_score'>
+                                    <span class = 'LLFOL_score_text'>Балл за урок:</span>
+                                    <span class = 'LLFOL_score_num' id = 'scoreNum'>{{ $lessonsList[ $i ][ 'lessonScore' ] }}</span>
+                                </div>
+                            @endif
+                            
+                        </div>
                     </div>
                 </a>
             @endfor

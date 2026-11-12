@@ -53,7 +53,7 @@ use App\Http\Controllers\Page\Admin\Traits\AddGroupWordsIntoWordsListTrait;
 use App\Http\Controllers\Page\Lessons\Traits\GetLessonAppWordsListTrait;
 use App\Http\Controllers\Page\Lessons\Traits\GetLessonAppDataTrait;
 use App\Http\Controllers\Page\Lessons\Traits\SaveUserLessonResultTrait;
-
+use App\Http\Controllers\Page\Lessons\Traits\GetUserSuccessListForPOSTtrait;
 
 
 
@@ -98,6 +98,7 @@ class ApiDevelopmentController extends Controller
     use GetLessonAppWordsListTrait;
     use GetLessonAppDataTrait;
     use SaveUserLessonResultTrait;
+    use GetUserSuccessListForPOSTtrait;
 
     
     public function store(Request $request)
@@ -268,13 +269,14 @@ class ApiDevelopmentController extends Controller
             case 'lessons/save-user-lesson-result':
                 $result = $this->SaveUserLessonResult( $request );
                 break;
+
+            case 'lessons/get-user-success-list':
+                $result = $this->GetUserSuccessListForPOST( $request );
+                break;
             
 
 
-
                 
-
-
 
 
 

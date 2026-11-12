@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Traits;
 
 use Storage;
 
-trait GetMySuccessStringTrait{
+trait GetMySuccessForOneKeyNameTrait{
 
-    public function GetMySuccessString( $guestId, $keyName ){
+    public function GetMySuccessForOneKeyName( $guestId, $keyName ){
 
-        $result = '0 слов';
+        $result = [
+            'countNum' => 0,
+            'countString' => '0 слов',
+        ];
+
 
         if( $guestId !== null ){
 
@@ -20,8 +24,8 @@ trait GetMySuccessStringTrait{
                 $obj = json_decode( $json );
                 $count = $count + (int) $obj->good;
             };
-
-            $result = $this->AddStringWordsToCount( $count );
+            $result[ 'countNum' ] = $count;
+            $result[ 'countString' ] = $this->AddStringWordsToCount( $count );
 
         };
 

@@ -15,6 +15,7 @@ use App\Http\Controllers\Traits\AddToData\AddToDataLinksTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataPageDataTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataLanguageDataTrait;
 use App\Http\Controllers\Traits\GetAllLessonsForViewTrait;
+use App\Http\Controllers\Traits\GetUserSuccessListTrait;
 
 class LessonsController extends SiteController
 {
@@ -23,6 +24,7 @@ class LessonsController extends SiteController
     use AddToDataPageDataTrait;
     use AddToDataLanguageDataTrait;
     use GetAllLessonsForViewTrait;
+    use GetUserSuccessListTrait;
 
     public function __construct(){
         parent::__construct();
@@ -46,6 +48,9 @@ class LessonsController extends SiteController
         $this->AddToDataLinks( 'lessons' );
 
         $this->data[ 'allLessonsList' ] = $this->GetAllLessonsForView();
+
+        $userSuccessList = $this->GetUserSuccessList();
+        $this->data[ 'userSuccessList_json' ] = json_encode( $userSuccessList, JSON_UNESCAPED_UNICODE );
 
         // dd( $this->data );
 

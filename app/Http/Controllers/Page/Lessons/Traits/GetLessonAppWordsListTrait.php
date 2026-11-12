@@ -24,7 +24,7 @@ trait GetLessonAppWordsListTrait{
             $keyName = $validateAppLesson[ 'value' ][ 'keyName' ];
             $lessonId = $validateAppLesson[ 'value' ][ 'lessonId' ];
             
-            $result[ 'app_words' ] = $this->GetWordsByLessonId( $keyName, $lessonId );
+            $result[ 'app_words' ] = $this->GetWordsByLessonId( $keyName, $lessonId, false );
 
             $result[ 'ok' ] = true;
             

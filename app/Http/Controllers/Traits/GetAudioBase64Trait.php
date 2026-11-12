@@ -26,9 +26,22 @@ trait GetAudioBase64Trait{
             $extension = pathinfo( $fullPath, PATHINFO_EXTENSION );
             $base64 = base64_encode( Storage::disk( 'audio' )->get( $puth.'/'.$name ) );
             if( $extension === 'mp3' || $extension === 'MP3' ){
+
+
+/*
                 $base64 = str_replace('dataaudio/mpegbase64//', '', $base64);
                 // 'data:audio/mpeg;base64,//uUxAAAAAAAAAAAA
                 $base64 = 'data:audio/mpeg;base64,//'.$base64;
+*/
+
+                if( strpos( $base64, 'dataaudio/mpegbase64//' ) === 0 ){
+                    $base64 = str_replace('dataaudio/mpegbase64//', '', $base64);
+                    $base64 = 'data:audio/mpeg;base64,//'.$base64;
+                }else if( strpos( $base64, 'dataaudio/mpegbase64' ) === 0 ){
+                    $base64 = str_replace('dataaudio/mpegbase64', '', $base64);
+                    $base64 = 'data:audio/mpeg;base64,'.$base64;
+                };
+
             };
 
 

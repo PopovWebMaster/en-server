@@ -18,10 +18,7 @@ use App\Http\Controllers\Traits\GetOneLessonPageDataTrait;
 
 use App\Http\Controllers\Traits\GetWordsByLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\GetAppDataTrait;
-
-use App\Http\Controllers\Traits\GetGuestIdTrait;
-use App\Http\Controllers\Traits\GetOneUserLessonScoreTrait;
-// use App\Http\Controllers\Traits\GetMySuccessStringTrait;
+use App\Http\Controllers\Traits\GetUserSuccessListTrait;
 
 // use Storage;
 
@@ -35,9 +32,7 @@ class LessonController extends SiteController
     use GetOneLessonPageDataTrait;
     use GetWordsByLessonIdTrait;
     use GetAppDataTrait;
-    use GetGuestIdTrait;
-    use GetOneUserLessonScoreTrait;
-    // use GetMySuccessStringTrait;
+    use GetUserSuccessListTrait;
 
     public function __construct(){
         parent::__construct();
@@ -63,29 +58,33 @@ class LessonController extends SiteController
 
         ]);
 
-        $words = $this->GetWordsByLessonId( $keyName, $lessonId );
+        $words = $this->GetWordsByLessonId( $keyName, $lessonId, false );
+
+        // dd( $words );
         $appData = $this->GetAppData( $keyName );
 
+        
 
         $this->data[ 'levelName' ] = $levelName;
         $this->data[ 'wordsCount' ] = count( $words );
         $this->data[ 'words_json' ] = json_encode( $words, JSON_UNESCAPED_UNICODE );
         $this->data[ 'appData_json' ] = json_encode( $appData, JSON_UNESCAPED_UNICODE );
-
+    
         $this->data[ 'words' ] = $words;
 
         $this->data[ 'keyName' ] =  $keyName;
         $this->data[ 'lessonId' ] = $lessonId;
 
-        $guestId = $this->GetGuestId();
-        if( $guestId !== null ){
-            $lessonScore = $this->GetOneUserLessonScore( $guestId, $keyName, $lessonId );
-            if( $lessonScore !== null ){
-                $this->data[ 'lessonScore' ] = $lessonScore;
-            };
-        };
+        $userSuccessList = $this->GetUserSuccessList();
+        $this->data[ 'userSuccessList_json' ] = json_encode( $userSuccessList, JSON_UNESCAPED_UNICODE );
 
-        // $this->data[ 'mySuccessString' ] = $this->GetMySuccessString( $guestId, $keyName );
+
+
+
+
+
+
+
 
 
 

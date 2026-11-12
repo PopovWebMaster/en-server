@@ -16,6 +16,7 @@ use App\Http\Controllers\Traits\AddToData\AddToDataPageDataTrait;
 use App\Http\Controllers\Traits\AddToData\AddToDataLanguageDataTrait;
 use App\Http\Controllers\Traits\GetLessonsListForViewTrait;
 use App\Http\Controllers\Traits\GetAllLessonsForViewTrait;
+use App\Http\Controllers\Traits\GetUserSuccessListTrait;
 
 
 // use App\Http\Controllers\Traits\MainData\MainDataTrait;
@@ -28,6 +29,7 @@ class HomeController extends SiteController
     use AddToDataLanguageDataTrait;
     use GetLessonsListForViewTrait;
     use GetAllLessonsForViewTrait;
+    use GetUserSuccessListTrait;
     // use MainDataTrait;
 
     public function __construct(){
@@ -84,6 +86,8 @@ class HomeController extends SiteController
         // $this->data[ 'allLessonsList' ] = $allLessonsList;
         $this->data[ 'allLessonsList' ] = $this->GetAllLessonsForView();
 
+        $userSuccessList = $this->GetUserSuccessList();
+        $this->data[ 'userSuccessList_json' ] = json_encode( $userSuccessList, JSON_UNESCAPED_UNICODE );
 
 
 

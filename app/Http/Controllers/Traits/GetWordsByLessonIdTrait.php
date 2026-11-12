@@ -8,7 +8,7 @@ trait GetWordsByLessonIdTrait{
 
     use GetWordListTrait;
 
-    public function GetWordsByLessonId( $keyName, $lessonId ){
+    public function GetWordsByLessonId( $keyName, $lessonId, $fullInfo = true ){
 
         $result = [];
 
@@ -18,7 +18,7 @@ trait GetWordsByLessonIdTrait{
             а не в админку к трейтам, разбираясь где там чего.
         */
 
-        $result = $this->GetWordList( $keyName, $lessonId, true );
+        $result = $this->GetWordList( $keyName, $lessonId, $fullInfo );
 
         return $result;
         

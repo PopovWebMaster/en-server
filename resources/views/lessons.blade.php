@@ -16,5 +16,6 @@
 
 
 @section('script_js')
+    @include('layouts.userSuccessList_json')
     <script type="text/javascript" src={{ $js_lessons }}></script>
 @endsection 

@@ -38,6 +38,9 @@ trait SaveSettingsDataChangesTrait{
             $messageAfterStep_2 =        isset( $request[ 'data' ][ 'messageAfterStep_2' ] )?         $request[ 'data' ][ 'messageAfterStep_2' ]: '';
             $messageAfterStep_3 =        isset( $request[ 'data' ][ 'messageAfterStep_3' ] )?         $request[ 'data' ][ 'messageAfterStep_3' ]: '';
 
+            $textBeforeButtonStart =     isset( $request[ 'data' ][ 'textBeforeButtonStart' ] )?      $request[ 'data' ][ 'textBeforeButtonStart' ]: '';
+
+
 
 
             $this->SetTaskForStep_1( $taskForStep_1 );
@@ -53,6 +56,7 @@ trait SaveSettingsDataChangesTrait{
             $this->SetMessageAfterStep_2( $messageAfterStep_2 );
             $this->SetMessageAfterStep_3( $messageAfterStep_3 );
 
+            $this->SetTextBeforeButtonStart( $textBeforeButtonStart );
 
 
 

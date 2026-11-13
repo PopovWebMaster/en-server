@@ -55,6 +55,9 @@ use App\Http\Controllers\Traits\MainData\ButtonNameStep_3Trait;
 use App\Http\Controllers\Traits\MainData\RepeatCircleLengthTrait;
 use App\Http\Controllers\Traits\MainData\CorrectAnswersLengthTrait;
 
+use App\Http\Controllers\Traits\MainData\TextBeforeButtonStartTrait;
+
+
 
 
 trait MainDataTrait{
@@ -106,6 +109,8 @@ trait MainDataTrait{
     use RepeatCircleLengthTrait;
     use CorrectAnswersLengthTrait;
 
+    use TextBeforeButtonStartTrait;
+
 
 
     protected function GetMainData( $keyName ){
@@ -156,6 +161,9 @@ trait MainDataTrait{
             'messageAfterStep_1' => $this->GetMessageAfterStep_1(),
             'messageAfterStep_2' => $this->GetMessageAfterStep_2(),
             'messageAfterStep_3' => $this->GetMessageAfterStep_3(),
+
+            'textBeforeButtonStart' => $this->GetTextBeforeButtonStart(),
+
 
 
             // 'siteDescription' => $this->GetSiteDescription( $keyName ),

@@ -33,6 +33,9 @@ trait GetAppDataTrait{
             'messageAfterStep_1' => $this->GetMessageAfterStep_1(),
             'messageAfterStep_2' => $this->GetMessageAfterStep_2(),
             'messageAfterStep_3' => $this->GetMessageAfterStep_3(),
+
+            'textBeforeButtonStart' => $this->GetTextBeforeButtonStart(),
+
         ];
 
         $guestId = $this->GetGuestId();

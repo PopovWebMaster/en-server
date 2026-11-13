@@ -63,8 +63,6 @@ class LessonController extends SiteController
         // dd( $words );
         $appData = $this->GetAppData( $keyName );
 
-        
-
         $this->data[ 'levelName' ] = $levelName;
         $this->data[ 'wordsCount' ] = count( $words );
         $this->data[ 'words_json' ] = json_encode( $words, JSON_UNESCAPED_UNICODE );
@@ -78,6 +76,7 @@ class LessonController extends SiteController
         $userSuccessList = $this->GetUserSuccessList();
         $this->data[ 'userSuccessList_json' ] = json_encode( $userSuccessList, JSON_UNESCAPED_UNICODE );
 
+        $this->data[ 'textBeforeButtonStart' ] = $appData[ 'textBeforeButtonStart' ];
 
 
 

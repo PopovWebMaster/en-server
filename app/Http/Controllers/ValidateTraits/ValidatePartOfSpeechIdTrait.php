@@ -18,11 +18,14 @@ trait ValidatePartOfSpeechIdTrait{
         $partOfSpeechId = isset( $request[ 'data' ] )? isset( $request[ 'data' ][ 'partOfSpeechId' ] )? $request[ 'data' ][ 'partOfSpeechId' ]: null: null;
 
         $result[ 'value' ] = $partOfSpeechId;
+        
 
         $validate = Validator::make( [ 
             'partOfSpeechId' => $partOfSpeechId,
         ], [
-            'partOfSpeechId' => [ 'required', 'numeric', 'exists:part_of_speech,id' ],
+            // 'partOfSpeechId' => [ 'required', 'numeric', 'exists:part_of_speech,id' ],
+            'partOfSpeechId' => [ 'nullable', 'numeric', 'exists:part_of_speech,id' ],
+
         ]);
 
         if( $validate->fails() ){

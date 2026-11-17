@@ -48,17 +48,19 @@ trait GetDataOnUniquenessOfForeignWordTrait{
                         };
                     };
 
-                    $lessonName = 'Новые слова';
+                    $lessonName = 'Буфер слов';
                     if( $lesson_id !== null ){
                         $lessonModel = $this->GetLessonModelById( $keyName, $lesson_id );
                         if( $lessonModel === null ){
-                            $lessonName = 'в уроке с id-'.$lesson_id;
+                            $lessonName = ' с id-'.$lesson_id;
                         }else{
                             $title = $lessonModel->title;
-                            $lessonName = 'в уроке "'.$title.'"';
+                            $lessonName = ' "'.$title.'"';
                         };
                     };
-                    array_push( $message, $wordForeign.$POS_Name." ".$lessonName  );
+                    // array_push( $message, $wordForeign.$POS_Name." ".$lessonName  );
+                    array_push( $message, " ".$lessonName  );
+
                 };
             };
 
@@ -69,7 +71,7 @@ trait GetDataOnUniquenessOfForeignWordTrait{
             $text = '';
             for( $i = 0; $i < count( $message ); $i++ ){
                 if( $i === 0 ){
-                    $text = 'Повторяется! ';
+                    $text = 'Повтор! ';
                 };
                 $text = $text.$message[ $i ].', ';
             };

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Page\Admin\Traits;
 
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
-use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
+// use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
 use App\Http\Controllers\ValidateTraits\ValidateLessonIdTrait;
 use App\Http\Controllers\Page\Admin\Traits\MoveWordToLessonTrait;
 
@@ -12,7 +12,7 @@ trait MoveOneWordToLessonTrait{
 
     use ValidateLanguageKeyNameTrait;
     use ValidateLessonIdTrait;
-    use GetWordListTrait;
+    // use GetWordListTrait;
     use MoveWordToLessonTrait;
 
     public function MoveOneWordToLesson( $request ){
@@ -39,7 +39,7 @@ trait MoveOneWordToLessonTrait{
                     'wordId' => $wordId,
                 ]);
 
-                $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId, true  );
+                // $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId, true  );
                 $result[ 'ok' ] = true;
                     
 

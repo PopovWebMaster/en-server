@@ -9,7 +9,7 @@ use Storage;
 
 use App\Http\Controllers\ValidateTraits\ValidateLanguageKeyNameTrait;
 use App\Http\Controllers\ValidateTraits\ValidateLessonIdTrait;
-use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
+// use App\Http\Controllers\Page\Admin\Traits\GetWordListTrait;
 
 // use App\Http\Controllers\ValidateTraits\ValidateWordEnIdTrait;
 use App\Http\Controllers\ValidateTraits\ValidateWordIdTrait;
@@ -26,7 +26,7 @@ trait RemoveOneWordTrait{
     use ValidateWordIdTrait;
     use ValidateLessonIdTrait;
 
-    use GetWordListTrait;
+    // use GetWordListTrait;
     use GetAudioFilePuthTrait;
     use MoveWordToLessonTrait;
 
@@ -82,7 +82,7 @@ trait RemoveOneWordTrait{
                             ]);
                         };
 
-                        $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId, true  );
+                        // $result[ 'wordList' ] = $this->GetWordList( $keyName, $lessonId, true  );
                         $result[ 'ok' ] = true;
 
                     }else{

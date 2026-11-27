@@ -11,6 +11,8 @@ use App\Http\Controllers\Traits\SetUserLessonResultTrait;
 
 use App\Http\Controllers\Traits\GetUserLessonResultTrait;
 
+use App\Http\Controllers\Traits\GetUserSuccessListTrait;
+
 // use Cookie;
 
 trait SaveUserLessonResultTrait{
@@ -20,6 +22,7 @@ trait SaveUserLessonResultTrait{
     use GetGuestIdTrait;
     use SetUserLessonResultTrait;
     use GetUserLessonResultTrait;
+    use GetUserSuccessListTrait;
 
     public function SaveUserLessonResult( $request ){
 
@@ -52,6 +55,8 @@ trait SaveUserLessonResultTrait{
                     'keyName' =>    $keyName,
                     'guestId' =>    $guestId,
                 ]);
+
+                $result[ 'userSuccessList' ] = $this->GetUserSuccessList();
 
                 $result[ 'ok' ] = true;
             }else{
